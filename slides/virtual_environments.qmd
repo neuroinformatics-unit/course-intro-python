@@ -1,0 +1,126 @@
+## Virtual environments {.smaller}
+
+-   Many packages are continuously developed 🔁
+    -   This means there will be breaking changes
+    -   Some packages will require specific versions of other packages
+-   Similar with Python versions
+    -   New versions of Python may introduce new features or deprecate old ones
+
+## Virtual environments {.smaller}
+
+![[Python virtual environments](https://xkcd.com/1987/)](https://imgs.xkcd.com/comics/python_environment.png){width="40%"}
+
+## Virtual environments {.smaller}
+
+::: {style="color: grey;"}
+-   Many packages are continuously developed 🔁
+    -   This means there will be breaking changes
+    -   Some packages will require specific versions of other packages
+-   Similar with Python versions
+    -   New versions of Python may introduce new features or deprecate old ones
+:::
+
+-   How can we have **two versions** of the same package installed at the same time?
+-   Virtual environments! :tada:
+
+## Virtual environments {.smaller}
+
+-   A virtual environment is an isolated Python installation
+    -   Each environment has its own Python version
+    -   Each environment has its own set of installed packages
+-   Popular tools to manage virtual environments:
+    -   [`venv`](https://docs.python.org/3/library/venv.html) (built-in)
+    -   [`conda`](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) (Anaconda/Miniconda)
+    -   [`uv`](https://docs.astral.sh/uv/pip/environments/)
+    -   [`pixi`](https://pixi.sh/latest/workspace/environment/)
+
+## Conda environments {.smaller}
+
+-   Conda is a package manager and virtual environment manager
+-   Separates Python environments from each other (and from system Python)
+-   Can also manage non-Python packages (e.g. R, C libraries, etc...)
+-   Reproducible environments that can be shared with:
+    -   Collaborators
+    -   Readers of your paper
+    -   Future you (HPC, etc...)
+
+## Environment management
+
+In your terminal (use Anaconda Prompt on Windows):
+
+<br/>
+
+``` bash
+conda create --name python-intro python=3.13 notebook
+```
+
+<br/>
+
+::: {.fragment .fade-in style="font-size: 80%;"}
+-   Creates a new environment named `python-intro`
+-   Installs Python 3.13 and Jupyter Notebook in that environment
+:::
+
+## Environment management
+In your terminal (use Anaconda Prompt on Windows):
+
+<br/>
+
+``` bash
+conda activate python-intro
+```
+
+<br/>
+
+::: {.fragment .fade-in style="font-size: 80%;"}
+- Remember to activate the environment before using it!
+:::
+
+## Environment management
+In your terminal (use Anaconda Prompt on Windows):
+
+<br/>
+
+``` bash
+conda deactivate
+```
+
+<br/>
+
+::: {.fragment .fade-in style="font-size: 80%;"}
+- Deactivates the current environment
+:::
+
+## Environment management
+In your terminal (use Anaconda Prompt on Windows):
+
+<br/>
+
+``` bash
+conda env list
+```
+
+<br/>
+
+::: {.fragment .fade-in style="font-size: 80%;"}
+- Lists all conda environments on your system
+:::
+
+## Environment management
+In your terminal (use Anaconda Prompt on Windows):
+
+<br/>
+
+``` bash
+conda remove --name python-intro --all
+```
+
+<br/>
+
+::: {.fragment .fade-in style="font-size: 80%;"}
+- Deletes the `python-intro` environment and all its packages
+:::
+
+::: {.fragment .fade-in .callout-tip}
+[Conda cheat sheet](https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html)
+:::
