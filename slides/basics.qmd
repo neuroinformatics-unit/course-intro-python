@@ -1,0 +1,20 @@
+## Variables {.smaller}
+* A variable is a name that refers to a value
+* You can use variables to store data in memory
+* You can change the data stored in a variable at any time
+* Allows you to reuse data without having to retype it
+
+## Variables
+```{python}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "1-3|5-8|"
+a = 1
+print("The value of a is:")
+print(a)
+
+b = 2
+c = a + b
+print("The value of c is:")
+print(c)
+```
