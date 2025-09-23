@@ -226,3 +226,163 @@ print(my_list[5])
 
 :::
 :::::
+
+## Tuples {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* Ordered collection of values
+* Enclosed in parentheses `()`
+* Any data type, including mixed types
+* Immutable (cannot be changed)
+* When would you use a tuple instead of a list?
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+my_tuple = (1, 2.0, 'cat', 'dog')
+
+print(type(my_tuple))
+print(my_tuple[2])
+
+my_tuple[2] = 'rabbit'
+```
+::::
+:::
+:::::
+
+## Unpacking {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* Unpack a list or tuple into multiple variables
+* Convenient for reassigning variables
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+my_tuple = (1, 2, 3, 4, 5)
+
+a, b, c, d, e = my_tuple
+print(a, b, c, d, e)
+```
+::::
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+a, *b, c = my_tuple
+print(a, b, c)
+print(type(b))
+```
+::::
+:::
+:::::
+
+## Question {.smaller}
+::::: {.columns}
+::: {.column width="55%"}
+
+:::: {.fragment .fade-in fragment-index=1}
+* How would you turn `my_list` into a tuple?
+::::
+
+:::: {.fragment .fade-in fragment-index=3}
+* How would you turn `my_tuple` into a list?
+::::
+
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in fragment-index=1}
+```{python}
+#| echo: true
+my_tuple = (1, 2, 3, 4, 5)
+my_list = [1, 2.0, 'three', 'dog']
+```
+
+<br/>
+
+::::
+
+:::: {.fragment .fade-in fragment-index=2}
+```{python}
+#| echo: true
+my_list_as_tuple = tuple(my_list)
+print(type(my_list_as_tuple))
+```
+::::
+
+:::: {.fragment .fade-in fragment-index=4}
+```{python}
+#| echo: true
+my_tuple_as_list = list(my_tuple)
+print(type(my_tuple_as_list))
+```
+::::
+:::
+:::::
+
+## Dictionaries {.smaller}
+::::: {.columns}
+::: {.column .incremental width="45%"}
+* Collection of key-value pairs
+* Enclosed in curly braces `{}`
+* Keys are unique and immutable
+:::
+
+::: {.column width="55%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+my_dict = {
+    'a_number': 1,
+    'number_list': [1, 2, 3],
+    'a_string': 'string',
+    5.0: 'a float key'
+}
+
+print(my_dict.keys())
+print(my_dict.values())
+print(my_dict.items())
+print(my_dict['a_string'])
+print(my_dict[5.0])
+```
+::::
+:::
+:::::
+
+## Question {.smaller}
+::::: {.columns}
+::: {.column width="45%"}
+* What does `my_dict['a_number']` return?
+:::
+
+::: {.column width="55%"}
+```{python}
+#| echo: true
+my_dict = {
+    'a_number': 1,
+    'number_list': [1, 2, 3],
+    'a_string': 'string',
+    'a_number': 2
+}
+```
+
+:::: {.fragment fragment-index=1}
+<br/>
+
+```{python}
+#| echo: true
+#| output-location: fragment
+print(my_dict['a_number'])
+```
+::::
+:::
+:::::
