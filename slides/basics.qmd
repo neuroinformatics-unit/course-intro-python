@@ -589,6 +589,7 @@ print(large_squares)
 
 ## Question {.smaller}
 * Create a list of square even numbers from 1 to 10 using a list comprehension
+
 ::: {.fragment .fade-in}
 ```{python}
 #| echo: true
