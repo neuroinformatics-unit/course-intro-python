@@ -3,5 +3,7 @@ index_files/
 build/
 .DS_Store
 
+.ipynb_checkpoints
+
 # IDE files
 .idea/
