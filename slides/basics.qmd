@@ -8,13 +8,221 @@
 ```{python}
 #| echo: true
 #| output-location: fragment
-#| code-line-numbers: "1-3|5-8|"
 a = 1
 print("The value of a is:")
 print(a)
+```
 
+<br/>
+
+```{python}
+#| echo: true
+#| output-location: fragment
 b = 2
 c = a + b
 print("The value of c is:")
 print(c)
 ```
+
+## Variables
+```{python}
+#| echo: true
+#| output-location: fragment
+b = 2
+a = b
+print("The value of a is now:")
+print(a)
+```
+
+<br/>
+
+```{python}
+#| echo: true
+#| output-location: fragment
+x, y = 10, 20
+
+print("The value of x is:")
+print(x)
+print("The value of y is:")
+print(y)
+```
+
+## Data types
+::: {.fragment .incremental .smaller}
+* Different kinds of data are stored in different ways in memory
+* You can use the `type()` function to find out what type of data a variable contains
+:::
+
+::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+print(type(1))
+print(type(1.0))
+print(type("Hello"))
+```
+
+:::
+
+## Strings
+* A string is a sequence of characters
+* Strings are enclosed in single or double quotes
+* Used to represent text
+
+## Strings
+```{python}
+#| echo: true
+#| output-location: fragment
+
+a = "I want to learn "
+b = 'Python!'
+
+print(type(a))
+
+print(a + b)
+```
+
+<br/>
+
+::: {.fragment .fade-in style="font-size: 80%;"}
+* Algebraic operations can have different meanings for different data types
+    + Try `a*3` in the code above
+:::
+
+## Question
+
+::: {.incremental}
+* What is the type of...?
+    + 100
+    + 'Dog'
+    + 3.14
+    + print
+    + False
+    + '50'
+:::
+
+## Question
+* Can you add an **int** and a **float**?
+
+::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+print(1 + 2.1)
+```
+
+:::
+
+::: {.fragment .fade-in}
+* What about an **int** and a **str**?
+<br/>
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+print(1 + '2')
+```
+
+:::
+
+## Lists {.smaller}
+
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* Ordered collection of values
+* Enclosed in square brackets `[]`
+* Any data type, including mixed types
+* Indexed from 0 with square brackets `[]`
+* Mutable (can be changed)
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+my_list = [1, 2.0, 'three', 'dog']
+print(type(my_list))
+```
+::::
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+first = my_list[0]
+second = my_list[1]
+last = my_list[-1]
+print(first, second, last)
+```
+::::
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+my_list.append('cat')
+print(my_list)
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+my_list[-1] = 'new_element'
+print(my_list)
+```
+::::
+:::
+:::::
+    
+## Question {.smaller}
+::::: {.columns}
+::: {.column width="55%"}
+
+:::: {.fragment .fade-in fragment-index=1}
+* Find the third element from `my_list`?
+::::
+
+:::: {.fragment .fade-in fragment-index=4}
+* Change the second element to `3.0`?
+::::
+
+:::: {.fragment .fade-in fragment-index=6}
+* What happens if you request `my_list[5]`?
+::::
+
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in fragment-index=2}
+```{python}
+#| echo: true
+print(my_list)
+```
+::::
+
+:::: {.fragment .fade-in fragment-index=3}
+```{python}
+#| echo: true
+print(my_list[2])
+```
+::::
+
+:::: {.fragment .fade-in fragment-index=5}
+```{python}
+#| echo: true
+my_list[1] = 3.0
+print(my_list)
+```
+::::
+
+:::: {.fragment .fade-in fragment-index=7}
+```{python}
+#| echo: true
+#| error: true
+print(my_list[5])
+```
+::::
+
+:::
+:::::
