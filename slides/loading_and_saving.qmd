@@ -1,0 +1,23 @@
+## Reading and writing text files
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* Python can open files in various modes:
+  + 'r' - read (default)
+  + 'w' - write (creates a new file or overwrites an existing one)
+  + 'a' - append (adds to the end of the file)
+* Use the built-in `open()` function to open a file
+* Always close the file after you're done
+:::
+
+:::: {.fragment .fade-in}
+::: {.column width="45%"}
+```{python}
+#| echo: true
+#| output-location: fragment
+file = open('example.txt', 'w')
+file.write('Hello, world!\n')
+file.close()
+```
+:::
+::::
+:::::

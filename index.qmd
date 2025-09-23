@@ -120,3 +120,11 @@ Packages for everything!
 # Basics of Python
 
 {{< include slides/basics.qmd >}}
+
+# Writing your first Python script
+
+{{< include slides/first_script.qmd >}}
+
+# Loading and saving data
+
+{{< include slides/loading_and_saving.qmd >}}
