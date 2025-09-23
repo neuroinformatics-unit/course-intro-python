@@ -386,3 +386,215 @@ print(my_dict['a_number'])
 ::::
 :::
 :::::
+
+## Loops {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* Do the same thing multiple times
+    + E.g.analyse N images
+* Watch out for indentation!
+    + Python uses indentation to define blocks of code
+    + Usually 2-4 spaces (or a tab)
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+
+for i in [0, 1, 2]:
+    print(i)
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+
+for i in range(5):
+    print(i)
+```
+::::
+:::
+:::::
+
+## Loops {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* You can loop over any iterable
+* Use `_` if you don't need the loop variable
+* `enumerate()` gives you the index and the value
+:::
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+my_list = ['cat', 'dog', 'rabbit']
+for animal in my_list:
+    print("My pet is a: " + animal)
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+for _ in range(3):
+    print("Hello!")
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+for index, animal in enumerate(my_list):
+    print(f"My pet #{index} is a: {animal}")
+```
+::::
+:::
+:::::
+
+## Question {.smaller}
+::: {.fragment .fade-in }
+* Create a list of integers from 0 to 5
+* Use a loop to find the sum of the squares of the integers in the list
+* Print the result
+:::
+::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+
+numbers = [0, 1, 2, 3, 4, 5]
+sum_of_squares = 0
+
+for number in numbers:
+    sum_of_squares = sum_of_squares + number**2
+
+print(sum_of_squares)
+```
+:::
+
+::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|5|"
+numbers = [0, 1, 2, 3, 4, 5]
+sum_of_squares = 0
+
+for number in numbers:
+    sum_of_squares += number**2
+
+print(sum_of_squares)
+```
+:::
+
+## Conditional statements {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* Execute code only if a condition is met
+* Use `if`, `elif` (else if), and `else`
+:::
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|1|3|5|7,8|"
+
+porridge_temp = 45
+
+if porridge_temp < 40:
+    print("Too cold!")
+elif porridge_temp > 50:
+    print("Too hot!")
+else:
+    print("Just right!")
+```
+::::
+:::
+:::::
+
+## Question {.smaller}
+* Write a loop that goes through the numbers 0 to 10
+* For each number, print whether it is even or odd
+    + Hint: use the modulus operator `%` and `==` to check for evenness
+
+::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|1|2,3|4,5|"
+
+for i in range(11):
+    if i % 2 == 0:
+        print(f"{i} is Even")
+    else:
+        print(f"{i} is Odd")
+```
+:::
+
+## List comprehensions {.smaller}
+::::: {.columns}
+::: {.column width="55%"}
+
+:::: {.fragment .fade-in fragment-index=1}
+* Concise way to create lists
+* `[expression for item in iterable]`
+::::
+
+:::: {.fragment .fade-in fragment-index=4}
+* Can include conditions
+* `[expression for item in iterable if condition]`
+::::
+
+:::
+::: {.column width="45%"}
+:::: {.fragment .fade-in fragment-index=2}
+Classic:
+```{python}
+#| echo: true
+
+squares = []
+for num in range(5):
+    squares.append(num**2)
+print(squares)
+```
+
+::::
+:::: {.fragment .fade-in fragment-index=3}
+List comprehension:
+```{python}
+#| echo: true
+squares = [num**2 for num in range(5)]
+print(squares)
+```
+::::
+:::
+:::: {.fragment .fade-in fragment-index=5}
+With condition:
+```{python}
+#| echo: true
+#| output-location: fragment
+large_squares = [num**2 for num in range(10) if num >3]
+print(large_squares)
+```
+::::
+:::::
+
+## Question {.smaller}
+* Create a list of cubes from 1 to 10 using a list comprehension
+::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+cubes = [num**3 for num in range(11)]
+print(cubes)
+```
+:::
+
