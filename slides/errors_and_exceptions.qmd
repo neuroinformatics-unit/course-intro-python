@@ -114,3 +114,54 @@ def call_func(x):
 
 z = call_func(10)
 ```
+
+## Handling exceptions {.smaller}
+* What if you know an error might happen?
+
+:::: {.fragment .fade-in fragment-index=2}
+```{python}
+#| echo: true
+#| error: true
+def divide(x, y):
+    print(x / y) # This might raise an error
+
+divide(10, 2)
+divide(10, 0)
+```
+::::
+
+## Handling exceptions {.smaller}
+* What if you know an error might happen?
+* You can handle it with `try` and `except`
+
+:::: {.fragment .fade-in fragment-index=4}
+```{python}
+#| echo: true
+#| output-location: fragment
+def safe_divide(x, y):
+    try:
+        value = x / y
+        print(f"Result: {value}")
+    except:
+        print("Y cannot be zero!")
+safe_divide(10, 2)
+safe_divide(10, 0)
+```
+::::
+
+## Handling exceptions {.smaller}
+* What's the problem with this code?
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+
+safe_divide("10", 2)
+```
+::::
+
+:::: {.fragment .fade-in}
+* You should only catch exceptions you expect
+::::
