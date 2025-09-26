@@ -148,6 +148,10 @@ Packages for everything!
 
 {{< include slides/functions.qmd >}}
 
+# Classes and objects
+
+{{< include slides/classes_and_objects.qmd >}}
+
 # How to work with Python?
 
 {{< include slides/working_with_python.qmd >}}
