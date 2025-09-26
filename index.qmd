@@ -52,6 +52,7 @@ format:
   + Loops
   + Conditional statements
   + List comprehensions
+* How to work with Python? (using IDEs, environments, etc...)
 * Writing your first Python script
 * Loading and saving data
 :::
@@ -65,7 +66,6 @@ format:
 * Errors and exceptions
 * Organising your code
 * Documenting your code
-* How to work with Python? (using IDEs, environments, etc...)
 :::
 
 ## Aims
@@ -140,10 +140,6 @@ Packages for everything!
 
 :::
 
-# How to work with Python?
-
-{{< include slides/working_with_python.qmd >}}
-
 # Basics of Python
 
 {{< include slides/basics.qmd >}}
@@ -151,6 +147,10 @@ Packages for everything!
 # Functions
 
 {{< include slides/functions.qmd >}}
+
+# How to work with Python?
+
+{{< include slides/working_with_python.qmd >}}
 
 # Virtual environments
 
