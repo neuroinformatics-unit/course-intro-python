@@ -114,7 +114,6 @@ Packages for everything!
 
 # How to work with Python?
 
-{{< include slides/virtual_environments.qmd >}}
 {{< include slides/working_with_python.qmd >}}
 
 # Basics of Python
@@ -124,6 +123,10 @@ Packages for everything!
 # Functions
 
 {{< include slides/functions.qmd >}}
+
+# Virtual environments
+
+{{< include slides/virtual_environments.qmd >}}
 
 # Writing your first Python script
 
