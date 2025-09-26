@@ -188,3 +188,32 @@ better_safe_divide(10, 0)
 better_safe_divide("10", 2)
 ```
 ::::
+
+## Exercise {.smaller}
+* Write a function to return the length of the input
+* If the object has no length, return `None`
+
+:::: {.fragment .fade-in}
+```{.python}
+def safe_len(x):
+    # Your code here
+    pass
+```
+::::
+
+## Exercise {.smaller}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|2,3|4,5|"
+#| error: true
+def safe_len(x):
+    try:
+        return len(x)
+    except TypeError:
+        return None
+
+print(safe_len("hello"))
+print(safe_len(42))
+print(safe_len([1, 2, 3]))
+```
