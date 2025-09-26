@@ -29,7 +29,7 @@
 
 ## Virtual environments {.smaller}
 
-::: {.fragment .fade-in}
+::: {.incremental}
 -   A virtual environment is an isolated Python installation
     -   Each environment has its own Python version
     -   Each environment has its own set of installed packages
@@ -42,7 +42,7 @@
 
 ## Conda environments {.smaller}
 
-::: {.fragment .fade-in}
+::: {.incremental}
 -   Conda is a `package manager` and `virtual environment manager`
 -   Separates Python environments from each other (and from system Python)
 -   Can also manage non-Python packages (e.g. R, C libraries, etc...)
@@ -56,10 +56,11 @@
 
 [Click here to go to the download page](https://conda-forge.org/download/)
 
-Common installation problems:
 ::: {.callout-caution collapse="true"}
 ## Windows troubleshooting
-TODO 😭
+- Did you had a previous version of Anaconda installed? You might need to uninstall it first.
+- ![Remember to add Miniforge to your PATH! The installer will say is not required, but it is!](img/miniforge_window_add_to_path.png){width="25%"}
+- `conda not found`? Run `conda init` in your terminal.
 :::
 
 ## Environment management
