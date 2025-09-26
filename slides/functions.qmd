@@ -47,6 +47,8 @@ print(y)
 ## Functions {.smaller}
 :::: {.columns}
 ::: {.column width="55%"}
+
+::: {.incremental}
 * Time consuming and error prone to repeat code
 * Functions allow you to:
     + Reuse code
@@ -54,6 +56,8 @@ print(y)
     + Scope defined by indentation
 * Defined using the `def` keyword
 * Can take inputs (arguments) and return outputs
+:::
+
 :::
 ::: {.column width="45%"}
 :::: {.fragment .fade-in}
@@ -110,6 +114,8 @@ print(is_valid_password("short"))
 ## Arguments {.smaller}
 :::: {.columns}
 ::: {.column .incremental width="50%"}
+
+::: {.incremental}
 * Functions can take multiple arguments
 * Positional arguments
     + Must be given in the correct order
@@ -120,6 +126,8 @@ print(is_valid_password("short"))
 * Default arguments
     + Have a default value if not provided
     + Must come after non-default arguments
+:::
+
 :::
 ::: {.column width="50%"}
 :::: {.fragment .fade-in}

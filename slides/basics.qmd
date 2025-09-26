@@ -1,8 +1,11 @@
 ## Variables {.smaller}
+
+::: {.incremental}
 * A variable is a name that refers to a value
 * You can use variables to store data in memory
 * You can change the data stored in a variable at any time
 * Allows you to reuse data without having to retype it
+:::
 
 ## Variables
 ```{python}
@@ -65,9 +68,12 @@ print(type("Hello"))
 :::
 
 ## Strings
+
+::: {.incremental}
 * A string is a sequence of characters
 * Strings are enclosed in single or double quotes
 * Used to represent text
+:::
 
 ## Strings
 ```{python}
@@ -99,6 +105,7 @@ print(a + b)
     + print
     + False
     + '50'
+    + None
 :::
 
 ## Question
