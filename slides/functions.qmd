@@ -158,6 +158,9 @@ def list_animals(first="dog", second="cat", third="penguin"):
 list_animals()
 ```
 ::::
+
+<br/>
+
 :::: {.fragment .fade-in}
 ```{python}
 #| echo: true
@@ -166,6 +169,9 @@ list_animals()
 list_animals(second="elephant", first="cow")
 ```
 ::::
+
+<br/>
+
 :::: {.fragment .fade-in}
 ``` {python}
 #| echo: true
@@ -223,13 +229,72 @@ print(longer_string("apple", "banana"))
 print(longer_string("apple"))
 ```
 
+## Using `*` and `**` {.smaller}
+
+::: {.incremental .smaller}
+* `*` and `**` are upacking operators, useful to unpack tuples, lists and dictionaries
+* I't common to use `*` and `**` when calling functions
+* You might have seen the syntax `*args` and `**kwargs` before
+* This is just a convention to indicate that the function takes a variable number of arguments
+:::
+
+::: {.fragment}
+```{python}
+#| echo: true
+#| output-location: fragment
+def my_func(*args, **kwargs):
+    print(f"Unpacking list: {args}")
+    print(f"Unpacking dictionary: {kwargs}")
+
+my_list = [1, 2, 3, 4, 5]
+my_dict = {'a': 1, 'b': 2, 'c': 3}
+
+print("Unpacking list:")
+my_func(*my_list)
+
+print("Unpacking dictionary:")
+my_func(**my_dict)
+```
+:::
+
+## How are `*args` and `**kwargs` useful? {.smaller}
+:::: {.columns}
+::: {.column width="55%"}
+::: {.incremental .smaller}
+* `*args` and `**kwargs` are useful when you don't know how many arguments will be passed to the function
+:::
+
+:::
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+def my_func(**kwargs):
+    if 'name' in kwargs:
+        print(f"Hello, {kwargs['name']}!")
+    else:
+        print("Hello, world!")
+
+my_func(name="John")
+my_func()
+my_func(name="Jane")
+```
+::::
+:::
+:::::
+
 ## Return values {.smaller}
 ::::: {.columns}
 ::: {.column width="55%"}
+
+::: {.incremental .smaller}
 * Functions can return one or more values
 * Use the `return` keyword
 * A function can only return once
 * If no return statement is given, the function returns `None`
+:::
+
 :::
 ::: {.column width="45%"}
 :::: {.fragment .fade-in}
@@ -242,6 +307,9 @@ def b_func(a, b):
     return a + b
 ```
 ::::
+
+<br/>
+
 :::: {.fragment .fade-in}
 ```{python}
 #| echo: true
@@ -251,6 +319,8 @@ a_func(10, 20)
 ```
 ::::
 
+<br/>
+
 :::: {.fragment .fade-in}
 ```{python}
 #| echo: true
@@ -258,6 +328,8 @@ a_func(10, 20)
 b_func(10, 20)
 ```
 ::::
+
+<br/>
 
 :::: {.fragment .fade-in}
 ```{python}
@@ -272,6 +344,7 @@ print(result)
 
 
 ## Return values {.smaller}
+
 ```{python}
 #| echo: true
 #| output-location: fragment
@@ -283,6 +356,8 @@ def c_func(a, b, c):
     return sum1, sum_all
 ```
 
+<br/>
+
 :::: {.fragment .fade-in}
 ```{python}
 #| echo: true
@@ -292,6 +367,9 @@ print(result1)
 print(result2)
 ```
 ::::
+
+<br/>
+
 :::: {.fragment .fade-in}
 ```{python}
 #| echo: true
@@ -301,6 +379,8 @@ print(type(result))
 print(result)
 ```
 ::::
+
+<br/>
 
 :::: {.fragment .fade-in}
 ```{python}
