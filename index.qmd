@@ -121,6 +121,10 @@ Packages for everything!
 
 {{< include slides/basics.qmd >}}
 
+# Functions
+
+{{< include slides/functions.qmd >}}
+
 # Writing your first Python script
 
 {{< include slides/first_script.qmd >}}

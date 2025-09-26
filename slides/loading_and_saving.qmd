@@ -1,23 +1,58 @@
-## Reading and writing text files
+## Writing files {.smaller}
 ::::: {.columns}
-::: {.column .incremental width="55%"}
+::: {.column width="55%"}
+:::: {.fragment .fade-in fragment-index=1}
 * Python can open files in various modes:
   + 'r' - read (default)
-  + 'w' - write (creates a new file or overwrites an existing one)
+  + 'w' - write (create or overwrite)
   + 'a' - append (adds to the end of the file)
-* Use the built-in `open()` function to open a file
 * Always close the file after you're done
+::::
+
+:::: {.fragment .fade-in fragment-index=3}
+* Use `with` to do this automatically
+::::
 :::
 
-:::: {.fragment .fade-in}
 ::: {.column width="45%"}
+:::: {.fragment .fade-in fragment-index=2}
+```{python}
+#| echo: true
+new_file = open('example.txt', 'w')
+new_file.write('Hello, world!\n')
+new_file.close()
+```
+::::
+
+<br/>
+
+:::: {.fragment .fade-in fragment-index=4}
 ```{python}
 #| echo: true
 #| output-location: fragment
-file = open('example.txt', 'w')
-file.write('Hello, world!\n')
-file.close()
+with open('example.txt', 'a') as new_file:
+    new_file.write("Appended line.\n")
+    new_file.write('Hello, world!\n')
 ```
-:::
 ::::
+:::
+:::::
+
+## Reading files {.smaller}
+::::: {.columns}
+::: {.column width="50%"}
+* Open file in read mode to get content
+* Files can also be read line by line
+:::
+
+::: {.column width="50%"}
+:::: {.fragment .fade-in}
+```{python}
+with open('example.txt', 'r') as f:
+    contents = f.read()
+
+print(contents)
+```
+::::
+:::
 :::::
