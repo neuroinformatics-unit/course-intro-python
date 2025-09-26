@@ -1,0 +1,116 @@
+## Errors and Exceptions {.smaller}
+* You've probably seen an error already
+* If not try these, why don't they work?
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+
+import london
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+len(print)
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+print("Hello"
+```
+::::
+
+## SyntaxError {.smaller}
+* Something is wrong with the structure of your code, code cannot run
+* What's wrong below?
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+
+print hello
+```
+::::
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+ for i in [0, 1, 2]
+    print(i)
+```
+::::
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+"hello" = some_string
+```
+::::
+
+## Exceptions {.smaller}
+* Something went wrong while your code was running
+* What's wrong in these examples?
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+1 / 0
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+giraffe * 10
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+a_list = [1, 2, 3]
+a_list[5]
+```
+::::
+
+## Tracebacks {.smaller}
+* Help you find the source of the error
+* Read from the bottom up
+* Look for the last line that is *your* code
+* [Debugging manifesto](https://wizardzines.com/images/debugging-manifesto.pdf) :bug:
+
+## Tracebacks {.smaller}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|7|4,5|1,2|"
+#| error: true
+
+def divide_0(x):
+    return x / 0
+
+def call_func(x):
+    y = divide_0(x)
+
+z = call_func(10)
+```

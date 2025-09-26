@@ -152,6 +152,10 @@ Packages for everything!
 
 {{< include slides/classes_and_objects.qmd >}}
 
+# Errors and exceptions
+
+{{< include slides/errors_and_exceptions.qmd >}}
+
 # How to work with Python?
 
 {{< include slides/working_with_python.qmd >}}
