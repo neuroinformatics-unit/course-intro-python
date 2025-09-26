@@ -5,8 +5,8 @@ execute:
   enabled: true
 format:
     revealjs:
-        theme: [default, niu-dark.scss]
-        logo: img/logo_niu_dark.png
+        theme: [default, niu-light.scss]
+        logo: img/logo_niu_light.png
         footer: "Sainsbury Wellcome Centre | 2025-09-30"
         slide-number: c
         menu:
@@ -26,8 +26,8 @@ format:
           fontFamily: arial
           curve: linear
     html:
-        theme: [default, niu-dark.scss]
-        logo: img/logo_niu_dark.png
+        theme: [default, niu-light.scss]
+        logo: img/logo_niu_light.png
         date: "2025-09-30"
         toc: true
         code-overflow: scroll
