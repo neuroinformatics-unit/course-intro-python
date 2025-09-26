@@ -109,15 +109,17 @@ print(is_valid_password("short"))
 
 ## Arguments {.smaller}
 :::: {.columns}
-::: {.column width="50%"}
+::: {.column .incremental width="50%"}
 * Functions can take multiple arguments
 * Positional arguments
     + Must be given in the correct order
 * Keyword arguments
     + Can be given in any order
     + Use the syntax `name=value`
-* Can have default values
-    + Used if no value is provided
+    + Must come after positional arguments
+* Default arguments
+    + Have a default value if not provided
+    + Must come after non-default arguments
 :::
 ::: {.column width="50%"}
 :::: {.fragment .fade-in}
@@ -134,3 +136,33 @@ print_sum(num2=5, num1=3)  # Keyword arguments
 ::::
 :::
 :::::
+
+## Default arguments {.smaller}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+def list_animals(first="dog", second="cat", third="penguin"):
+    print(f"First animal: {first}")
+    print(f"Second animal: {second}")
+    print(f"Third animal: {third}")
+
+list_animals()
+```
+::::
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+list_animals(second="elephant", first="cow")
+```
+::::
+:::: {.fragment .fade-in}
+``` {python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+list_animals(second="lion", "tiger")
+```
+::::
