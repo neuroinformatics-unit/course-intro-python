@@ -137,7 +137,7 @@ print_sum(num2=5, num1=3)  # Keyword arguments
 :::
 :::::
 
-## Default arguments {.smaller}
+## Arguments {.smaller}
 :::: {.fragment .fade-in}
 ```{python}
 #| echo: true
@@ -164,5 +164,141 @@ list_animals(second="elephant", first="cow")
 #| output-location: fragment
 #| error: true
 list_animals(second="lion", "tiger")
+```
+::::
+
+## Arguments {.smaller}
+``` {python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+def list_animals(first="dog", second, third="penguin"):
+    print(f"First animal: {first}")
+    print(f"Second animal: {second}")
+    print(f"Third animal: {third}")
+
+list_animals()
+```
+
+## Exercise {.smaller}
+:::: {.fragment}
+* Write a function that takes two strings as arguments and prints the longer of the two strings
+* One of the arguments should have a default value of an empty string
+::::
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+
+def longer_string(str1, str2=""):
+    # Your code here
+    pass
+```
+::::
+
+## Exercise {.smaller}
+
+```{python}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|1|2,4|"
+
+def longer_string(str1, str2=""):
+    if len(str1) > len(str2):
+        long_str =  str1
+    else:
+        long_str = str2
+
+    print(long_str)
+
+print(longer_string("apple", "banana"))
+print(longer_string("apple"))
+```
+
+## Return values {.smaller}
+::::: {.columns}
+::: {.column width="55%"}
+* Functions can return one or more values
+* Use the `return` keyword
+* A function can only return once
+* If no return statement is given, the function returns `None`
+:::
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| output-location: fragment
+def a_func(a, b):
+    print(a + b)
+
+def b_func(a, b):
+    return a + b
+```
+::::
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+
+a_func(10, 20)
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+b_func(10, 20)
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+result = b_func(10, 20)
+print(result)
+```
+::::
+:::
+:::::
+
+
+## Return values {.smaller}
+```{python}
+#| echo: true
+#| output-location: fragment
+
+def c_func(a, b, c):
+    sum1 = a + b
+    sum_all = a + b + c
+
+    return sum1, sum_all
+```
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+result1, result2 = c_func(1, 2, 3)
+print(result1)
+print(result2)
+```
+::::
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+result = c_func(1, 2, 3)
+print(type(result))
+print(result)
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+_, result2 = c_func(1, 2, 3)
+print(result2)
 ```
 ::::
