@@ -1,12 +1,41 @@
 ## Ways of working with Python {.incremental}
-* REPL (Read-Eval-Print Loop), "interactive Python", "Python console"
-* Notebooks (.ipynb)
-* Scripts (.py)
+
+::: {.incremental}
+* `REPL` (Read-Eval-Print Loop), "interactive Python", "Python console"
+* `Jupyter notebooks` (.ipynb)
+* `Scripts` (.py)
+:::
+
+::: {.fragment .fade-in}
+Demo time! 🧑🏻‍💻👩🏻‍💻
+:::
+
+
 
 ## IDEs: Integrated Development Environments {.smaller}
+
+::: {.incremental}
 * Used by most developers
 * Allows you to switch between the three main ways of working with Python
 * Within the same program you can:
-    + Edit <span style="font-size: 200%;">&rarr;</span> Text editor :pencil:
+    + Edit     <span style="font-size: 200%;">&rarr;</span> Text editor :pencil:
     + Organise <span style="font-size: 200%;">&rarr;</span> File explorer :file_folder:
-    + Run <span style="font-size: 200%;">&rarr;</span> Console :computer:
+    + Run      <span style="font-size: 200%;">&rarr;</span> Console :computer:
+:::
+
+## Example IDEs
+
+::: {.fragment .fade-in}
+* [Visual Studio Code](https://code.visualstudio.com/download) - more customizable
+* [PyCharm](https://www.jetbrains.com/pycharm/download/) - optimized for Python
+* ...
+:::
+
+::: {.fragment .fade-in}
+You can click on the name to go to the download page.
+:::
+
+::: {.fragment .fade-in}
+Install the one you like most!  
+Igor prefers PyCharm, Laura prefers VS Code.
+:::

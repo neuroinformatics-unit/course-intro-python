@@ -95,6 +95,41 @@ print(a + b)
     + Try `a*3` in the code above
 :::
 
+## f-strings
+::: {.incremental}
+* f-strings are a way to format strings
+* Use `f` before the string
+* Use `{variable}` to insert variables into the string
+:::
+::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+print(f"The value of a is: {a}")
+```
+:::
+
+## f-strings
+
+You can also use f-strings to format numbers
+
+::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+print(f"The value of a is: {8.333333333333333:.2f}")
+```
+:::
+
+::: {.fragment .fade-in}
+And can also compute values in the string
+```{python}
+#| echo: true
+#| output-location: fragment
+print(f"The value of a is: {7 / 3:.2f}")
+``` 
+:::
+
 ## Question
 
 ::: {.incremental}
@@ -152,6 +187,9 @@ my_list = [1, 2.0, 'three', 'dog']
 print(type(my_list))
 ```
 ::::
+
+<br/>
+
 :::: {.fragment .fade-in}
 ```{python}
 #| echo: true
@@ -162,6 +200,9 @@ last = my_list[-1]
 print(first, second, last)
 ```
 ::::
+
+<br/>
+
 :::: {.fragment .fade-in}
 ```{python}
 #| echo: true
@@ -170,6 +211,8 @@ my_list.append('cat')
 print(my_list)
 ```
 ::::
+
+<br/>
 
 :::: {.fragment .fade-in}
 ```{python}
@@ -415,6 +458,8 @@ for i in [0, 1, 2]:
 ```
 ::::
 
+<br/>
+
 :::: {.fragment .fade-in}
 ```{python}
 #| echo: true
@@ -445,6 +490,8 @@ for animal in my_list:
 ```
 ::::
 
+<br/>
+
 :::: {.fragment .fade-in}
 ```{python}
 #| echo: true
@@ -453,6 +500,8 @@ for _ in range(3):
     print("Hello!")
 ```
 ::::
+
+<br/>
 
 :::: {.fragment .fade-in}
 ```{python}
@@ -485,6 +534,8 @@ for number in numbers:
 print(sum_of_squares)
 ```
 :::
+
+<br/>
 
 ::: {.fragment .fade-in}
 ```{python}
