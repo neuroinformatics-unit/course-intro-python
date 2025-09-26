@@ -138,6 +138,7 @@ divide(10, 0)
 ```{python}
 #| echo: true
 #| output-location: fragment
+#| code-line-numbers: "|2|3,4|5,7|"
 def safe_divide(x, y):
     try:
         value = x / y
@@ -163,5 +164,27 @@ safe_divide("10", 2)
 ::::
 
 :::: {.fragment .fade-in}
-* You should only catch exceptions you expect
+* Don't make your `except` too general!
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+#| code-line-numbers: "|2|3,4|5,6|7,8|"
+
+def better_safe_divide(x, y):
+    try:
+        value = x / y
+        print(f"Result: {value}")
+    except ZeroDivisionError:
+        print("Y cannot be zero!")
+    except TypeError:
+        print("Both x and y must be numbers!")
+
+better_safe_divide(10, 2)
+better_safe_divide(10, 0)
+better_safe_divide("10", 2)
+```
 ::::
