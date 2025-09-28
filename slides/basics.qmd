@@ -122,7 +122,7 @@ print(f"The value of a is: {8.333333333333333:.2f}")
 :::
 
 ::: {.fragment .fade-in}
-And can also compute values in the string
+And compute values in the string
 ```{python}
 #| echo: true
 #| output-location: fragment
@@ -134,13 +134,13 @@ print(f"The value of a is: {7 / 3:.2f}")
 
 ::: {.incremental}
 * What is the type of...?
-    + 100
-    + 'Dog'
-    + 3.14
-    + print
-    + False
-    + '50'
-    + None
+    + `100`
+    + `'Dog'`
+    + `3.14`
+    + `print`
+    + `False`
+    + `'50'`
+    + `None`
 :::
 
 ## Question
