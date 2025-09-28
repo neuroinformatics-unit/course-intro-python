@@ -1,3 +1,10 @@
+## Scientific Python ecosystem {.smaller}
+![Diagram showing the scientific Python ecosystem.](/img/python-ecosystem.png)
+
+::: footer
+[Aaron Meurer, ‘Python Array API Standard’, SciPy 2023](https://www.youtube.com/watch?v=16rB-fosAWw)
+:::
+
 ## Virtual environments {.smaller}
 
 ::: {.incremental}

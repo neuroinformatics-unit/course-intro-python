@@ -1,0 +1,278 @@
+## Standard library {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* A module is a file containing Python code
+* A package is a collection of modules
+* The standard library is a set of modules that come with Python
+* It provides a wide range of functionality
+  + File I/O
+  + Time and date handling
+  + Math and statistics
+* Accessed using the `import` and `from` keywords
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+import os
+
+print(os.getcwd())
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+import math
+
+print(math.sqrt(16))
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+from pathlib import Path
+print(Path.home())
+```
+::::
+:::
+:::::
+
+## Installing a third-party package
+::: {.callout-important}
+* In the terminal, not in the Python console!
+* Remember to activate the conda environment first
+:::
+
+::: {.fragment .fade-in}
+```bash
+conda activate python-intro
+pip install pandas
+```
+:::
+
+## Using packages {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* `pandas` is a popular package for data science
+* Based on `DataFrames` (tables) and `Series` (columns)
+* You can access it using the `import` keyword
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+import pandas
+
+data_frame = pandas.read_csv("out.csv")
+
+print(data_frame)
+```
+::::
+:::
+:::::
+
+## Importing packages {.smaller}
+::::: {.columns}
+::: {.column width="55%"}
+:::: {.fragment .fade-in fragment-index=1}
+* You can import all available functions in a package
+::::
+
+:::: {.fragment .fade-in fragment-index=3}
+* You can import a specific function from a package
+    + Use `from ... import ...`
+::::
+
+:::: {.fragment .fade-in fragment-index=5}
+* You can also rename the package or function using `as`
+    + Common convention for `pandas` is `pd`
+::::
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in fragment-index=2}
+```{.python}
+import pandas
+
+df = pandas.read_csv("out.csv")
+```
+::::
+
+<br/>
+
+:::: {.fragment .fade-in fragment-index=4}
+```{.python}
+from pandas import read_csv
+
+df = read_csv("out.csv")
+```
+::::
+
+<br/>
+
+:::: {.fragment .fade-in fragment-index=6}
+```{.python}
+import pandas as pd
+
+df = pd.read_csv("out.csv")
+```
+::::
+:::
+:::::
+
+## Installing packages {.smaller}
+::::: {.columns}
+::: {.column width="70%"}
+Two main ways to install packages:
+
+:::: {.fragment .smaller .fade-in fragment-index=1}
+<span style="color:#1f77b4; font-size:1.5em">pip</span> 
+
+* Python's built-in package manager
+* Uses the Python Package Index (PyPI)
+```{.bash}
+pip install package_name
+```
+::::
+
+:::: {.fragment .smaller .fade-in fragment-index=3}
+<span style="color:#3eb049; font-size:1.5em">conda</span>
+
+* Uses multiple channels (`conda-forge` is best, avoid `defaults`)
+* Can install non-Python dependencies
+```{.bash}
+conda install package_name
+```
+::::
+:::
+
+::: {.column width="30%"}
+:::: {.fragment .fade-in fragment-index=2}
+![](https://upload.wikimedia.org/wikipedia/commons/6/64/PyPI_logo.svg){width="100%" fig-alt="PyPI logo"}
+::::
+
+<br/>
+<br/>
+
+:::: {.fragment .fade-in fragment-index=4}
+![](https://upload.wikimedia.org/wikipedia/commons/e/ea/Conda_logo.svg){width="100%" fig-alt="Conda logo"}
+::::
+:::
+:::::
+
+## Exercise
+::::: {.columns}
+::: {.column width="55%"}
+In your conda environment, using `pip`:
+
+:::: {.incremental style="font-size: 80%;"}
+* Install `numpy`
+* Uninstall `numpy`
+* Install `numpy` version `1.26.4`
+* Update the installation of `numpy`
+* Install `matplotlib` and `scikit-image` in one command
+* List all installed packages with `pip list`
+::::
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```bash
+pip install numpy
+```
+::::
+
+<br/>
+
+:::: {.fragment .fade-in}
+```bash
+pip uninstall numpy
+```
+::::
+
+<br/>
+
+:::: {.fragment .fade-in}
+```bash
+pip install numpy==1.26.4
+```
+::::
+
+<br/>
+
+:::: {.fragment .fade-in}
+```bash
+pip install numpy -U
+```
+::::
+
+<br/>
+
+:::: {.fragment .fade-in}
+```bash
+pip install matplotlib scikit-image
+```
+::::
+:::
+:::::
+
+## Exercise
+::::: {.columns}
+::: {.column width="55%"}
+In your conda environment, using `conda`:
+
+:::: {.incremental style="font-size: 80%;"}
+* Install `scipy`
+* Install `scipy` version `1.11.1`
+* Update the installation of `scipy`
+* List all installed packages with `conda list`
+::::
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```bash
+conda install scipy
+```
+::::
+
+<br/>
+
+:::: {.fragment .fade-in}
+```bash
+conda install scipy=1.11.1
+```
+::::
+
+<br/>
+
+:::: {.fragment .fade-in}
+```bash
+conda update scipy
+```
+::::
+:::
+:::::
+
+## Exercise {.smaller}
+::::: {.columns}
+::: {.column width="55%"}
+* Find and install a package for opening Word documents in Python
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```bash
+pip install python-docx
+```
+::::
+:::
+:::::

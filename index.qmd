@@ -144,6 +144,14 @@ Packages for everything!
 
 {{< include slides/basics.qmd >}}
 
+# Writing your first Python script
+
+{{< include slides/first_script.qmd >}}
+
+# Loading and saving data
+
+{{< include slides/loading_and_saving.qmd >}}
+
 # Functions
 
 {{< include slides/functions.qmd >}}
@@ -164,13 +172,9 @@ Packages for everything!
 
 {{< include slides/virtual_environments.qmd >}}
 
-# Writing your first Python script
+# Modules and packages
 
-{{< include slides/first_script.qmd >}}
-
-# Loading and saving data
-
-{{< include slides/loading_and_saving.qmd >}}
+{{< include slides/modules_and_packages.qmd >}}
 
 # Organising your code
 
