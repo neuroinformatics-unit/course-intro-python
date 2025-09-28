@@ -64,6 +64,7 @@ print(y)
 ```{python}
 #| echo: true
 #| output-location: fragment
+#| code-line-numbers: "|1|2-5|3,5|"
 def relu(x):
     if x > 0:
         return x
@@ -90,7 +91,6 @@ print(relu(-3))
 :::: {.fragment .fade-in}
 ```{python}
 #| echo: true
-#| output-location: fragment
 def is_valid_password(password):
     # Your code here
     pass
