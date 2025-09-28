@@ -175,3 +175,7 @@ Packages for everything!
 # Organising your code
 
 {{< include slides/structuring_your_code.qmd >}}
+
+# Documenting your code
+
+{{< include slides/documenting_your_code.qmd >}}
