@@ -171,3 +171,7 @@ Packages for everything!
 # Loading and saving data
 
 {{< include slides/loading_and_saving.qmd >}}
+
+# Organising your code
+
+{{< include slides/structuring_your_code.qmd >}}
