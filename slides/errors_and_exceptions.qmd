@@ -138,7 +138,7 @@ divide(10, 0)
 ```{python}
 #| echo: true
 #| output-location: fragment
-#| code-line-numbers: "|2|3,4|5,7|"
+#| code-line-numbers: "|2|3,4|5,6|"
 def safe_divide(x, y):
     try:
         value = x / y

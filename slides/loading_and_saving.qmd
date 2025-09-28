@@ -48,6 +48,8 @@ with open('example.txt', 'a') as new_file:
 ::: {.column width="50%"}
 :::: {.fragment .fade-in}
 ```{python}
+#| echo: true
+#| output-location: fragment
 with open('example.txt', 'r') as f:
     contents = f.read()
 
@@ -56,3 +58,26 @@ print(contents)
 ::::
 :::
 :::::
+
+## Demo
+* Write a script that saves the below data to a comma-separated file
+
+```{python}
+#| echo: true
+column_labels = "sample_id,speed,distance"
+samples = [(0, 12, 53), (1, 7, 23), (2, 15, 30)]
+```
+
+## Demo
+```{python}
+#| echo: true
+column_labels = "sample_id,speed,distance"
+samples = [(0, 12, 53), (1, 7, 23), (2, 15, 30)]
+
+with open('out.csv', 'w') as f:
+    f.write(column_labels + '\n')
+    for sample in samples:
+        line = ','.join(map(str, sample))
+        f.write(line + '\n')
+```
+

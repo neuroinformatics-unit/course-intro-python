@@ -299,7 +299,7 @@ my_func(name="Jane")
 ::: {.column width="45%"}
 :::: {.fragment .fade-in}
 ```{python}
-#| output-location: fragment
+#| echo: true
 def a_func(a, b):
     print(a + b)
 
