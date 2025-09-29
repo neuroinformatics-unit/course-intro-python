@@ -159,6 +159,7 @@ print(1 + 2.1)
 ::: {.fragment .fade-in}
 * What about an **int** and a **str**?
 <br/>
+
 ```{python}
 #| echo: true
 #| output-location: fragment
@@ -298,11 +299,21 @@ my_tuple = (1, 2.0, 'cat', 'dog')
 
 print(type(my_tuple))
 print(my_tuple[2])
-
-my_tuple[2] = 'rabbit'
 ```
 ::::
 :::
+
+<br/>
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+my_tuple[2] = 'new_element'
+print(my_tuple)
+```
+::::
 :::::
 
 ## Unpacking {.smaller}
