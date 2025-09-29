@@ -189,7 +189,9 @@ Packages for everything!
 {{< include slides/documenting_your_code.qmd >}}
 
 # Next steps
-## Next steps {.smaller .incremental}
+## Next steps {.smaller}
+
+::: {.incremental}
 * We've covered some of the basics
 * Next steps -- Practice!:
   + Mess around with code
@@ -199,15 +201,20 @@ Packages for everything!
   + Additional courses
 :::
 
-## Further resources {.smaller .incremental}
+## Further resources {.smaller}
+
+::: {.incremental}
 * [CS50](https://pll.harvard.edu/course/cs50-introduction-computer-science)
 * UCL ARC courses
   + [An introduction to programming for research using Python](https://rits.github-pages.ucl.ac.uk/doctoral-programming-intro/)
   + [Research software engineering with Python](https://github-pages.ucl.ac.uk/rsd-engineeringcourse/)
   + [Software carpentry courses](https://software-carpentry.org/lessons/)
   + [Exercism](https://exercism.org/tracks/python)
+:::
 
-## Troubleshooting tips {.smaller .incremental}
+## Troubleshooting tips {.smaller}
+
+::: {.incremental}
 * Make sure the correct environment is activated
   + `which python` or `which pip` to check
 * Check the scope of your variable
@@ -217,6 +224,7 @@ Packages for everything!
   + `pyproject.toml` → more on this in future sessions!
 * Look out for deep vs shallow copies
   + Especially with collections (lists, dicts, sets)
+:::
 
 ## Question
 ::::: {.columns}
@@ -240,11 +248,13 @@ print(a[0])
 :::::
 
 
-## Troubleshooting tips {.smaller .incremental}
+## Troubleshooting tips {.smaller}
+
+::: {.incremental}
 * Read the error messages!
   + Google is your friend
   + LLMs can help too
   + Ask a colleague or contact us
 * Use a debugger (e.g. `pdb`, or IDE built-in debuggers)
 * Write tests for your code (e.g. using `pytest`)
-
+:::
