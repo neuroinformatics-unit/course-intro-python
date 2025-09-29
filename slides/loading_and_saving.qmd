@@ -74,10 +74,13 @@ samples = [(0, 12, 53), (1, 7, 23), (2, 15, 30)]
 column_labels = "sample_id,speed,distance"
 samples = [(0, 12, 53), (1, 7, 23), (2, 15, 30)]
 
-with open('out.csv', 'w') as f:
-    f.write(column_labels + '\n')
+with open("out.csv", "w") as file:
+    file.write(column_labels)
+    file.write("\n")
+
     for sample in samples:
-        line = ','.join(map(str, sample))
-        f.write(line + '\n')
+        for value in sample:
+            file.write(str(value) + ",")
+        file.write("\n")
 ```
 
