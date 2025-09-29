@@ -25,3 +25,18 @@ You can click on the name to go to the download page.
 Install the one you like most!  
 Igor prefers PyCharm, Laura prefers VS Code.
 :::
+
+## Using IDEs {.smaller}
+![](/img/vscode_basic.png){fig-align="center"}
+
+## Using IDEs {.smaller}
+![](/img/vscode_new_folder.png){fig-align="center"}
+
+## Using IDEs {.smaller}
+![](/img/vscode_trust.png){fig-align="center"}
+
+## Using IDEs {.smaller}
+![](/img/vscode_project.png){fig-align="center"}
+
+## Using IDEs {.smaller}
+![](/img/vscode_select_interpreter.png){fig-align="center"}
