@@ -60,7 +60,7 @@ print(contents)
 :::::
 
 ## Demo
-* Write a script that saves the below data to a comma-separated file
+* Let's write a script that saves the below data to a comma-separated file
 
 ```{python}
 #| echo: true
@@ -71,16 +71,17 @@ samples = [(0, 12, 53), (1, 7, 23), (2, 15, 30)]
 ## Demo
 ```{python}
 #| echo: true
+#| code-line-numbers: "|4|5,6|8|9,10|8,11|"
 column_labels = "sample_id,speed,distance"
 samples = [(0, 12, 53), (1, 7, 23), (2, 15, 30)]
 
-with open("out.csv", "w") as file:
-    file.write(column_labels)
-    file.write("\n")
+with open("out.csv", "w") as data_file:
+    data_file.write(column_labels)
+    data_file.write("\n")
 
     for sample in samples:
         for value in sample:
-            file.write(str(value) + ",")
-        file.write("\n")
+            data_file.write(str(value) + ",")
+        data_file.write("\n")
 ```
 
