@@ -1,5 +1,5 @@
 ## Scientific Python ecosystem {.smaller}
-![Diagram showing the scientific Python ecosystem.](/img/python-ecosystem.png)
+![](/img/python-ecosystem.png){alt="Scientific Python ecosystem"}
 
 ::: footer
 [Aaron Meurer, ‘Python Array API Standard’, SciPy 2023](https://www.youtube.com/watch?v=16rB-fosAWw)
@@ -17,7 +17,7 @@
 
 ## Virtual environments {.smaller}
 
-![[Comic from xkcd](https://xkcd.com/1987/)](https://imgs.xkcd.com/comics/python_environment.png){width="20%"}
+![[](https://xkcd.com/1987/)](https://imgs.xkcd.com/comics/python_environment.png){width="20%" alt="xkcd comic about Python environments"}
 
 ## Virtual environments {.smaller}
 
@@ -57,17 +57,6 @@
     -   Collaborators
     -   Readers of your paper
     -   Future you (HPC, etc...)
-:::
-
-## Install miniforge
-
-[Click here to go to the download page](https://conda-forge.org/download/)
-
-::: {.callout-caution collapse="true"}
-## Windows troubleshooting
-- Did you had a previous version of Anaconda installed? You might need to uninstall it first.
-- ![Remember to add Miniforge to your PATH! The installer will say is not required, but it is!](img/miniforge_window_add_to_path.png){width="25%"}
-- `conda not found`? Run `conda init` in your terminal.
 :::
 
 ## Environment management

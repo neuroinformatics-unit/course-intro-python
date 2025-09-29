@@ -84,6 +84,39 @@ format:
 Please ask any **questions at any time**!
 :::
 
+# Installation
+
+## Install miniforge {.smaller}
+
+[Click here to go to the download page](https://conda-forge.org/download/)
+
+
+Add Miniforge to PATH when prompted during installation.
+
+![](img/miniforge_window_add_to_path.png){width="25%" fig-align="center"}
+
+Try the below in either your terminal (Mac/Linux) or Miniconda Prompt (Windows):
+```bash
+conda --version
+```
+
+::: {.callout-caution collapse="true"}
+## Windows troubleshooting
+- Did you had a previous version of Anaconda installed? You might need to uninstall it first.
+- `conda not found`? Run `conda init` in your terminal.
+:::
+
+## Install an IDE {.smaller}
+
+::: {.fragment .fade-in}
+* [Visual Studio Code](https://code.visualstudio.com/download) - customisable, extensible, open source
+* [PyCharm](https://www.jetbrains.com/pycharm/download/) - opinionated defaults, not fully free (free for educational use)
+:::
+
+## Install a text editor (macOS) {.smaller}
+* [Sublime Text](https://www.sublimetext.com/) - lightweight text editor
+* Windows can use the built-in Notepad or [Notepad++](https://notepad-plus-plus.org/downloads/)
+
 # Why learn Python?
 
 ## Why learn Python? {.smaller}
