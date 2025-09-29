@@ -15,6 +15,6 @@ Demo time! 🧑🏻‍💻👩🏻‍💻
 :::
 
 ::: {.fragment .fade-in}
-![](/img/interactive_python.png){width=80%}
+![](/img/interactive_python.png){width=70% fig-align="center"}
 :::
 
