@@ -490,6 +490,10 @@ for i in range(5):
 * You can loop over any iterable
 * Use `_` if you don't need the loop variable
 * `enumerate()` gives you the index and the value
+* `range()` generates a sequence of numbers
+    + `range(n)` from 0 to n-1
+    + `range(a, b)` from a to b-1
+    + `range(a, b, step)` from a to b-1 with jumps of step
 :::
 ::: {.column width="45%"}
 :::: {.fragment .fade-in}
