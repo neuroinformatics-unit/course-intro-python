@@ -21,7 +21,7 @@
 You can click on the name to go to the download page.
 :::
 
-::: {.fragment .fade-in}
+::: {.fragment .fade-in .smaller}
 Install the one you like most!  
 Igor prefers PyCharm, Laura prefers VS Code.
 :::
