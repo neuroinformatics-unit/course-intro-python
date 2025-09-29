@@ -53,7 +53,7 @@ print(y)
 * Functions allow you to:
     + Reuse code
     + Break problems into smaller pieces
-    + Scope defined by indentation
+* Scope defined by indentation
 * Defined using the `def` keyword
 * Can take inputs (arguments) and return outputs
 :::
