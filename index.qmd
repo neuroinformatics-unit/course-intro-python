@@ -1,14 +1,13 @@
 ---
-title: A template presentation
-subtitle: so much fun
-author: SWC Neuroinformatics Unit
+title: Introduction to Python
+author: Igor Tatarnikov, Laura Porta
 execute: 
   enabled: true
 format:
     revealjs:
-        theme: [default, niu-dark.scss]
-        logo: img/logo_niu_dark.png
-        footer: "Edit this footer | 2023-07-26"
+        theme: [default, niu-light.scss]
+        logo: img/logo_niu_light.png
+        footer: "Sainsbury Wellcome Centre | 2025-09-30"
         slide-number: c
         menu:
             numbers: true
@@ -17,6 +16,7 @@ format:
         preview-links: false
         view-distance: 10
         mobile-view-distance: 10
+        from: "markdown+emoji"
         auto-animate: true
         auto-play-media: true
         code-overflow: wrap
@@ -26,9 +26,9 @@ format:
           fontFamily: arial
           curve: linear
     html:
-        theme: [default, niu-dark.scss]
-        logo: img/logo_niu_dark.png
-        date: "2023-07-05"
+        theme: [default, niu-light.scss]
+        logo: img/logo_niu_light.png
+        date: "2025-09-30"
         toc: true
         code-overflow: scroll
         highlight-style: atom-one
@@ -39,73 +39,208 @@ format:
           margin-left: 0
         embed-resources: true
         page-layout: full
-my-custom-stuff:
-   my-reuseable-variable: "I can use this wherever I want in the markdown, and change it in only once place :)"
 ---
 
-## Contents
+## Schedule {.smaller}
 
-Some example slides - [also look at example RevealJS slides in the Quarto docs](https://quarto.org/docs/presentations/revealjs/)
-
-* Non-executable and executable code-blocks
-* bullet points with highlighting 
-* two-column slides 
-* how to include a slide from a separate MD file
-* preview and link to a webpage
-
-## Just a code block, nothing gets executed...
-
-... but there is some fancy highlighting
-
-```{.python code-line-numbers="1|3|4-9"}
-from pathlib import Path
-
-home_path = Path.home()
-if home_path.exists():
-  data_path = home_path / "data"
-else:
-  pass
-  # raise some error maybe?
-```
-
-## A code block that's actually executed at render-time
-
-```{python}
-#| echo: true
-#| code-fold: true
-
-from pathlib import Path
-
-print("Hello world")
-```
-
-## You can execute code without showing that you have by using #|echo: false
-```{python}
-#| echo: false
-
-from pathlib import Path
-
-print("Hello world")
-```
-
-{{< include slides/extra_slide.qmd >}}
-
-## An example image
-
-Include an image:
-
-![](img/bg_logo_wide.png){width=900 fig-align=center}
-
-
-## Link and a preview a webpage:
-
-::: {style="text-align: center; margin-top: 1em"}
-[interoperable Python-based tools for computational neuroanatomy](https://brainglobe.info/index.html){preview-link="true" style="text-align: center"}
+::: {.incremental}
+* Aims
+* Why learn Python?
+* Basics
+  + Variables
+  + Data types
+  + Loops
+  + Conditional statements
+  + List comprehensions
+* How to work with Python? (using IDEs, environments, etc...)
+* Writing your first Python script
+* Loading and saving data
 :::
 
-## Use a variable several times
+## Schedule {.smaller}
+::: {.incremental}
+* Recap and Q&A
+* Using third party libraries from pip and conda
+* Functions and methods
+* Classes and objects
+* Errors and exceptions
+* Organising your code
+* Documenting your code
+:::
 
-Variables defined in the metadata is re-useable anywhere
+## Aims
+::: {.incremental}
+* Introduce Python
+* Introduce some basic programming concepts
+* Show you *one* (our) way of doing things
+  + Not necessarily the best or only way
+* Give you the confidence to start doing it yourself
+* Prepare you for other courses
+:::
 
-* {{< meta my-custom-stuff.my-reuseable-variable >}}
-* {{< meta my-custom-stuff.my-reuseable-variable >}}
+::: {.fragment}
+Please ask any **questions at any time**!
+:::
+
+# Why learn Python?
+
+## Why learn Python? {.smaller}
+::: {.fragment}
+Popularity
+
+- Python is the most popular programming language for data science[$^1$](https://aimresearch.co/product/data-science-skills-study-2023/)
+:::
+
+::: {.fragment}
+Free and open source
+
+- Unlike MATLAB, IGOR, etc...
+- Anyone can use your code
+  + 9.7M open Python repositories[$^2$](As 2024-04-06, github.com/oprogramador/github-languages) on ![GitHub logo](img/github-mark-white.svg){width=1em} 
+:::
+
+::: {.fragment}
+Versatile
+Not just for data analysis / machine learning
+
+- Visualisation
+- Web development
+- Data acquisition
+:::
+
+## Why learn Python? {.smaller}
+Packages for everything!
+
+::: {.fragment}
+![NumPy logo](img/numpylogoicon.svg){width=2em style="margin-bottom: 0px; vertical-align: bottom;"} Numpy: arrays  
+:::
+
+::: {.fragment}
+![Pandas logo](img/pandas_logo.svg){width=2em style="margin-bottom: 0px; vertical-align: bottom;"} Pandas: dataframes  
+:::
+
+::: {.fragment}
+![SciPy logo](img/scipy_logo.png){width=2em style="margin-bottom: 0px; vertical-align: bottom;"} SciPy: scientific computing  
+:::
+
+::: {.fragment}
+![Scikit-image logo](img/scikit-image_logo.png){width=2em style="margin-bottom: 0px; vertical-align: bottom;"} Scikit-image: image analysis  
+:::
+
+::: {.fragment}
+![PyTorch logo](img/pytorch_logo.svg){width=2em style="margin-bottom: 0px; vertical-align: bottom;"} PyTorch: machine learning  
+:::
+
+::: {.fragment}
+![Matplotlib logo](img/matplotlib_logo.svg){width=2em style="margin-bottom: 0px; vertical-align: bottom;"} Matplotlib: plotting  
+:::
+
+::: {.fragment}
+*People have spent lots of time optimising these packages! Don't reinvent the wheel!*
+
+:::
+
+# Basics of Python
+
+{{< include slides/basics.qmd >}}
+
+# Writing your first Python script
+
+{{< include slides/first_script.qmd >}}
+
+# Loading and saving data
+
+{{< include slides/loading_and_saving.qmd >}}
+
+# Functions
+
+{{< include slides/functions.qmd >}}
+
+# Classes and objects
+
+{{< include slides/classes_and_objects.qmd >}}
+
+# Errors and exceptions
+
+{{< include slides/errors_and_exceptions.qmd >}}
+
+# How to work with Python?
+
+{{< include slides/working_with_python.qmd >}}
+
+# Virtual environments
+
+{{< include slides/virtual_environments.qmd >}}
+
+# Modules and packages
+
+{{< include slides/modules_and_packages.qmd >}}
+
+# Organising your code
+
+{{< include slides/structuring_your_code.qmd >}}
+
+# Documenting your code
+
+{{< include slides/documenting_your_code.qmd >}}
+
+# Next steps
+## Next steps {.smaller .incremental}
+* We've covered some of the basics
+* Next steps -- Practice!:
+  + Mess around with code
+  + Solve problems
+  + Google stuff
+  + Contact
+  + Additional courses
+:::
+
+## Further resources {.smaller .incremental}
+* [CS50](https://pll.harvard.edu/course/cs50-introduction-computer-science)
+* UCL ARC courses
+  + [An introduction to programming for research using Python](https://rits.github-pages.ucl.ac.uk/doctoral-programming-intro/)
+  + [Research software engineering with Python](https://github-pages.ucl.ac.uk/rsd-engineeringcourse/)
+  + [Software carpentry courses](https://software-carpentry.org/lessons/)
+  + [Exercism](https://exercism.org/tracks/python)
+
+## Troubleshooting tips {.smaller .incremental}
+* Make sure the correct environment is activated
+  + `which python` or `which pip` to check
+* Check the scope of your variable
+* Pay attention to whether an operation is `in_place` or not
+  + Especially with `pandas` and `numpy`
+* Structure your code as a package as soon as you can
+  + `pyproject.toml` → more on this in future sessions!
+* Look out for deep vs shallow copies
+  + Especially with collections (lists, dicts, sets)
+
+## Question
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* What does this return?
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+a = [1, 2, 3]
+b = a
+b[0] = 42
+
+print(a[0])
+```
+::::
+:::
+:::::
+
+
+## Troubleshooting tips {.smaller .incremental}
+* Read the error messages!
+  + Google is your friend
+  + LLMs can help too
+  + Ask a colleague or contact us
+* Use a debugger (e.g. `pdb`, or IDE built-in debuggers)
+* Write tests for your code (e.g. using `pytest`)
+

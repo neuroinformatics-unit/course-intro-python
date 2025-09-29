@@ -1,0 +1,103 @@
+## Structuring your code {.smaller}
+::: {.incremental}
+* As your code gets more complex, you will want to organise it into multiple files and folders
+* This makes it easier to find and reuse code
+* Python modules and packages help you do this
+* You can also use version control (e.g. Git) to manage changes to your code (covered in the good practices lecture)
+:::
+
+## Exercise {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* Create a file `my_funcs.py` with the functions `square_add_10` and `print_twice`
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+def square_add_10(x):
+    y = x**2
+    y = y + 10
+    return y
+
+def print_twice(a_string):
+    print(a_string)
+    print(a_string)
+```
+::::
+:::
+:::::
+
+## Exercise {.smaller}
+::: {.incremental}
+* In a new file `analysis.py`, import the functions from `my_funcs.py` and use them
+* **Modularity promotes reuse!**
+:::
+
+::: {.fragment .fade-in}
+```{.python}
+from .my_funcs import square_add_10, print_twice
+```
+:::
+
+::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+result = square_add_10(5)
+print("Result:", result)
+
+print_twice("Hello, world!")
+```
+:::
+
+## Structuring your code {.smaller}
+::: {.incremental}
+* As your codebase grows, consider organizing files into directories
+:::
+
+::: {.fragment .fade-in}
+```{.python}
+from .utils.my_funcs import square_add_10, print_twice
+```
+:::
+
+::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+result = square_add_10(5)
+print("Result:", result)
+print_twice("Hello, world!")
+```
+:::
+
+## Organisation {.smaller}
+::: {.incremental}
+* Organise your code like you would any other project
+* Use meaningful names for files and directories
+* Group related functionality together
+:::
+
+::: {.fragment .fade-in}
+```plaintext
+.
+├── python_project/
+│   ├── analysis/
+│   │   ├── align.py
+│   │   ├── fft.py
+│   │   ├── preprocessing.py
+│   │   └── register.py
+│   ├── IO/
+│   │   ├── load.py
+│   │   ├── save.py
+│   │   ├── tools
+│   │   ├── settings.py
+│   │   └── system.py
+│   └── visualisation/
+│       ├── preprocess.py
+│       └── visualisation.py
+└── README.md
+```
+:::

@@ -1,0 +1,88 @@
+## Objects {.smaller}
+::::: {.columns}
+::: {.column width="55%"}
+* Everything in Python is an object
+    + Integer, float, string, list, functions...
+* Objects have attributes and methods
+    + Attributes: properties of the object
+    + Methods: functions that belong to the object
+:::
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+a_string = "penguin"
+print(a_string.capitalize())
+```
+::::
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|1|2,3|4|"
+file_obj = open("example.txt", "a")
+print(file_obj.name)
+print(file_obj.mode)
+file_obj.close()
+```
+::::
+:::
+:::::
+
+## Classes {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* A class is a blueprint for creating objects
+* Defined using the `class` keyword
+* Can have attributes and methods (functions)
+* `__init__` method is called when an object is created
+* `self` refers to the instance of the class
+:::
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|1|2,3|5|6|"
+
+class Animal():
+    def __init__(self, species):
+        self.species = species
+
+pingu = Animal("penguin")
+print(pingu.species)
+```
+:::::
+:::
+:::::
+
+## Exercise {.smaller}
+* Try adding a new attribute `noise` to the `Animal` class
+* Add a method `make_noise` that prints the noise of the animal
+
+```{.python}
+class Animal():
+    your code here
+
+pingu = Animal("penguin", "noot")
+pingu.make_noise() # Output: noot
+```
+
+## Exercise {.smaller}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|2|2,4|6,7|"
+
+class Animal():
+    def __init__(self, species, noise):
+        self.species = species
+        self.noise = noise
+
+    def make_noise(self):
+        print(self.noise)
+
+pingu = Animal("penguin", "noot")
+pingu.make_noise()
+```

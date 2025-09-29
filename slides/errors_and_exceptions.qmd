@@ -1,0 +1,219 @@
+## Errors and Exceptions {.smaller}
+* You've probably seen an error already
+* If not try these, why don't they work?
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+
+import london
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+len(print)
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+print("Hello"
+```
+::::
+
+## SyntaxError {.smaller}
+* Something is wrong with the structure of your code, code cannot run
+* What's wrong below?
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+
+print hello
+```
+::::
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+ for i in [0, 1, 2]
+    print(i)
+```
+::::
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+"hello" = some_string
+```
+::::
+
+## Exceptions {.smaller}
+* Something went wrong while your code was running
+* What's wrong in these examples?
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+1 / 0
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+giraffe * 10
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+a_list = [1, 2, 3]
+a_list[5]
+```
+::::
+
+## Tracebacks {.smaller}
+* Help you find the source of the error
+* Read from the bottom up
+* Look for the last line that is *your* code
+* [Debugging manifesto](https://wizardzines.com/images/debugging-manifesto.pdf) :bug:
+
+## Tracebacks {.smaller}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|7|4,5|1,2|"
+#| error: true
+
+def divide_0(x):
+    return x / 0
+
+def call_func(x):
+    y = divide_0(x)
+
+z = call_func(10)
+```
+
+## Handling exceptions {.smaller}
+* What if you know an error might happen?
+
+:::: {.fragment .fade-in fragment-index=2}
+```{python}
+#| echo: true
+#| error: true
+def divide(x, y):
+    print(x / y) # This might raise an error
+
+divide(10, 2)
+divide(10, 0)
+```
+::::
+
+## Handling exceptions {.smaller}
+* What if you know an error might happen?
+* You can handle it with `try` and `except`
+
+:::: {.fragment .fade-in fragment-index=4}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|2|3,4|5,6|"
+def safe_divide(x, y):
+    try:
+        value = x / y
+        print(f"Result: {value}")
+    except:
+        print("Y cannot be zero!")
+safe_divide(10, 2)
+safe_divide(10, 0)
+```
+::::
+
+## Handling exceptions {.smaller}
+* What's the problem with this code?
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+
+safe_divide("10", 2)
+```
+::::
+
+:::: {.fragment .fade-in}
+* Don't make your `except` too general!
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+#| code-line-numbers: "|2|3,4|5,6|7,8|"
+
+def better_safe_divide(x, y):
+    try:
+        value = x / y
+        print(f"Result: {value}")
+    except ZeroDivisionError:
+        print("Y cannot be zero!")
+    except TypeError:
+        print("Both x and y must be numbers!")
+
+better_safe_divide(10, 2)
+better_safe_divide(10, 0)
+better_safe_divide("10", 2)
+```
+::::
+
+## Exercise {.smaller}
+* Write a function to return the length of the input
+* If the object has no length, return `None`
+
+:::: {.fragment .fade-in}
+```{.python}
+def safe_len(x):
+    # Your code here
+    pass
+```
+::::
+
+## Exercise {.smaller}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|2,3|4,5|"
+#| error: true
+def safe_len(x):
+    try:
+        return len(x)
+    except TypeError:
+        return None
+
+print(safe_len("hello"))
+print(safe_len(42))
+print(safe_len([1, 2, 3]))
+```

@@ -1,0 +1,392 @@
+## Functions {.smaller}
+::::: {.columns}
+::: {.column width="60%"}
+* Rectified Linear Unit (ReLU)
+  + `f(x) = max(0, x)`
+
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+
+def relu(x):
+    return max(0, x)
+
+x = np.linspace(-1, 1, 100)
+y = [relu(i) for i in x]
+
+ax = plt.gca()
+
+plt.plot(x, y, color='black', linewidth=2)
+ax.spines['left'].set_position('zero')
+ax.spines['bottom'].set_position('zero')
+ax.spines['right'].set_color('none')
+ax.spines['top'].set_color('none')
+ax.set_ylim(-0.5, 1)
+y_ticks = ax.yaxis.get_major_ticks()
+y_ticks[3].label1.set_visible(False)  # Hide the 0 label on
+plt.show()
+```
+:::
+
+::: {.column width="40%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+x = 5
+if x > 0:
+    y = x
+else:
+    y = 0
+print(y)
+```
+::::
+:::
+:::::
+
+## Functions {.smaller}
+:::: {.columns}
+::: {.column width="55%"}
+
+::: {.incremental}
+* Time consuming and error prone to repeat code
+* Functions allow you to:
+    + Reuse code
+    + Break problems into smaller pieces
+    + Scope defined by indentation
+* Defined using the `def` keyword
+* Can take inputs (arguments) and return outputs
+:::
+
+:::
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|1|2-5|3,5|"
+def relu(x):
+    if x > 0:
+        return x
+    else:
+        return 0
+
+y = relu(0.2)
+print(y)
+
+print(relu(5))
+print(relu(-3))
+```
+::::
+:::
+:::::
+
+## Exercise {.smaller}
+:::: {.fragment}
+* Write a function to check that a password is at least 8 characters long
+* The function should take a string as input and return `True` if the password is long enough, and `False` otherwise
+* You can use the built-in `len()` function to get the length of a string
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+def is_valid_password(password):
+    # Your code here
+    pass
+```
+::::
+
+## Exercise
+```{python}
+#| echo: true
+#| output-location: fragment
+def is_valid_password(password):
+    if len(password) >= 8:
+        return True
+    else:
+        return False
+
+print(is_valid_password("longpassword"))
+print(is_valid_password("short"))
+```
+
+## Arguments {.smaller}
+:::: {.columns}
+::: {.column .incremental width="50%"}
+
+::: {.incremental}
+* Functions can take multiple arguments
+* Positional arguments
+    + Must be given in the correct order
+* Keyword arguments
+    + Can be given in any order
+    + Use the syntax `name=value`
+    + Must come after positional arguments
+* Default arguments
+    + Have a default value if not provided
+    + Must come after non-default arguments
+:::
+
+:::
+::: {.column width="50%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+def print_sum(num1, num2):
+    my_sum = num1 + num2
+    print(my_sum)
+
+print_sum(3, 5)  # Positional arguments
+print_sum(num2=5, num1=3)  # Keyword arguments
+```
+::::
+:::
+:::::
+
+## Arguments {.smaller}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+def list_animals(first="dog", second="cat", third="penguin"):
+    print(f"First animal: {first}")
+    print(f"Second animal: {second}")
+    print(f"Third animal: {third}")
+
+list_animals()
+```
+::::
+
+<br/>
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+list_animals(second="elephant", first="cow")
+```
+::::
+
+<br/>
+
+:::: {.fragment .fade-in}
+``` {python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+list_animals(second="lion", "tiger")
+```
+::::
+
+## Arguments {.smaller}
+``` {python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+def list_animals(first="dog", second, third="penguin"):
+    print(f"First animal: {first}")
+    print(f"Second animal: {second}")
+    print(f"Third animal: {third}")
+
+list_animals()
+```
+
+## Exercise {.smaller}
+:::: {.fragment}
+* Write a function that takes two strings as arguments and prints the longer of the two strings
+* One of the arguments should have a default value of an empty string
+::::
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+
+def longer_string(str1, str2=""):
+    # Your code here
+    pass
+```
+::::
+
+## Exercise {.smaller}
+
+```{python}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|1|2,4|"
+
+def longer_string(str1, str2=""):
+    if len(str1) > len(str2):
+        long_str =  str1
+    else:
+        long_str = str2
+
+    print(long_str)
+
+print(longer_string("apple", "banana"))
+print(longer_string("apple"))
+```
+
+## Using `*` and `**` {.smaller}
+
+::: {.incremental .smaller}
+* `*` and `**` are upacking operators, useful to unpack tuples, lists and dictionaries
+* I't common to use `*` and `**` when calling functions
+* You might have seen the syntax `*args` and `**kwargs` before
+* This is just a convention to indicate that the function takes a variable number of arguments
+:::
+
+::: {.fragment}
+```{python}
+#| echo: true
+#| output-location: fragment
+def my_func(*args, **kwargs):
+    print(f"Unpacking list: {args}")
+    print(f"Unpacking dictionary: {kwargs}")
+
+my_list = [1, 2, 3, 4, 5]
+my_dict = {'a': 1, 'b': 2, 'c': 3}
+
+print("Unpacking list:")
+my_func(*my_list)
+
+print("Unpacking dictionary:")
+my_func(**my_dict)
+```
+:::
+
+## How are `*args` and `**kwargs` useful? {.smaller}
+:::: {.columns}
+::: {.column width="55%"}
+::: {.incremental .smaller}
+* `*args` and `**kwargs` are useful when you don't know how many arguments will be passed to the function
+:::
+
+:::
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+def my_func(**kwargs):
+    if 'name' in kwargs:
+        print(f"Hello, {kwargs['name']}!")
+    else:
+        print("Hello, world!")
+
+my_func(name="John")
+my_func()
+my_func(name="Jane")
+```
+::::
+:::
+:::::
+
+## Return values {.smaller}
+::::: {.columns}
+::: {.column width="55%"}
+
+::: {.incremental .smaller}
+* Functions can return one or more values
+* Use the `return` keyword
+* A function can only return once
+* If no return statement is given, the function returns `None`
+:::
+
+:::
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+def a_func(a, b):
+    print(a + b)
+
+def b_func(a, b):
+    return a + b
+```
+::::
+
+<br/>
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+
+a_func(10, 20)
+```
+::::
+
+<br/>
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+b_func(10, 20)
+```
+::::
+
+<br/>
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+result = b_func(10, 20)
+print(result)
+```
+::::
+:::
+:::::
+
+
+## Return values {.smaller}
+
+```{python}
+#| echo: true
+#| output-location: fragment
+
+def c_func(a, b, c):
+    sum1 = a + b
+    sum_all = a + b + c
+
+    return sum1, sum_all
+```
+
+<br/>
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+result1, result2 = c_func(1, 2, 3)
+print(result1)
+print(result2)
+```
+::::
+
+<br/>
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+result = c_func(1, 2, 3)
+print(type(result))
+print(result)
+```
+::::
+
+<br/>
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+_, result2 = c_func(1, 2, 3)
+print(result2)
+```
+::::

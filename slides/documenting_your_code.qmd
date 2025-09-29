@@ -1,0 +1,186 @@
+## Documenting your code {.smaller}
+::::: {.columns}
+::: {.column width="55%"}
+:::: {.fragment .fade-in fragment-index=1}
+* Aim to need as little documentation as possible
+::::
+:::: {.fragment .fade-in fragment-index=4}
+* Which is easier to understand?
+    + Use meaningful pronounceable names
+::::
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in fragment-index=2}
+```{.python}
+f = 378
+c = 22
+fpc = f / c
+```
+::::
+
+<br/>
+
+:::: {.fragment .fade-in fragment-index=3}
+```{.python}
+foci_number = 378
+cell_number = 22
+foci_per_cell = foci_number / cell_number
+```
+::::
+:::
+:::::
+
+## Documenting your code {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* Each function should do one thing
+* Give functions descriptive names
+* This is a form of documentation too!
+:::
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{.python}
+def analyse_well(well_data):
+    ...
+
+def save_analysed_well(well_data):
+    ...
+
+def process_single_well(well_data):
+    analysed = analyse_well(well_data)
+    save_analysed_well(analysed)
+
+def process_plate(plate_data):
+    for well_data in plate_data:
+        process_single_well(well_data)
+```
+::::
+:::
+:::::
+
+## Comments {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* Sometimes the code isn't self-explanatory
+* Use comments to explain why, not what
+* Use `#` for single-line comments
+* Use triple quotes `"""` for multi-line comments or docstrings
+* What's wrong with this example?
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{.python}
+def analyse_image(image):
+    # run gaussian blur
+    image = gaussian(image)
+    # run otsu thresholding
+    image = otsu(image)
+    # run watershed
+    image = watershed(image)
+    return image
+```
+::::
+:::
+:::::
+
+## Comments
+::::: {.columns}
+::: {.column width="50%"}
+```{.python}
+def analyse_image(image):
+    # run gaussian blur
+    image = gaussian(image)
+    # run otsu thresholding
+    image = otsu(image)
+    # run watershed
+    image = watershed(image)
+    return image
+```
+:::
+
+::: {.column width="50%"}
+```{.python}
+def analyse_image(image):
+    # remove noise
+    image = gaussian(image)
+    # binarise cells
+    image = otsu(image)
+    # split merged cells
+    image = watershed(image)
+    return image
+```
+:::
+:::::
+
+## Docstrings {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* Use docstrings to describe what a function does and how to use it
+* Detail inputs and outputs
+* Use triple quotes `"""` for docstrings
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{.python code-line-numbers="|2-16|2|4-10|12-15|"}
+def add_numbers(num_0, num_1):
+    """Adds two numbers together
+
+    Parameters
+    ----------
+    num_0 : float
+        First number to be added
+
+    num_1 : float
+        Second number to be added
+
+    Returns
+    -------
+    float
+        Sum of numbers
+    """
+    return num_0 + num_1
+```
+::::
+:::
+:::::
+
+## README files {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* Single file, usually `README.md` or `README.txt`
+* Outlines most important information
+    + What the project does
+    + How to install
+    + How to use
+* Very useful for others (and future you!)
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{.plaintext code-line-numbers="|5|7-8|9-16|"}
+My awesome Python package
+Adam Tyson 2025-01-01
+code@adamltyson.com
+
+Analyses data from X, Y, Z
+
+To install:
+...
+Data requirements:
+...
+To run:
+...
+Output:
+...
+Troubleshooting:
+...
+
+```
+::::
+:::
+:::::
+
+
