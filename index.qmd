@@ -140,6 +140,10 @@ Packages for everything!
 
 :::
 
+# Interactive Python
+
+{{< include slides/interactive_python.qmd >}}
+
 # Basics of Python
 
 {{< include slides/basics.qmd >}}
@@ -164,9 +168,9 @@ Packages for everything!
 
 {{< include slides/errors_and_exceptions.qmd >}}
 
-# How to work with Python?
+# IDEs
 
-{{< include slides/working_with_python.qmd >}}
+{{< include slides/IDEs.qmd >}}
 
 # Virtual environments
 
