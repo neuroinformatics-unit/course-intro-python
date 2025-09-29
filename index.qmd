@@ -60,10 +60,12 @@ format:
 ## Schedule {.smaller}
 ::: {.incremental}
 * Recap and Q&A
-* Using third party libraries from pip and conda
 * Functions and methods
 * Classes and objects
 * Errors and exceptions
+* Integrated Development Environments (IDEs)
+* Virtual environments
+* Modules and packages
 * Organising your code
 * Documenting your code
 :::
