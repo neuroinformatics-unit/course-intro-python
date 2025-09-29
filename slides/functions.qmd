@@ -233,7 +233,6 @@ print(longer_string("apple"))
 
 ::: {.incremental .smaller}
 * `*` and `**` are upacking operators, useful to unpack tuples, lists and dictionaries
-* I't common to use `*` and `**` when calling functions
 * You might have seen the syntax `*args` and `**kwargs` before
 * This is just a convention to indicate that the function takes a variable number of arguments
 :::
@@ -291,7 +290,7 @@ my_func(name="Jane")
 ::: {.incremental .smaller}
 * Functions can return one or more values
 * Use the `return` keyword
-* A function can only return once
+* A function can have multiple return statements but only one will be executed
 * If no return statement is given, the function returns `None`
 :::
 
