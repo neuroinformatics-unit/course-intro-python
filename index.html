@@ -1,0 +1,3417 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-f16cd255ecb5ae9510f6a112aa2ee9ab.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.24">
+
+  <meta name="author" content="Igor Tatarnikov, Laura Porta">
+  <title>Introduction to Python</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #383a42;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #383a42; } /* Normal */
+    code span.al { color: #95da4c; background-color: #4d1f24; font-weight: bold; } /* Alert */
+    code span.an { color: #50a14f; } /* Annotation */
+    code span.at { color: #a626a4; } /* Attribute */
+    code span.bn { color: #986801; } /* BaseN */
+    code span.bu { color: #a626a4; } /* BuiltIn */
+    code span.cf { color: #a626a4; } /* ControlFlow */
+    code span.ch { color: #50a14f; } /* Char */
+    code span.cn { color: #986801; } /* Constant */
+    code span.co { color: #a0a1a7; font-style: italic; } /* Comment */
+    code span.cv { color: #e45649; font-style: italic; } /* CommentVar */
+    code span.do { color: #e45649; } /* Documentation */
+    code span.dt { color: #a626a4; } /* DataType */
+    code span.dv { color: #986801; } /* DecVal */
+    code span.er { color: #f44747; text-decoration: underline; } /* Error */
+    code span.ex { color: #4078f2; font-weight: bold; } /* Extension */
+    code span.fl { color: #986801; } /* Float */
+    code span.fu { color: #4078f2; } /* Function */
+    code span.im { color: #50a14f; } /* Import */
+    code span.in { color: #c45b00; } /* Information */
+    code span.kw { color: #a626a4; } /* Keyword */
+    code span.op { color: #a626a4; } /* Operator */
+    code span.ot { color: #27ae60; } /* Other */
+    code span.pp { color: #a626a4; } /* Preprocessor */
+    code span.re { color: #2980b9; background-color: #153042; } /* RegionMarker */
+    code span.sc { color: #0184bc; } /* SpecialChar */
+    code span.ss { color: #da4453; } /* SpecialString */
+    code span.st { color: #50a14f; } /* String */
+    code span.va { color: #e45649; } /* Variable */
+    code span.vs { color: #da4453; } /* VerbatimString */
+    code span.wa { color: #da4453; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-60254a1c9cb585e86c39ecfbb0cc0e3d.css">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Introduction to Python</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Igor Tatarnikov, Laura Porta 
+</div>
+</div>
+</div>
+
+</section>
+<section id="schedule" class="slide level2 smaller">
+<h2>Schedule</h2>
+<ul>
+<li class="fragment">Aims</li>
+<li class="fragment">Why learn Python?</li>
+<li class="fragment">Basics
+<ul>
+<li class="fragment">Variables</li>
+<li class="fragment">Data types</li>
+<li class="fragment">Loops</li>
+<li class="fragment">Conditional statements</li>
+<li class="fragment">List comprehensions</li>
+</ul></li>
+<li class="fragment">How to work with Python? (using IDEs, environments, etc…)</li>
+<li class="fragment">Writing your first Python script</li>
+<li class="fragment">Loading and saving data</li>
+</ul>
+</section>
+<section id="schedule-1" class="slide level2 smaller">
+<h2>Schedule</h2>
+<ul>
+<li class="fragment">Recap and Q&amp;A</li>
+<li class="fragment">Using third party libraries from pip and conda</li>
+<li class="fragment">Functions and methods</li>
+<li class="fragment">Classes and objects</li>
+<li class="fragment">Errors and exceptions</li>
+<li class="fragment">Organising your code</li>
+<li class="fragment">Documenting your code</li>
+</ul>
+</section>
+<section id="aims" class="slide level2">
+<h2>Aims</h2>
+<ul>
+<li class="fragment">Introduce Python</li>
+<li class="fragment">Introduce some basic programming concepts</li>
+<li class="fragment">Show you <em>one</em> (our) way of doing things
+<ul>
+<li class="fragment">Not necessarily the best or only way</li>
+</ul></li>
+<li class="fragment">Give you the confidence to start doing it yourself</li>
+<li class="fragment">Prepare you for other courses</li>
+</ul>
+<div class="fragment">
+<p>Please ask any <strong>questions at any time</strong>!</p>
+</div>
+</section>
+<section>
+<section id="why-learn-python" class="title-slide slide level1 center">
+<h1>Why learn Python?</h1>
+
+</section>
+<section id="why-learn-python-1" class="slide level2 smaller">
+<h2>Why learn Python?</h2>
+<div class="fragment">
+<p>Popularity</p>
+<ul>
+<li>Python is the most popular programming language for data science<a href="https://aimresearch.co/product/data-science-skills-study-2023/"><span class="math inline">\(^1\)</span></a></li>
+</ul>
+</div>
+<div class="fragment">
+<p>Free and open source</p>
+<ul>
+<li>Unlike MATLAB, IGOR, etc…</li>
+<li>Anyone can use your code
+<ul>
+<li>9.7M open Python repositories<a href="As%202024-04-06,%20github.com/oprogramador/github-languages"><span class="math inline">\(^2\)</span></a> on <img data-src="img/github-mark-white.svg" style="width:1em" alt="GitHub logo"></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<p>Versatile Not just for data analysis / machine learning</p>
+<ul>
+<li>Visualisation</li>
+<li>Web development</li>
+<li>Data acquisition</li>
+</ul>
+</div>
+</section>
+<section id="why-learn-python-2" class="slide level2 smaller">
+<h2>Why learn Python?</h2>
+<p>Packages for everything!</p>
+<div class="fragment">
+<p><img data-src="img/numpylogoicon.svg" style="margin-bottom: 0px; vertical-align: bottom;;width:2em" alt="NumPy logo"> Numpy: arrays</p>
+</div>
+<div class="fragment">
+<p><img data-src="img/pandas_logo.svg" style="margin-bottom: 0px; vertical-align: bottom;;width:2em" alt="Pandas logo"> Pandas: dataframes</p>
+</div>
+<div class="fragment">
+<p><img data-src="img/scipy_logo.png" style="margin-bottom: 0px; vertical-align: bottom;;width:2em" alt="SciPy logo"> SciPy: scientific computing</p>
+</div>
+<div class="fragment">
+<p><img data-src="img/scikit-image_logo.png" style="margin-bottom: 0px; vertical-align: bottom;;width:2em" alt="Scikit-image logo"> Scikit-image: image analysis</p>
+</div>
+<div class="fragment">
+<p><img data-src="img/pytorch_logo.svg" style="margin-bottom: 0px; vertical-align: bottom;;width:2em" alt="PyTorch logo"> PyTorch: machine learning</p>
+</div>
+<div class="fragment">
+<p><img data-src="img/matplotlib_logo.svg" style="margin-bottom: 0px; vertical-align: bottom;;width:2em" alt="Matplotlib logo"> Matplotlib: plotting</p>
+</div>
+<div class="fragment">
+<p><em>People have spent lots of time optimising these packages! Don’t reinvent the wheel!</em></p>
+</div>
+</section></section>
+<section>
+<section id="basics-of-python" class="title-slide slide level1 center">
+<h1>Basics of Python</h1>
+
+</section>
+<section id="variables" class="slide level2 smaller">
+<h2>Variables</h2>
+<ul>
+<li class="fragment">A variable is a name that refers to a value</li>
+<li class="fragment">You can use variables to store data in memory</li>
+<li class="fragment">You can change the data stored in a variable at any time</li>
+<li class="fragment">Allows you to reuse data without having to retype it</li>
+</ul>
+</section>
+<section id="variables-1" class="slide level2">
+<h2>Variables</h2>
+<div id="e40996a7" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a>a <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-2"><a href=""></a><span class="bu">print</span>(<span class="st">"The value of a is:"</span>)</span>
+<span id="cb1-3"><a href=""></a><span class="bu">print</span>(a)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
+<pre><code>The value of a is:
+1</code></pre>
+</div>
+</div>
+<p><br></p>
+<div id="ce50b7b4" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a>b <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb3-2"><a href=""></a>c <span class="op">=</span> a <span class="op">+</span> b</span>
+<span id="cb3-3"><a href=""></a><span class="bu">print</span>(<span class="st">"The value of c is:"</span>)</span>
+<span id="cb3-4"><a href=""></a><span class="bu">print</span>(c)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>The value of c is:
+3</code></pre>
+</div>
+</div>
+</section>
+<section id="variables-2" class="slide level2">
+<h2>Variables</h2>
+<div id="b819320d" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>b <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb5-2"><a href=""></a>a <span class="op">=</span> b</span>
+<span id="cb5-3"><a href=""></a><span class="bu">print</span>(<span class="st">"The value of a is now:"</span>)</span>
+<span id="cb5-4"><a href=""></a><span class="bu">print</span>(a)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="3">
+<div class="cell-output cell-output-stdout">
+<pre><code>The value of a is now:
+2</code></pre>
+</div>
+</div>
+<p><br></p>
+<div id="4f7c86e5" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a>x, y <span class="op">=</span> <span class="dv">10</span>, <span class="dv">20</span></span>
+<span id="cb7-2"><a href=""></a></span>
+<span id="cb7-3"><a href=""></a><span class="bu">print</span>(<span class="st">"The value of x is:"</span>)</span>
+<span id="cb7-4"><a href=""></a><span class="bu">print</span>(x)</span>
+<span id="cb7-5"><a href=""></a><span class="bu">print</span>(<span class="st">"The value of y is:"</span>)</span>
+<span id="cb7-6"><a href=""></a><span class="bu">print</span>(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="4">
+<div class="cell-output cell-output-stdout">
+<pre><code>The value of x is:
+10
+The value of y is:
+20</code></pre>
+</div>
+</div>
+</section>
+<section id="data-types" class="slide level2">
+<h2>Data types</h2>
+<div class="fragment smaller">
+<ul>
+<li class="fragment">Different kinds of data are stored in different ways in memory</li>
+<li class="fragment">You can use the <code>type()</code> function to find out what type of data a variable contains</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<div id="e6854d2e" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="dv">1</span>))</span>
+<span id="cb9-2"><a href=""></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="fl">1.0</span>))</span>
+<span id="cb9-3"><a href=""></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="st">"Hello"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="5">
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'int'&gt;
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="strings" class="slide level2">
+<h2>Strings</h2>
+<ul>
+<li class="fragment">A string is a sequence of characters</li>
+<li class="fragment">Strings are enclosed in single or double quotes</li>
+<li class="fragment">Used to represent text</li>
+</ul>
+</section>
+<section id="strings-1" class="slide level2">
+<h2>Strings</h2>
+<div id="1a99ff10" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a>a <span class="op">=</span> <span class="st">"I want to learn "</span></span>
+<span id="cb11-2"><a href=""></a>b <span class="op">=</span> <span class="st">'Python!'</span></span>
+<span id="cb11-3"><a href=""></a></span>
+<span id="cb11-4"><a href=""></a><span class="bu">print</span>(<span class="bu">type</span>(a))</span>
+<span id="cb11-5"><a href=""></a></span>
+<span id="cb11-6"><a href=""></a><span class="bu">print</span>(a <span class="op">+</span> b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="6">
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'str'&gt;
+I want to learn Python!</code></pre>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-in" style="font-size: 80%;">
+<ul>
+<li>Algebraic operations can have different meanings for different data types
+<ul>
+<li>Try <code>a*3</code> in the code above</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="f-strings" class="slide level2">
+<h2>f-strings</h2>
+<ul>
+<li class="fragment">f-strings are a way to format strings</li>
+<li class="fragment">Use <code>f</code> before the string</li>
+<li class="fragment">Use <code>{variable}</code> to insert variables into the string</li>
+</ul>
+<div class="fragment fade-in">
+<div id="3db525dd" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a>a <span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb13-2"><a href=""></a><span class="bu">print</span>(<span class="ss">f"The value of a is: </span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="7">
+<div class="cell-output cell-output-stdout">
+<pre><code>The value of a is: 42</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="f-strings-1" class="slide level2">
+<h2>f-strings</h2>
+<p>You can also use f-strings to format numbers</p>
+<div class="fragment fade-in">
+<div id="dc235cd3" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a><span class="bu">print</span>(<span class="ss">f"A rounded number: </span><span class="sc">{</span><span class="fl">8.333333333333333</span><span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="8">
+<div class="cell-output cell-output-stdout">
+<pre><code>A rounded number: 8.33</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<p>And compute values in the string</p>
+<div id="947f7cc0" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href=""></a><span class="bu">print</span>(<span class="ss">f"7 / 3 is: </span><span class="sc">{</span><span class="dv">7</span> <span class="op">/</span> <span class="dv">3</span><span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="9">
+<div class="cell-output cell-output-stdout">
+<pre><code>7 / 3 is: 2.33</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="question" class="slide level2">
+<h2>Question</h2>
+<ul>
+<li class="fragment">What is the type of…?
+<ul>
+<li class="fragment"><code>100</code></li>
+<li class="fragment"><code>'Dog'</code></li>
+<li class="fragment"><code>3.14</code></li>
+<li class="fragment"><code>print</code></li>
+<li class="fragment"><code>False</code></li>
+<li class="fragment"><code>'50'</code></li>
+<li class="fragment"><code>None</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="question-1" class="slide level2">
+<h2>Question</h2>
+<ul>
+<li>Can you add an <strong>int</strong> and a <strong>float</strong>?</li>
+</ul>
+<div class="fragment fade-in">
+<div id="ea1f266e" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href=""></a><span class="bu">print</span>(<span class="dv">1</span> <span class="op">+</span> <span class="fl">2.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="10">
+<div class="cell-output cell-output-stdout">
+<pre><code>3.1</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<ul>
+<li>What about an <strong>int</strong> and a <strong>str</strong>? <br></li>
+</ul>
+<div id="ac1ae056" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href=""></a><span class="bu">print</span>(<span class="dv">1</span> <span class="op">+</span> <span class="st">'2'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="11">
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[11]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="color:rgb(0,135,0)">print</span>(<span class="ansi-green-fg ansi-yellow-bg">1</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-fg ansi-yellow-bg">2</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span>)
+
+<span class="ansi-red-fg">TypeError</span>: unsupported operand type(s) for +: 'int' and 'str'</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="lists" class="slide level2 smaller">
+<h2>Lists</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment">Ordered collection of values</li>
+<li class="fragment">Enclosed in square brackets <code>[]</code></li>
+<li class="fragment">Any data type, including mixed types</li>
+<li class="fragment">Indexed from 0 with square brackets <code>[]</code></li>
+<li class="fragment">Mutable (can be changed)</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div id="46b611b9" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href=""></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="fl">2.0</span>, <span class="st">'three'</span>, <span class="st">'dog'</span>]</span>
+<span id="cb22-2"><a href=""></a><span class="bu">print</span>(<span class="bu">type</span>(my_list))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="12">
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'list'&gt;</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div id="b1fc1b77" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href=""></a>first <span class="op">=</span> my_list[<span class="dv">0</span>]</span>
+<span id="cb24-2"><a href=""></a>second <span class="op">=</span> my_list[<span class="dv">1</span>]</span>
+<span id="cb24-3"><a href=""></a>last <span class="op">=</span> my_list[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb24-4"><a href=""></a><span class="bu">print</span>(first, second, last)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="13">
+<div class="cell-output cell-output-stdout">
+<pre><code>1 2.0 dog</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div id="cb415e4d" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href=""></a>my_list.append(<span class="st">'cat'</span>)</span>
+<span id="cb26-2"><a href=""></a><span class="bu">print</span>(my_list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="14">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 2.0, 'three', 'dog', 'cat']</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div id="c5da83c1" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href=""></a>my_list[<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="st">'new_element'</span></span>
+<span id="cb28-2"><a href=""></a><span class="bu">print</span>(my_list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="15">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 2.0, 'three', 'dog', 'new_element']</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="question-2" class="slide level2 smaller">
+<h2>Question</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="fragment fade-in" data-fragment-index="1">
+<ul>
+<li>Find the third element from <code>my_list</code>?</li>
+</ul>
+</div>
+<div class="fragment fade-in" data-fragment-index="4">
+<ul>
+<li>Change the second element to <code>3.0</code>?</li>
+</ul>
+</div>
+<div class="fragment fade-in" data-fragment-index="6">
+<ul>
+<li>What happens if you request <code>my_list[5]</code>?</li>
+</ul>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in" data-fragment-index="2">
+<div id="af06b879" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href=""></a><span class="bu">print</span>(my_list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 2.0, 'three', 'dog', 'new_element']</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="3">
+<div id="a4a6df04" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href=""></a><span class="bu">print</span>(my_list[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>three</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="5">
+<div id="044d78ed" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href=""></a>my_list[<span class="dv">1</span>] <span class="op">=</span> <span class="fl">3.0</span></span>
+<span id="cb34-2"><a href=""></a><span class="bu">print</span>(my_list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 3.0, 'three', 'dog', 'new_element']</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="7">
+<div id="06e38222" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href=""></a><span class="bu">print</span>(my_list[<span class="dv">5</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">IndexError</span>                                Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[19]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="color:rgb(0,135,0)">print</span>(<span class="ansi-yellow-bg">my_list</span><span class="ansi-yellow-bg">[</span><span class="ansi-green-fg ansi-yellow-bg">5</span><span class="ansi-yellow-bg">]</span>)
+
+<span class="ansi-red-fg">IndexError</span>: list index out of range</pre>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="tuples" class="slide level2 smaller">
+<h2>Tuples</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment">Ordered collection of values</li>
+<li class="fragment">Enclosed in parentheses <code>()</code></li>
+<li class="fragment">Any data type, including mixed types</li>
+<li class="fragment">Immutable (cannot be changed)</li>
+<li class="fragment">When would you use a tuple instead of a list?</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div id="51d0bb51" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href=""></a>my_tuple <span class="op">=</span> (<span class="dv">1</span>, <span class="fl">2.0</span>, <span class="st">'cat'</span>, <span class="st">'dog'</span>)</span>
+<span id="cb37-2"><a href=""></a></span>
+<span id="cb37-3"><a href=""></a><span class="bu">print</span>(<span class="bu">type</span>(my_tuple))</span>
+<span id="cb37-4"><a href=""></a><span class="bu">print</span>(my_tuple[<span class="dv">2</span>])</span>
+<span id="cb37-5"><a href=""></a></span>
+<span id="cb37-6"><a href=""></a>my_tuple[<span class="dv">2</span>] <span class="op">=</span> <span class="st">'rabbit'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="20">
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'tuple'&gt;
+cat</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[20]</span><span class="ansi-green-fg">, line 6</span>
+<span class="ansi-green-fg">      3</span> <span style="color:rgb(0,135,0)">print</span>(<span style="color:rgb(0,135,0)">type</span>(my_tuple))
+<span class="ansi-green-fg">      4</span> <span style="color:rgb(0,135,0)">print</span>(my_tuple[<span class="ansi-green-fg">2</span>])
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">6</span> <span class="ansi-yellow-bg">my_tuple</span><span class="ansi-yellow-bg">[</span><span class="ansi-green-fg ansi-yellow-bg">2</span><span class="ansi-yellow-bg">]</span> = <span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">rabbit</span><span class="ansi-yellow-fg">'</span>
+
+<span class="ansi-red-fg">TypeError</span>: 'tuple' object does not support item assignment</pre>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="unpacking" class="slide level2 smaller">
+<h2>Unpacking</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment">Unpack a list or tuple into multiple variables</li>
+<li class="fragment">Convenient for reassigning variables</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div id="148f0701" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href=""></a>my_tuple <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb39-2"><a href=""></a></span>
+<span id="cb39-3"><a href=""></a>a, b, c, d, e <span class="op">=</span> my_tuple</span>
+<span id="cb39-4"><a href=""></a><span class="bu">print</span>(a, b, c, d, e)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="21">
+<div class="cell-output cell-output-stdout">
+<pre><code>1 2 3 4 5</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<div id="af067809" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href=""></a>a, <span class="op">*</span>b, c <span class="op">=</span> my_tuple</span>
+<span id="cb41-2"><a href=""></a><span class="bu">print</span>(a, b, c)</span>
+<span id="cb41-3"><a href=""></a><span class="bu">print</span>(<span class="bu">type</span>(b))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="22">
+<div class="cell-output cell-output-stdout">
+<pre><code>1 [2, 3, 4] 5
+&lt;class 'list'&gt;</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="question-3" class="slide level2 smaller">
+<h2>Question</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="fragment fade-in" data-fragment-index="1">
+<ul>
+<li>How would you turn <code>my_list</code> into a tuple?</li>
+</ul>
+</div>
+<div class="fragment fade-in" data-fragment-index="3">
+<ul>
+<li>How would you turn <code>my_tuple</code> into a list?</li>
+</ul>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in" data-fragment-index="1">
+<div id="b47b0791" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href=""></a>my_tuple <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb43-2"><a href=""></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="fl">2.0</span>, <span class="st">'three'</span>, <span class="st">'dog'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</div>
+<div class="fragment fade-in" data-fragment-index="2">
+<div id="6c67e62d" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href=""></a>my_list_as_tuple <span class="op">=</span> <span class="bu">tuple</span>(my_list)</span>
+<span id="cb44-2"><a href=""></a><span class="bu">print</span>(<span class="bu">type</span>(my_list_as_tuple))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'tuple'&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="4">
+<div id="eb0fb444" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href=""></a>my_tuple_as_list <span class="op">=</span> <span class="bu">list</span>(my_tuple)</span>
+<span id="cb46-2"><a href=""></a><span class="bu">print</span>(<span class="bu">type</span>(my_tuple_as_list))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'list'&gt;</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="dictionaries" class="slide level2 smaller">
+<h2>Dictionaries</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<ul>
+<li class="fragment">Collection of key-value pairs</li>
+<li class="fragment">Enclosed in curly braces <code>{}</code></li>
+<li class="fragment">Keys are unique and immutable</li>
+</ul>
+</div><div class="column" style="width:55%;">
+<div class="fragment fade-in">
+<div id="688db4f1" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href=""></a>my_dict <span class="op">=</span> {</span>
+<span id="cb48-2"><a href=""></a>    <span class="st">'a_number'</span>: <span class="dv">1</span>,</span>
+<span id="cb48-3"><a href=""></a>    <span class="st">'number_list'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb48-4"><a href=""></a>    <span class="st">'a_string'</span>: <span class="st">'string'</span>,</span>
+<span id="cb48-5"><a href=""></a>    <span class="fl">5.0</span>: <span class="st">'a float key'</span></span>
+<span id="cb48-6"><a href=""></a>}</span>
+<span id="cb48-7"><a href=""></a></span>
+<span id="cb48-8"><a href=""></a><span class="bu">print</span>(my_dict.keys())</span>
+<span id="cb48-9"><a href=""></a><span class="bu">print</span>(my_dict.values())</span>
+<span id="cb48-10"><a href=""></a><span class="bu">print</span>(my_dict.items())</span>
+<span id="cb48-11"><a href=""></a><span class="bu">print</span>(my_dict[<span class="st">'a_string'</span>])</span>
+<span id="cb48-12"><a href=""></a><span class="bu">print</span>(my_dict[<span class="fl">5.0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="26">
+<div class="cell-output cell-output-stdout">
+<pre><code>dict_keys(['a_number', 'number_list', 'a_string', 5.0])
+dict_values([1, [1, 2, 3], 'string', 'a float key'])
+dict_items([('a_number', 1), ('number_list', [1, 2, 3]), ('a_string', 'string'), (5.0, 'a float key')])
+string
+a float key</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="question-4" class="slide level2 smaller">
+<h2>Question</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<ul>
+<li>What does <code>my_dict['a_number']</code> return?</li>
+</ul>
+</div><div class="column" style="width:55%;">
+<div id="cde9194b" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href=""></a>my_dict <span class="op">=</span> {</span>
+<span id="cb50-2"><a href=""></a>    <span class="st">'a_number'</span>: <span class="dv">1</span>,</span>
+<span id="cb50-3"><a href=""></a>    <span class="st">'number_list'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb50-4"><a href=""></a>    <span class="st">'a_string'</span>: <span class="st">'string'</span>,</span>
+<span id="cb50-5"><a href=""></a>    <span class="st">'a_number'</span>: <span class="dv">2</span></span>
+<span id="cb50-6"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment" data-fragment-index="1">
+<p><br></p>
+<div id="e607e2a8" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href=""></a><span class="bu">print</span>(my_dict[<span class="st">'a_number'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="28">
+<div class="cell-output cell-output-stdout">
+<pre><code>2</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="loops" class="slide level2 smaller">
+<h2>Loops</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment">Do the same thing multiple times
+<ul>
+<li class="fragment">E.g.analyse N images</li>
+</ul></li>
+<li class="fragment">Watch out for indentation!
+<ul>
+<li class="fragment">Python uses indentation to define blocks of code</li>
+<li class="fragment">Usually 2-4 spaces (or a tab)</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div id="70a716b9" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href=""></a><span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]:</span>
+<span id="cb53-2"><a href=""></a>    <span class="bu">print</span>(i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="29">
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+1
+2</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div id="70ccf47d" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href=""></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb55-2"><a href=""></a>    <span class="bu">print</span>(i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="30">
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+1
+2
+3
+4</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="loops-1" class="slide level2 smaller">
+<h2>Loops</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment">You can loop over any iterable</li>
+<li class="fragment">Use <code>_</code> if you don’t need the loop variable</li>
+<li class="fragment"><code>enumerate()</code> gives you the index and the value</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div id="a228356e" class="cell" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href=""></a>my_list <span class="op">=</span> [<span class="st">'cat'</span>, <span class="st">'dog'</span>, <span class="st">'rabbit'</span>]</span>
+<span id="cb57-2"><a href=""></a><span class="cf">for</span> animal <span class="kw">in</span> my_list:</span>
+<span id="cb57-3"><a href=""></a>    <span class="bu">print</span>(<span class="st">"My pet is a: "</span> <span class="op">+</span> animal)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="31">
+<div class="cell-output cell-output-stdout">
+<pre><code>My pet is a: cat
+My pet is a: dog
+My pet is a: rabbit</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div id="25736027" class="cell" data-execution_count="32">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href=""></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb59-2"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Hello!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="32">
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello!
+Hello!
+Hello!</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div id="bfa145c0" class="cell" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href=""></a><span class="cf">for</span> index, animal <span class="kw">in</span> <span class="bu">enumerate</span>(my_list):</span>
+<span id="cb61-2"><a href=""></a>    <span class="bu">print</span>(<span class="ss">f"My pet #</span><span class="sc">{</span>index<span class="sc">}</span><span class="ss"> is a: </span><span class="sc">{</span>animal<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="33">
+<div class="cell-output cell-output-stdout">
+<pre><code>My pet #0 is a: cat
+My pet #1 is a: dog
+My pet #2 is a: rabbit</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="question-5" class="slide level2 smaller">
+<h2>Question</h2>
+<div class="fragment fade-in">
+<ul>
+<li>Create a list of integers from 0 to 5</li>
+<li>Use a loop to find the sum of the squares of the integers in the list</li>
+<li>Print the result</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<div id="40dfa399" class="cell" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href=""></a>numbers <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb63-2"><a href=""></a>sum_of_squares <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb63-3"><a href=""></a></span>
+<span id="cb63-4"><a href=""></a><span class="cf">for</span> number <span class="kw">in</span> numbers:</span>
+<span id="cb63-5"><a href=""></a>    sum_of_squares <span class="op">=</span> sum_of_squares <span class="op">+</span> number<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb63-6"><a href=""></a></span>
+<span id="cb63-7"><a href=""></a><span class="bu">print</span>(sum_of_squares)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="34">
+<div class="cell-output cell-output-stdout">
+<pre><code>55</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div id="7db2896e" class="cell" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65" data-code-line-numbers="|5|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href=""></a>numbers <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb65-2"><a href=""></a>sum_of_squares <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb65-3"><a href=""></a></span>
+<span id="cb65-4"><a href=""></a><span class="cf">for</span> number <span class="kw">in</span> numbers:</span>
+<span id="cb65-5"><a href=""></a>    sum_of_squares <span class="op">+=</span> number<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb65-6"><a href=""></a></span>
+<span id="cb65-7"><a href=""></a><span class="bu">print</span>(sum_of_squares)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="35">
+<div class="cell-output cell-output-stdout">
+<pre><code>55</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="conditional-statements" class="slide level2 smaller">
+<h2>Conditional statements</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment">Execute code only if a condition is met</li>
+<li class="fragment">Use <code>if</code>, <code>elif</code> (else if), and <code>else</code></li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div id="8b2445c8" class="cell" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67" data-code-line-numbers="|1|3|5|7,8|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href=""></a>porridge_temp <span class="op">=</span> <span class="dv">45</span></span>
+<span id="cb67-2"><a href=""></a></span>
+<span id="cb67-3"><a href=""></a><span class="cf">if</span> porridge_temp <span class="op">&lt;</span> <span class="dv">40</span>:</span>
+<span id="cb67-4"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Too cold!"</span>)</span>
+<span id="cb67-5"><a href=""></a><span class="cf">elif</span> porridge_temp <span class="op">&gt;</span> <span class="dv">50</span>:</span>
+<span id="cb67-6"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Too hot!"</span>)</span>
+<span id="cb67-7"><a href=""></a><span class="cf">else</span>:</span>
+<span id="cb67-8"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Just right!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="36">
+<div class="cell-output cell-output-stdout">
+<pre><code>Just right!</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="question-6" class="slide level2 smaller">
+<h2>Question</h2>
+<ul>
+<li>Write a loop that goes through the numbers 0 to 10</li>
+<li>For each number, print whether it is even or odd
+<ul>
+<li>Hint: use the modulus operator <code>%</code> and <code>==</code> to check for evenness</li>
+</ul></li>
+</ul>
+<div class="fragment fade-in">
+<div id="773bc5bd" class="cell" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69" data-code-line-numbers="|1|2,3|4,5|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href=""></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">11</span>):</span>
+<span id="cb69-2"><a href=""></a>    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb69-3"><a href=""></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> is Even"</span>)</span>
+<span id="cb69-4"><a href=""></a>    <span class="cf">else</span>:</span>
+<span id="cb69-5"><a href=""></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> is Odd"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="37">
+<div class="cell-output cell-output-stdout">
+<pre><code>0 is Even
+1 is Odd
+2 is Even
+3 is Odd
+4 is Even
+5 is Odd
+6 is Even
+7 is Odd
+8 is Even
+9 is Odd
+10 is Even</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="list-comprehensions" class="slide level2 smaller">
+<h2>List comprehensions</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="fragment fade-in" data-fragment-index="1">
+<ul>
+<li>Concise way to create lists</li>
+<li><code>[expression for item in iterable]</code></li>
+</ul>
+</div>
+<div class="fragment fade-in" data-fragment-index="4">
+<ul>
+<li>Can include conditions</li>
+<li><code>[expression for item in iterable if condition]</code></li>
+</ul>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in" data-fragment-index="2">
+<p>Classic:</p>
+<div id="13ccbd68" class="cell" data-execution_count="38">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href=""></a>squares <span class="op">=</span> []</span>
+<span id="cb71-2"><a href=""></a><span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb71-3"><a href=""></a>    squares.append(num<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb71-4"><a href=""></a><span class="bu">print</span>(squares)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0, 1, 4, 9, 16]</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="3">
+<p>List comprehension:</p>
+<div id="ddd9a4a8" class="cell" data-execution_count="39">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href=""></a>squares <span class="op">=</span> [num<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]</span>
+<span id="cb73-2"><a href=""></a><span class="bu">print</span>(squares)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0, 1, 4, 9, 16]</code></pre>
+</div>
+</div>
+</div>
+</div><div class="fragment fade-in" data-fragment-index="5">
+<p>With condition:</p>
+<div id="336f998c" class="cell" data-execution_count="40">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href=""></a>large_squares <span class="op">=</span> [num<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>) <span class="cf">if</span> num <span class="op">&gt;</span> <span class="dv">3</span>]</span>
+<span id="cb75-2"><a href=""></a><span class="bu">print</span>(large_squares)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="40">
+<div class="cell-output cell-output-stdout">
+<pre><code>[16, 25, 36, 49, 64, 81]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-7" class="slide level2 smaller">
+<h2>Question</h2>
+<ul>
+<li>Create a list of square even numbers from 1 to 10 using a list comprehension</li>
+</ul>
+<div class="fragment fade-in">
+<div id="6d51ac3c" class="cell" data-execution_count="41">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href=""></a>even_squares <span class="op">=</span> [num<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>) <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span>
+<span id="cb77-2"><a href=""></a><span class="bu">print</span>(even_squares)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="41">
+<div class="cell-output cell-output-stdout">
+<pre><code>[4, 16, 36, 64, 100]</code></pre>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="writing-your-first-python-script" class="title-slide slide level1 center">
+<h1>Writing your first Python script</h1>
+
+</section>
+<section id="writing-your-first-python-script-1" class="slide level2">
+<h2>Writing your first Python script</h2>
+<ul>
+<li>Placeholder slide</li>
+</ul>
+</section></section>
+<section>
+<section id="loading-and-saving-data" class="title-slide slide level1 center">
+<h1>Loading and saving data</h1>
+
+</section>
+<section id="writing-files" class="slide level2 smaller">
+<h2>Writing files</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="fragment fade-in" data-fragment-index="1">
+<ul>
+<li>Python can open files in various modes:
+<ul>
+<li>‘r’ - read (default)</li>
+<li>‘w’ - write (create or overwrite)</li>
+<li>‘a’ - append (adds to the end of the file)</li>
+</ul></li>
+<li>Always close the file after you’re done</li>
+</ul>
+</div>
+<div class="fragment fade-in" data-fragment-index="3">
+<ul>
+<li>Use <code>with</code> to do this automatically</li>
+</ul>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in" data-fragment-index="2">
+<div id="e6bea1c4" class="cell" data-execution_count="42">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href=""></a>new_file <span class="op">=</span> <span class="bu">open</span>(<span class="st">'example.txt'</span>, <span class="st">'w'</span>)</span>
+<span id="cb79-2"><a href=""></a>new_file.write(<span class="st">'Hello, world!</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb79-3"><a href=""></a>new_file.close()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-in" data-fragment-index="4">
+<div id="61b98ca2" class="cell" data-execution_count="43">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href=""></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'example.txt'</span>, <span class="st">'a'</span>) <span class="im">as</span> new_file:</span>
+<span id="cb80-2"><a href=""></a>    new_file.write(<span class="st">"Appended line.</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb80-3"><a href=""></a>    new_file.write(<span class="st">'Hello, world!</span><span class="ch">\n</span><span class="st">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="43">
+
+</div>
+</div>
+</div></div>
+</section>
+<section id="reading-files" class="slide level2 smaller">
+<h2>Reading files</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Open file in read mode to get content</li>
+<li>Files can also be read line by line</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="fragment fade-in">
+<div id="7fc28768" class="cell" data-execution_count="44">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href=""></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'example.txt'</span>, <span class="st">'r'</span>) <span class="im">as</span> f:</span>
+<span id="cb81-2"><a href=""></a>    contents <span class="op">=</span> f.read()</span>
+<span id="cb81-3"><a href=""></a></span>
+<span id="cb81-4"><a href=""></a><span class="bu">print</span>(contents)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="44">
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello, world!
+Appended line.
+Hello, world!
+</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="demo" class="slide level2">
+<h2>Demo</h2>
+<ul>
+<li>Write a script that saves the below data to a comma-separated file</li>
+</ul>
+<div id="d1572191" class="cell" data-execution_count="45">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href=""></a>column_labels <span class="op">=</span> <span class="st">"sample_id,speed,distance"</span></span>
+<span id="cb83-2"><a href=""></a>samples <span class="op">=</span> [(<span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">53</span>), (<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">23</span>), (<span class="dv">2</span>, <span class="dv">15</span>, <span class="dv">30</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="demo-1" class="slide level2">
+<h2>Demo</h2>
+<div id="fd1a83e7" class="cell" data-execution_count="46">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href=""></a>column_labels <span class="op">=</span> <span class="st">"sample_id,speed,distance"</span></span>
+<span id="cb84-2"><a href=""></a>samples <span class="op">=</span> [(<span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">53</span>), (<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">23</span>), (<span class="dv">2</span>, <span class="dv">15</span>, <span class="dv">30</span>)]</span>
+<span id="cb84-3"><a href=""></a></span>
+<span id="cb84-4"><a href=""></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"out.csv"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb84-5"><a href=""></a>    <span class="bu">file</span>.write(column_labels)</span>
+<span id="cb84-6"><a href=""></a>    <span class="bu">file</span>.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb84-7"><a href=""></a></span>
+<span id="cb84-8"><a href=""></a>    <span class="cf">for</span> sample <span class="kw">in</span> samples:</span>
+<span id="cb84-9"><a href=""></a>        <span class="cf">for</span> value <span class="kw">in</span> sample:</span>
+<span id="cb84-10"><a href=""></a>            <span class="bu">file</span>.write(<span class="bu">str</span>(value) <span class="op">+</span> <span class="st">","</span>)</span>
+<span id="cb84-11"><a href=""></a>        <span class="bu">file</span>.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section></section>
+<section>
+<section id="functions" class="title-slide slide level1 center">
+<h1>Functions</h1>
+
+</section>
+<section id="functions-1" class="slide level2 smaller">
+<h2>Functions</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Rectified Linear Unit (ReLU)
+<ul>
+<li><code>f(x) = max(0, x)</code></li>
+</ul></li>
+</ul>
+<div id="2dff69b5" class="cell" data-execution_count="47">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/cell-48-output-1.png" width="763" height="394"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="fragment fade-in">
+<div id="a67bf351" class="cell" data-execution_count="48">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href=""></a>x <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb85-2"><a href=""></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb85-3"><a href=""></a>    y <span class="op">=</span> x</span>
+<span id="cb85-4"><a href=""></a><span class="cf">else</span>:</span>
+<span id="cb85-5"><a href=""></a>    y <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb85-6"><a href=""></a><span class="bu">print</span>(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="48">
+<div class="cell-output cell-output-stdout">
+<pre><code>5</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="functions-2" class="slide level2 smaller">
+<h2>Functions</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment">Time consuming and error prone to repeat code</li>
+<li class="fragment">Functions allow you to:
+<ul>
+<li class="fragment">Reuse code</li>
+<li class="fragment">Break problems into smaller pieces</li>
+<li class="fragment">Scope defined by indentation</li>
+</ul></li>
+<li class="fragment">Defined using the <code>def</code> keyword</li>
+<li class="fragment">Can take inputs (arguments) and return outputs</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div id="e3643cbc" class="cell" data-execution_count="49">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87" data-code-line-numbers="|1|2-5|3,5|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href=""></a><span class="kw">def</span> relu(x):</span>
+<span id="cb87-2"><a href=""></a>    <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb87-3"><a href=""></a>        <span class="cf">return</span> x</span>
+<span id="cb87-4"><a href=""></a>    <span class="cf">else</span>:</span>
+<span id="cb87-5"><a href=""></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb87-6"><a href=""></a></span>
+<span id="cb87-7"><a href=""></a>y <span class="op">=</span> relu(<span class="fl">0.2</span>)</span>
+<span id="cb87-8"><a href=""></a><span class="bu">print</span>(y)</span>
+<span id="cb87-9"><a href=""></a></span>
+<span id="cb87-10"><a href=""></a><span class="bu">print</span>(relu(<span class="dv">5</span>))</span>
+<span id="cb87-11"><a href=""></a><span class="bu">print</span>(relu(<span class="op">-</span><span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="49">
+<div class="cell-output cell-output-stdout">
+<pre><code>0.2
+5
+0</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="exercise" class="slide level2 smaller">
+<h2>Exercise</h2>
+<div class="fragment">
+<ul>
+<li>Write a function to check that a password is at least 8 characters long</li>
+<li>The function should take a string as input and return <code>True</code> if the password is long enough, and <code>False</code> otherwise</li>
+<li>You can use the built-in <code>len()</code> function to get the length of a string</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<div id="9ce15110" class="cell" data-execution_count="50">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href=""></a><span class="kw">def</span> is_valid_password(password):</span>
+<span id="cb89-2"><a href=""></a>    <span class="co"># Your code here</span></span>
+<span id="cb89-3"><a href=""></a>    <span class="cf">pass</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="exercise-1" class="slide level2">
+<h2>Exercise</h2>
+<div id="ad0e4394" class="cell" data-execution_count="51">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href=""></a><span class="kw">def</span> is_valid_password(password):</span>
+<span id="cb90-2"><a href=""></a>    <span class="cf">if</span> <span class="bu">len</span>(password) <span class="op">&gt;=</span> <span class="dv">8</span>:</span>
+<span id="cb90-3"><a href=""></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb90-4"><a href=""></a>    <span class="cf">else</span>:</span>
+<span id="cb90-5"><a href=""></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb90-6"><a href=""></a></span>
+<span id="cb90-7"><a href=""></a><span class="bu">print</span>(is_valid_password(<span class="st">"longpassword"</span>))</span>
+<span id="cb90-8"><a href=""></a><span class="bu">print</span>(is_valid_password(<span class="st">"short"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="51">
+<div class="cell-output cell-output-stdout">
+<pre><code>True
+False</code></pre>
+</div>
+</div>
+</section>
+<section id="arguments" class="slide level2 smaller">
+<h2>Arguments</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Functions can take multiple arguments</li>
+<li class="fragment">Positional arguments
+<ul>
+<li class="fragment">Must be given in the correct order</li>
+</ul></li>
+<li class="fragment">Keyword arguments
+<ul>
+<li class="fragment">Can be given in any order</li>
+<li class="fragment">Use the syntax <code>name=value</code></li>
+<li class="fragment">Must come after positional arguments</li>
+</ul></li>
+<li class="fragment">Default arguments
+<ul>
+<li class="fragment">Have a default value if not provided</li>
+<li class="fragment">Must come after non-default arguments</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="fragment fade-in">
+<div id="6b11c25c" class="cell" data-execution_count="52">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href=""></a><span class="kw">def</span> print_sum(num1, num2):</span>
+<span id="cb92-2"><a href=""></a>    my_sum <span class="op">=</span> num1 <span class="op">+</span> num2</span>
+<span id="cb92-3"><a href=""></a>    <span class="bu">print</span>(my_sum)</span>
+<span id="cb92-4"><a href=""></a></span>
+<span id="cb92-5"><a href=""></a>print_sum(<span class="dv">3</span>, <span class="dv">5</span>)  <span class="co"># Positional arguments</span></span>
+<span id="cb92-6"><a href=""></a>print_sum(num2<span class="op">=</span><span class="dv">5</span>, num1<span class="op">=</span><span class="dv">3</span>)  <span class="co"># Keyword arguments</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="52">
+<div class="cell-output cell-output-stdout">
+<pre><code>8
+8</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="arguments-1" class="slide level2 smaller">
+<h2>Arguments</h2>
+<div class="fragment fade-in">
+<div id="f9780c0e" class="cell" data-execution_count="53">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href=""></a><span class="kw">def</span> list_animals(first<span class="op">=</span><span class="st">"dog"</span>, second<span class="op">=</span><span class="st">"cat"</span>, third<span class="op">=</span><span class="st">"penguin"</span>):</span>
+<span id="cb94-2"><a href=""></a>    <span class="bu">print</span>(<span class="ss">f"First animal: </span><span class="sc">{</span>first<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb94-3"><a href=""></a>    <span class="bu">print</span>(<span class="ss">f"Second animal: </span><span class="sc">{</span>second<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb94-4"><a href=""></a>    <span class="bu">print</span>(<span class="ss">f"Third animal: </span><span class="sc">{</span>third<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb94-5"><a href=""></a></span>
+<span id="cb94-6"><a href=""></a>list_animals()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="53">
+<div class="cell-output cell-output-stdout">
+<pre><code>First animal: dog
+Second animal: cat
+Third animal: penguin</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div id="96b87ba2" class="cell" data-execution_count="54">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href=""></a>list_animals(second<span class="op">=</span><span class="st">"elephant"</span>, first<span class="op">=</span><span class="st">"cow"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="54">
+<div class="cell-output cell-output-stdout">
+<pre><code>First animal: cow
+Second animal: elephant
+Third animal: penguin</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div id="583425cd" class="cell" data-execution_count="55">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href=""></a>list_animals(second<span class="op">=</span><span class="st">"lion"</span>, <span class="st">"tiger"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="55">
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>  <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[55]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-red-fg">    </span><span class="ansi-red-fg">list_animals(second="lion", "tiger")</span>
+                                       ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> positional argument follows keyword argument
+</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="arguments-2" class="slide level2 smaller">
+<h2>Arguments</h2>
+<div id="148c71cb" class="cell" data-execution_count="56">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href=""></a><span class="kw">def</span> list_animals(first<span class="op">=</span><span class="st">"dog"</span>, second, third<span class="op">=</span><span class="st">"penguin"</span>):</span>
+<span id="cb99-2"><a href=""></a>    <span class="bu">print</span>(<span class="ss">f"First animal: </span><span class="sc">{</span>first<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb99-3"><a href=""></a>    <span class="bu">print</span>(<span class="ss">f"Second animal: </span><span class="sc">{</span>second<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb99-4"><a href=""></a>    <span class="bu">print</span>(<span class="ss">f"Third animal: </span><span class="sc">{</span>third<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb99-5"><a href=""></a></span>
+<span id="cb99-6"><a href=""></a>list_animals()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="56">
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>  <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[56]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-red-fg">    </span><span class="ansi-red-fg">def list_animals(first="dog", second, third="penguin"):</span>
+                                  ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> parameter without a default follows parameter with a default
+</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2" class="slide level2 smaller">
+<h2>Exercise</h2>
+<div class="fragment">
+<ul>
+<li>Write a function that takes two strings as arguments and prints the longer of the two strings</li>
+<li>One of the arguments should have a default value of an empty string</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<div id="9638b70a" class="cell" data-execution_count="57">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href=""></a><span class="kw">def</span> longer_string(str1, str2<span class="op">=</span><span class="st">""</span>):</span>
+<span id="cb100-2"><a href=""></a>    <span class="co"># Your code here</span></span>
+<span id="cb100-3"><a href=""></a>    <span class="cf">pass</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="57">
+
+</div>
+</div>
+</section>
+<section id="exercise-3" class="slide level2 smaller">
+<h2>Exercise</h2>
+<div id="200d6e4b" class="cell" data-execution_count="58">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101" data-code-line-numbers="|1|2,4|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href=""></a><span class="kw">def</span> longer_string(str1, str2<span class="op">=</span><span class="st">""</span>):</span>
+<span id="cb101-2"><a href=""></a>    <span class="cf">if</span> <span class="bu">len</span>(str1) <span class="op">&gt;</span> <span class="bu">len</span>(str2):</span>
+<span id="cb101-3"><a href=""></a>        long_str <span class="op">=</span>  str1</span>
+<span id="cb101-4"><a href=""></a>    <span class="cf">else</span>:</span>
+<span id="cb101-5"><a href=""></a>        long_str <span class="op">=</span> str2</span>
+<span id="cb101-6"><a href=""></a></span>
+<span id="cb101-7"><a href=""></a>    <span class="bu">print</span>(long_str)</span>
+<span id="cb101-8"><a href=""></a></span>
+<span id="cb101-9"><a href=""></a><span class="bu">print</span>(longer_string(<span class="st">"apple"</span>, <span class="st">"banana"</span>))</span>
+<span id="cb101-10"><a href=""></a><span class="bu">print</span>(longer_string(<span class="st">"apple"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="58">
+<div class="cell-output cell-output-stdout">
+<pre><code>banana
+None
+apple
+None</code></pre>
+</div>
+</div>
+</section>
+<section id="using-and" class="slide level2 smaller">
+<h2>Using <code>*</code> and <code>**</code></h2>
+<div class="smaller">
+<ul>
+<li class="fragment"><code>*</code> and <code>**</code> are upacking operators, useful to unpack tuples, lists and dictionaries</li>
+<li class="fragment">I’t common to use <code>*</code> and <code>**</code> when calling functions</li>
+<li class="fragment">You might have seen the syntax <code>*args</code> and <code>**kwargs</code> before</li>
+<li class="fragment">This is just a convention to indicate that the function takes a variable number of arguments</li>
+</ul>
+</div>
+<div class="fragment">
+<div id="90e156b2" class="cell" data-execution_count="59">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href=""></a><span class="kw">def</span> my_func(<span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb103-2"><a href=""></a>    <span class="bu">print</span>(<span class="ss">f"Unpacking list: </span><span class="sc">{</span>args<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb103-3"><a href=""></a>    <span class="bu">print</span>(<span class="ss">f"Unpacking dictionary: </span><span class="sc">{</span>kwargs<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb103-4"><a href=""></a></span>
+<span id="cb103-5"><a href=""></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb103-6"><a href=""></a>my_dict <span class="op">=</span> {<span class="st">'a'</span>: <span class="dv">1</span>, <span class="st">'b'</span>: <span class="dv">2</span>, <span class="st">'c'</span>: <span class="dv">3</span>}</span>
+<span id="cb103-7"><a href=""></a></span>
+<span id="cb103-8"><a href=""></a><span class="bu">print</span>(<span class="st">"Unpacking list:"</span>)</span>
+<span id="cb103-9"><a href=""></a>my_func(<span class="op">*</span>my_list)</span>
+<span id="cb103-10"><a href=""></a></span>
+<span id="cb103-11"><a href=""></a><span class="bu">print</span>(<span class="st">"Unpacking dictionary:"</span>)</span>
+<span id="cb103-12"><a href=""></a>my_func(<span class="op">**</span>my_dict)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="59">
+<div class="cell-output cell-output-stdout">
+<pre><code>Unpacking list:
+Unpacking list: (1, 2, 3, 4, 5)
+Unpacking dictionary: {}
+Unpacking dictionary:
+Unpacking list: ()
+Unpacking dictionary: {'a': 1, 'b': 2, 'c': 3}</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="how-are-args-and-kwargs-useful" class="slide level2 smaller">
+<h2>How are <code>*args</code> and <code>**kwargs</code> useful?</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="smaller">
+<ul>
+<li class="fragment"><code>*args</code> and <code>**kwargs</code> are useful when you don’t know how many arguments will be passed to the function</li>
+</ul>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div id="00c37d2b" class="cell" data-execution_count="60">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href=""></a><span class="kw">def</span> my_func(<span class="op">**</span>kwargs):</span>
+<span id="cb105-2"><a href=""></a>    <span class="cf">if</span> <span class="st">'name'</span> <span class="kw">in</span> kwargs:</span>
+<span id="cb105-3"><a href=""></a>        <span class="bu">print</span>(<span class="ss">f"Hello, </span><span class="sc">{</span>kwargs[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss">!"</span>)</span>
+<span id="cb105-4"><a href=""></a>    <span class="cf">else</span>:</span>
+<span id="cb105-5"><a href=""></a>        <span class="bu">print</span>(<span class="st">"Hello, world!"</span>)</span>
+<span id="cb105-6"><a href=""></a></span>
+<span id="cb105-7"><a href=""></a>my_func(name<span class="op">=</span><span class="st">"John"</span>)</span>
+<span id="cb105-8"><a href=""></a>my_func()</span>
+<span id="cb105-9"><a href=""></a>my_func(name<span class="op">=</span><span class="st">"Jane"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="60">
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello, John!
+Hello, world!
+Hello, Jane!</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="return-values" class="slide level2 smaller">
+<h2>Return values</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="smaller">
+<ul>
+<li class="fragment">Functions can return one or more values</li>
+<li class="fragment">Use the <code>return</code> keyword</li>
+<li class="fragment">A function can only return once</li>
+<li class="fragment">If no return statement is given, the function returns <code>None</code></li>
+</ul>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div id="caf9c469" class="cell" data-execution_count="61">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href=""></a><span class="kw">def</span> a_func(a, b):</span>
+<span id="cb107-2"><a href=""></a>    <span class="bu">print</span>(a <span class="op">+</span> b)</span>
+<span id="cb107-3"><a href=""></a></span>
+<span id="cb107-4"><a href=""></a><span class="kw">def</span> b_func(a, b):</span>
+<span id="cb107-5"><a href=""></a>    <span class="cf">return</span> a <span class="op">+</span> b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div id="1bb904ae" class="cell" data-execution_count="62">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href=""></a>a_func(<span class="dv">10</span>, <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="62">
+<div class="cell-output cell-output-stdout">
+<pre><code>30</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div id="93ddd461" class="cell" data-execution_count="63">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href=""></a>b_func(<span class="dv">10</span>, <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="63">
+<div class="cell-output cell-output-display" data-execution_count="63">
+<pre><code>30</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div id="db51eaf0" class="cell" data-execution_count="64">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href=""></a>result <span class="op">=</span> b_func(<span class="dv">10</span>, <span class="dv">20</span>)</span>
+<span id="cb112-2"><a href=""></a><span class="bu">print</span>(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="64">
+<div class="cell-output cell-output-stdout">
+<pre><code>30</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="return-values-1" class="slide level2 smaller">
+<h2>Return values</h2>
+<div id="2b795469" class="cell" data-execution_count="65">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href=""></a><span class="kw">def</span> c_func(a, b, c):</span>
+<span id="cb114-2"><a href=""></a>    sum1 <span class="op">=</span> a <span class="op">+</span> b</span>
+<span id="cb114-3"><a href=""></a>    sum_all <span class="op">=</span> a <span class="op">+</span> b <span class="op">+</span> c</span>
+<span id="cb114-4"><a href=""></a></span>
+<span id="cb114-5"><a href=""></a>    <span class="cf">return</span> sum1, sum_all</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="65">
+
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div id="1255aed5" class="cell" data-execution_count="66">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href=""></a>result1, result2 <span class="op">=</span> c_func(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb115-2"><a href=""></a><span class="bu">print</span>(result1)</span>
+<span id="cb115-3"><a href=""></a><span class="bu">print</span>(result2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="66">
+<div class="cell-output cell-output-stdout">
+<pre><code>3
+6</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div id="2d8d84f7" class="cell" data-execution_count="67">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href=""></a>result <span class="op">=</span> c_func(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb117-2"><a href=""></a><span class="bu">print</span>(<span class="bu">type</span>(result))</span>
+<span id="cb117-3"><a href=""></a><span class="bu">print</span>(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="67">
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'tuple'&gt;
+(3, 6)</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div id="69bf473a" class="cell" data-execution_count="68">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href=""></a>_, result2 <span class="op">=</span> c_func(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb119-2"><a href=""></a><span class="bu">print</span>(result2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="68">
+<div class="cell-output cell-output-stdout">
+<pre><code>6</code></pre>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="classes-and-objects" class="title-slide slide level1 center">
+<h1>Classes and objects</h1>
+
+</section>
+<section id="objects" class="slide level2 smaller">
+<h2>Objects</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li>Everything in Python is an object
+<ul>
+<li>Integer, float, string, list, functions…</li>
+</ul></li>
+<li>Objects have attributes and methods
+<ul>
+<li>Attributes: properties of the object</li>
+<li>Methods: functions that belong to the object</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div id="d7419fb7" class="cell" data-execution_count="69">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href=""></a>a_string <span class="op">=</span> <span class="st">"penguin"</span></span>
+<span id="cb121-2"><a href=""></a><span class="bu">print</span>(a_string.capitalize())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="69">
+<div class="cell-output cell-output-stdout">
+<pre><code>Penguin</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<div id="b61fd896" class="cell" data-execution_count="70">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123" data-code-line-numbers="|1|2,3|4|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href=""></a>file_obj <span class="op">=</span> <span class="bu">open</span>(<span class="st">"example.txt"</span>, <span class="st">"a"</span>)</span>
+<span id="cb123-2"><a href=""></a><span class="bu">print</span>(file_obj.name)</span>
+<span id="cb123-3"><a href=""></a><span class="bu">print</span>(file_obj.mode)</span>
+<span id="cb123-4"><a href=""></a>file_obj.close()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="70">
+<div class="cell-output cell-output-stdout">
+<pre><code>example.txt
+a</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="classes" class="slide level2 smaller">
+<h2>Classes</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment">A class is a blueprint for creating objects</li>
+<li class="fragment">Defined using the <code>class</code> keyword</li>
+<li class="fragment">Can have attributes and methods (functions)</li>
+<li class="fragment"><code>__init__</code> method is called when an object is created</li>
+<li class="fragment"><code>self</code> refers to the instance of the class</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div id="a7297695" class="cell" data-execution_count="71">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125" data-code-line-numbers="|1|2,3|5|6|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href=""></a><span class="kw">class</span> Animal():</span>
+<span id="cb125-2"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, species):</span>
+<span id="cb125-3"><a href=""></a>        <span class="va">self</span>.species <span class="op">=</span> species</span>
+<span id="cb125-4"><a href=""></a></span>
+<span id="cb125-5"><a href=""></a>pingu <span class="op">=</span> Animal(<span class="st">"penguin"</span>)</span>
+<span id="cb125-6"><a href=""></a><span class="bu">print</span>(pingu.species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="71">
+<div class="cell-output cell-output-stdout">
+<pre><code>penguin</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="exercise-4" class="slide level2 smaller">
+<h2>Exercise</h2>
+<ul>
+<li>Try adding a new attribute <code>noise</code> to the <code>Animal</code> class</li>
+<li>Add a method <code>make_noise</code> that prints the noise of the animal</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb127"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href=""></a><span class="kw">class</span> Animal():</span>
+<span id="cb127-2"><a href=""></a>    your code here</span>
+<span id="cb127-3"><a href=""></a></span>
+<span id="cb127-4"><a href=""></a>pingu <span class="op">=</span> Animal(<span class="st">"penguin"</span>, <span class="st">"noot"</span>)</span>
+<span id="cb127-5"><a href=""></a>pingu.make_noise() <span class="co"># Output: noot</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="exercise-5" class="slide level2 smaller">
+<h2>Exercise</h2>
+<div id="b71140a1" class="cell" data-execution_count="72">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb128" data-code-line-numbers="|2|2,4|6,7|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href=""></a><span class="kw">class</span> Animal():</span>
+<span id="cb128-2"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, species, noise):</span>
+<span id="cb128-3"><a href=""></a>        <span class="va">self</span>.species <span class="op">=</span> species</span>
+<span id="cb128-4"><a href=""></a>        <span class="va">self</span>.noise <span class="op">=</span> noise</span>
+<span id="cb128-5"><a href=""></a></span>
+<span id="cb128-6"><a href=""></a>    <span class="kw">def</span> make_noise(<span class="va">self</span>):</span>
+<span id="cb128-7"><a href=""></a>        <span class="bu">print</span>(<span class="va">self</span>.noise)</span>
+<span id="cb128-8"><a href=""></a></span>
+<span id="cb128-9"><a href=""></a>pingu <span class="op">=</span> Animal(<span class="st">"penguin"</span>, <span class="st">"noot"</span>)</span>
+<span id="cb128-10"><a href=""></a>pingu.make_noise()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="72">
+<div class="cell-output cell-output-stdout">
+<pre><code>noot</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="errors-and-exceptions" class="title-slide slide level1 center">
+<h1>Errors and exceptions</h1>
+
+</section>
+<section id="errors-and-exceptions-1" class="slide level2 smaller">
+<h2>Errors and Exceptions</h2>
+<ul>
+<li>You’ve probably seen an error already</li>
+<li>If not try these, why don’t they work?</li>
+</ul>
+<div class="fragment fade-in">
+<div id="dd5db76b" class="cell" data-execution_count="73">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb130"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href=""></a><span class="im">import</span> london</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="73">
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[73]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> <span class="ansi-blue-fg ansi-bold">london</span>
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named 'london'</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<div id="44d1dabb" class="cell" data-execution_count="74">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href=""></a><span class="bu">len</span>(<span class="bu">print</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="74">
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[74]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">len</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">print</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-red-fg">TypeError</span>: object of type 'builtin_function_or_method' has no len()</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<div id="a30422be" class="cell" data-execution_count="75">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb132"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href=""></a><span class="bu">print</span>(<span class="st">"Hello"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="75">
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>  <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[75]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-red-fg">    </span><span class="ansi-red-fg">print("Hello"</span>
+                 ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> incomplete input
+</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="syntaxerror" class="slide level2 smaller">
+<h2>SyntaxError</h2>
+<ul>
+<li>Something is wrong with the structure of your code, code cannot run</li>
+<li>What’s wrong below?</li>
+</ul>
+<div class="fragment fade-in">
+<div id="8459bb53" class="cell" data-execution_count="76">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb133"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb133-1"><a href=""></a><span class="bu">print</span> hello</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="76">
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>  <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[76]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-red-fg">    </span><span class="ansi-red-fg">print hello</span>
+    ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> Missing parentheses in call to 'print'. Did you mean print(...)?
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<div id="1d07e7b7" class="cell" data-execution_count="77">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb134"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href=""></a> <span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]</span>
+<span id="cb134-2"><a href=""></a>    <span class="bu">print</span>(i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="77">
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>  <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[77]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-red-fg">    </span><span class="ansi-red-fg">for i in [0, 1, 2]</span>
+                      ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> expected ':'
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<div id="087fadb1" class="cell" data-execution_count="78">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb135"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href=""></a><span class="co">"hello"</span> <span class="op">=</span> some_string</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="78">
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>  <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[78]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-red-fg">    </span><span class="ansi-red-fg">"hello" = some_string</span>
+    ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> cannot assign to literal here. Maybe you meant '==' instead of '='?
+</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exceptions" class="slide level2 smaller">
+<h2>Exceptions</h2>
+<ul>
+<li>Something went wrong while your code was running</li>
+<li>What’s wrong in these examples?</li>
+</ul>
+<div class="fragment fade-in">
+<div id="856e6d46" class="cell" data-execution_count="79">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb136"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href=""></a><span class="dv">1</span> <span class="op">/</span> <span class="dv">0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="79">
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ZeroDivisionError</span>                         Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[79]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-green-fg ansi-yellow-bg">1</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">/</span><span class="ansi-yellow-bg"> </span><span class="ansi-green-fg ansi-yellow-bg">0</span>
+
+<span class="ansi-red-fg">ZeroDivisionError</span>: division by zero</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<div id="02f7a716" class="cell" data-execution_count="80">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb137"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href=""></a>giraffe <span class="op">*</span> <span class="dv">10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="80">
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[80]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">giraffe</span> * <span class="ansi-green-fg">10</span>
+
+<span class="ansi-red-fg">NameError</span>: name 'giraffe' is not defined</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<div id="cd980ad4" class="cell" data-execution_count="81">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb138"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb138-1"><a href=""></a>a_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb138-2"><a href=""></a>a_list[<span class="dv">5</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="81">
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">IndexError</span>                                Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[81]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> a_list = [<span class="ansi-green-fg">1</span>, <span class="ansi-green-fg">2</span>, <span class="ansi-green-fg">3</span>]
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> <span class="ansi-yellow-bg">a_list</span><span class="ansi-yellow-bg">[</span><span class="ansi-green-fg ansi-yellow-bg">5</span><span class="ansi-yellow-bg">]</span>
+
+<span class="ansi-red-fg">IndexError</span>: list index out of range</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tracebacks" class="slide level2 smaller">
+<h2>Tracebacks</h2>
+<ul>
+<li>Help you find the source of the error</li>
+<li>Read from the bottom up</li>
+<li>Look for the last line that is <em>your</em> code</li>
+<li><a href="https://wizardzines.com/images/debugging-manifesto.pdf">Debugging manifesto</a> <span class="emoji" data-emoji="bug">🐛</span></li>
+</ul>
+</section>
+<section id="tracebacks-1" class="slide level2 smaller">
+<h2>Tracebacks</h2>
+<div id="e1645b9f" class="cell" data-execution_count="82">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb139" data-code-line-numbers="|7|4,5|1,2|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb139-1"><a href=""></a><span class="kw">def</span> divide_0(x):</span>
+<span id="cb139-2"><a href=""></a>    <span class="cf">return</span> x <span class="op">/</span> <span class="dv">0</span></span>
+<span id="cb139-3"><a href=""></a></span>
+<span id="cb139-4"><a href=""></a><span class="kw">def</span> call_func(x):</span>
+<span id="cb139-5"><a href=""></a>    y <span class="op">=</span> divide_0(x)</span>
+<span id="cb139-6"><a href=""></a></span>
+<span id="cb139-7"><a href=""></a>z <span class="op">=</span> call_func(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="82">
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ZeroDivisionError</span>                         Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[82]</span><span class="ansi-green-fg">, line 7</span>
+<span class="ansi-green-fg">      4</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span class="ansi-blue-fg">call_func</span>(x):
+<span class="ansi-green-fg">      5</span>     y = divide_0(x)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">7</span> z = <span class="ansi-yellow-bg">call_func</span><span class="ansi-yellow-bg">(</span><span class="ansi-green-fg ansi-yellow-bg">10</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[82]</span><span class="ansi-green-fg">, line 5</span>, in <span class="ansi-cyan-fg">call_func</span><span class="ansi-blue-fg">(x)</span>
+<span class="ansi-green-fg">      4</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span class="ansi-blue-fg">call_func</span>(x):
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">5</span>     y = <span class="ansi-yellow-bg">divide_0</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[82]</span><span class="ansi-green-fg">, line 2</span>, in <span class="ansi-cyan-fg">divide_0</span><span class="ansi-blue-fg">(x)</span>
+<span class="ansi-green-fg">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span class="ansi-blue-fg">divide_0</span>(x):
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">/</span><span class="ansi-yellow-bg"> </span><span class="ansi-green-fg ansi-yellow-bg">0</span>
+
+<span class="ansi-red-fg">ZeroDivisionError</span>: division by zero</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="handling-exceptions" class="slide level2 smaller">
+<h2>Handling exceptions</h2>
+<ul>
+<li>What if you know an error might happen?</li>
+</ul>
+<div class="fragment fade-in" data-fragment-index="2">
+<div id="c788f310" class="cell" data-execution_count="83">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb140"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href=""></a><span class="kw">def</span> divide(x, y):</span>
+<span id="cb140-2"><a href=""></a>    <span class="bu">print</span>(x <span class="op">/</span> y) <span class="co"># This might raise an error</span></span>
+<span id="cb140-3"><a href=""></a></span>
+<span id="cb140-4"><a href=""></a>divide(<span class="dv">10</span>, <span class="dv">2</span>)</span>
+<span id="cb140-5"><a href=""></a>divide(<span class="dv">10</span>, <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5.0</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ZeroDivisionError</span>                         Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[83]</span><span class="ansi-green-fg">, line 5</span>
+<span class="ansi-green-fg">      2</span>     <span style="color:rgb(0,135,0)">print</span>(x / y) <span style="font-style:italic;color:rgb(95,135,135)"># This might raise an error</span>
+<span class="ansi-green-fg">      4</span> divide(<span class="ansi-green-fg">10</span>, <span class="ansi-green-fg">2</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">5</span> <span class="ansi-yellow-bg">divide</span><span class="ansi-yellow-bg">(</span><span class="ansi-green-fg ansi-yellow-bg">10</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-green-fg ansi-yellow-bg">0</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[83]</span><span class="ansi-green-fg">, line 2</span>, in <span class="ansi-cyan-fg">divide</span><span class="ansi-blue-fg">(x, y)</span>
+<span class="ansi-green-fg">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span class="ansi-blue-fg">divide</span>(x, y):
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span>     <span style="color:rgb(0,135,0)">print</span>(<span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">/</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">y</span>)
+
+<span class="ansi-red-fg">ZeroDivisionError</span>: division by zero</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="handling-exceptions-1" class="slide level2 smaller">
+<h2>Handling exceptions</h2>
+<ul>
+<li>What if you know an error might happen?</li>
+<li>You can handle it with <code>try</code> and <code>except</code></li>
+</ul>
+<div class="fragment fade-in" data-fragment-index="4">
+<div id="be9c45a8" class="cell" data-execution_count="84">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb142" data-code-line-numbers="|2|3,4|5,6|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href=""></a><span class="kw">def</span> safe_divide(x, y):</span>
+<span id="cb142-2"><a href=""></a>    <span class="cf">try</span>:</span>
+<span id="cb142-3"><a href=""></a>        value <span class="op">=</span> x <span class="op">/</span> y</span>
+<span id="cb142-4"><a href=""></a>        <span class="bu">print</span>(<span class="ss">f"Result: </span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb142-5"><a href=""></a>    <span class="cf">except</span>:</span>
+<span id="cb142-6"><a href=""></a>        <span class="bu">print</span>(<span class="st">"Y cannot be zero!"</span>)</span>
+<span id="cb142-7"><a href=""></a>safe_divide(<span class="dv">10</span>, <span class="dv">2</span>)</span>
+<span id="cb142-8"><a href=""></a>safe_divide(<span class="dv">10</span>, <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="84">
+<div class="cell-output cell-output-stdout">
+<pre><code>Result: 5.0
+Y cannot be zero!</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="handling-exceptions-2" class="slide level2 smaller">
+<h2>Handling exceptions</h2>
+<ul>
+<li>What’s the problem with this code?</li>
+</ul>
+<div class="fragment fade-in">
+<div id="efd70848" class="cell" data-execution_count="85">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb144"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb144-1"><a href=""></a>safe_divide(<span class="st">"10"</span>, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="85">
+<div class="cell-output cell-output-stdout">
+<pre><code>Y cannot be zero!</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<ul>
+<li>Don’t make your <code>except</code> too general!</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<div id="8202336e" class="cell" data-execution_count="86">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb146" data-code-line-numbers="|2|3,4|5,6|7,8|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href=""></a><span class="kw">def</span> better_safe_divide(x, y):</span>
+<span id="cb146-2"><a href=""></a>    <span class="cf">try</span>:</span>
+<span id="cb146-3"><a href=""></a>        value <span class="op">=</span> x <span class="op">/</span> y</span>
+<span id="cb146-4"><a href=""></a>        <span class="bu">print</span>(<span class="ss">f"Result: </span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb146-5"><a href=""></a>    <span class="cf">except</span> <span class="pp">ZeroDivisionError</span>:</span>
+<span id="cb146-6"><a href=""></a>        <span class="bu">print</span>(<span class="st">"Y cannot be zero!"</span>)</span>
+<span id="cb146-7"><a href=""></a>    <span class="cf">except</span> <span class="pp">TypeError</span>:</span>
+<span id="cb146-8"><a href=""></a>        <span class="bu">print</span>(<span class="st">"Both x and y must be numbers!"</span>)</span>
+<span id="cb146-9"><a href=""></a></span>
+<span id="cb146-10"><a href=""></a>better_safe_divide(<span class="dv">10</span>, <span class="dv">2</span>)</span>
+<span id="cb146-11"><a href=""></a>better_safe_divide(<span class="dv">10</span>, <span class="dv">0</span>)</span>
+<span id="cb146-12"><a href=""></a>better_safe_divide(<span class="st">"10"</span>, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="86">
+<div class="cell-output cell-output-stdout">
+<pre><code>Result: 5.0
+Y cannot be zero!
+Both x and y must be numbers!</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-6" class="slide level2 smaller">
+<h2>Exercise</h2>
+<ul>
+<li>Write a function to return the length of the input</li>
+<li>If the object has no length, return <code>None</code></li>
+</ul>
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb148"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href=""></a><span class="kw">def</span> safe_len(x):</span>
+<span id="cb148-2"><a href=""></a>    <span class="co"># Your code here</span></span>
+<span id="cb148-3"><a href=""></a>    <span class="cf">pass</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercise-7" class="slide level2 smaller">
+<h2>Exercise</h2>
+<div id="7b1d625c" class="cell" data-execution_count="87">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb149" data-code-line-numbers="|2,3|4,5|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb149-1"><a href=""></a><span class="kw">def</span> safe_len(x):</span>
+<span id="cb149-2"><a href=""></a>    <span class="cf">try</span>:</span>
+<span id="cb149-3"><a href=""></a>        <span class="cf">return</span> <span class="bu">len</span>(x)</span>
+<span id="cb149-4"><a href=""></a>    <span class="cf">except</span> <span class="pp">TypeError</span>:</span>
+<span id="cb149-5"><a href=""></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb149-6"><a href=""></a></span>
+<span id="cb149-7"><a href=""></a><span class="bu">print</span>(safe_len(<span class="st">"hello"</span>))</span>
+<span id="cb149-8"><a href=""></a><span class="bu">print</span>(safe_len(<span class="dv">42</span>))</span>
+<span id="cb149-9"><a href=""></a><span class="bu">print</span>(safe_len([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="87">
+<div class="cell-output cell-output-stdout">
+<pre><code>5
+None
+3</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="how-to-work-with-python" class="title-slide slide level1 center">
+<h1>How to work with Python?</h1>
+
+</section>
+<section id="ways-of-working-with-python" class="slide level2 incremental">
+<h2>Ways of working with Python</h2>
+<ul>
+<li class="fragment"><code>REPL</code> (Read-Eval-Print Loop), “interactive Python”, “Python console”</li>
+<li class="fragment"><code>Jupyter notebooks</code> (.ipynb)</li>
+<li class="fragment"><code>Scripts</code> (.py)</li>
+</ul>
+<div class="fragment fade-in">
+<p>Demo time! 🧑🏻‍💻👩🏻‍💻</p>
+</div>
+</section>
+<section id="ides-integrated-development-environments" class="slide level2 smaller">
+<h2>IDEs: Integrated Development Environments</h2>
+<ul>
+<li class="fragment">Used by most developers</li>
+<li class="fragment">Allows you to switch between the three main ways of working with Python</li>
+<li class="fragment">Within the same program you can:
+<ul>
+<li class="fragment">Edit <span style="font-size: 200%;">→</span> Text editor <span class="emoji" data-emoji="pencil">📝</span></li>
+<li class="fragment">Organise <span style="font-size: 200%;">→</span> File explorer <span class="emoji" data-emoji="file_folder">📁</span></li>
+<li class="fragment">Run <span style="font-size: 200%;">→</span> Console <span class="emoji" data-emoji="computer">💻</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="example-ides" class="slide level2">
+<h2>Example IDEs</h2>
+<div class="fragment fade-in">
+<ul>
+<li><a href="https://code.visualstudio.com/download">Visual Studio Code</a> - more customizable</li>
+<li><a href="https://www.jetbrains.com/pycharm/download/">PyCharm</a> - optimized for Python</li>
+<li>…</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<p>You can click on the name to go to the download page.</p>
+</div>
+<div class="fragment fade-in">
+<p>Install the one you like most!<br>
+Igor prefers PyCharm, Laura prefers VS Code.</p>
+</div>
+</section></section>
+<section>
+<section id="virtual-environments" class="title-slide slide level1 center">
+<h1>Virtual environments</h1>
+
+</section>
+<section id="scientific-python-ecosystem" class="slide level2 smaller">
+<h2>Scientific Python ecosystem</h2>
+
+<img data-src="./img/python-ecosystem.png" class="r-stretch quarto-figure-center"><p class="caption">Diagram showing the scientific Python ecosystem.</p><div class="footer">
+<p><a href="https://www.youtube.com/watch?v=16rB-fosAWw">Aaron Meurer, ‘Python Array API Standard’, SciPy 2023</a></p>
+</div>
+</section>
+<section id="virtual-environments-1" class="slide level2 smaller">
+<h2>Virtual environments</h2>
+<ul>
+<li class="fragment">Many packages are continuously developed 🔁
+<ul>
+<li class="fragment">This means there will be breaking changes</li>
+<li class="fragment">Some packages will require specific versions of other packages</li>
+</ul></li>
+<li class="fragment">Similar with Python versions
+<ul>
+<li class="fragment">New versions of Python may introduce new features or deprecate old ones</li>
+</ul></li>
+</ul>
+</section>
+<section id="virtual-environments-2" class="slide level2 smaller">
+<h2>Virtual environments</h2>
+
+<img data-src="https://imgs.xkcd.com/comics/python_environment.png" style="width:20.0%" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://xkcd.com/1987/">Comic from xkcd</a></p></section>
+<section id="virtual-environments-3" class="slide level2 smaller">
+<h2>Virtual environments</h2>
+<div style="color: grey;">
+<ul>
+<li>Many packages are continuously developed 🔁
+<ul>
+<li>This means there will be breaking changes</li>
+<li>Some packages will require specific versions of other packages</li>
+</ul></li>
+<li>Similar with Python versions
+<ul>
+<li>New versions of Python may introduce new features or deprecate old ones</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<ul>
+<li>How can we have <strong>two versions</strong> of the same package installed at the same time?</li>
+<li>Virtual environments! <span class="emoji" data-emoji="tada">🎉</span></li>
+</ul>
+</div>
+</section>
+<section id="virtual-environments-4" class="slide level2 smaller">
+<h2>Virtual environments</h2>
+<ul>
+<li class="fragment">A virtual environment is an isolated Python installation
+<ul>
+<li class="fragment">Each environment has its own Python version</li>
+<li class="fragment">Each environment has its own set of installed packages</li>
+</ul></li>
+<li class="fragment">Popular tools to manage virtual environments:
+<ul>
+<li class="fragment"><a href="https://docs.python.org/3/library/venv.html"><code>venv</code></a> (built-in)</li>
+<li class="fragment"><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html"><code>conda</code></a> (Anaconda/Miniconda)</li>
+<li class="fragment"><a href="https://docs.astral.sh/uv/pip/environments/"><code>uv</code></a></li>
+<li class="fragment"><a href="https://pixi.sh/latest/workspace/environment/"><code>pixi</code></a></li>
+</ul></li>
+</ul>
+</section>
+<section id="conda-environments" class="slide level2 smaller">
+<h2>Conda environments</h2>
+<ul>
+<li class="fragment">Conda is a <code>package manager</code> and <code>virtual environment manager</code></li>
+<li class="fragment">Separates Python environments from each other (and from system Python)</li>
+<li class="fragment">Can also manage non-Python packages (e.g.&nbsp;R, C libraries, etc…)</li>
+<li class="fragment">Reproducible environments that can be shared with:
+<ul>
+<li class="fragment">Collaborators</li>
+<li class="fragment">Readers of your paper</li>
+<li class="fragment">Future you (HPC, etc…)</li>
+</ul></li>
+</ul>
+</section>
+<section id="install-miniforge" class="slide level2">
+<h2>Install miniforge</h2>
+<p><a href="https://conda-forge.org/download/">Click here to go to the download page</a></p>
+<div class="callout callout-caution callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Windows troubleshooting</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Did you had a previous version of Anaconda installed? You might need to uninstall it first.</li>
+<li><div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/miniforge_window_add_to_path.png" style="width:25.0%"></p>
+<figcaption>Remember to add Miniforge to your PATH! The installer will say is not required, but it is!</figcaption>
+</figure>
+</div></li>
+<li><code>conda not found</code>? Run <code>conda init</code> in your terminal.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="environment-management" class="slide level2">
+<h2>Environment management</h2>
+<p>In your terminal (use Anaconda Prompt on Windows):</p>
+<p><br></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb151"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb151-1"><a href=""></a><span class="ex">conda</span> create <span class="at">--name</span> python-intro python=3.13 notebook</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><br></p>
+<div class="fragment fade-in" style="font-size: 80%;">
+<ul>
+<li>Creates a new environment named <code>python-intro</code></li>
+<li>Installs Python 3.13 and Jupyter Notebook in that environment</li>
+</ul>
+</div>
+</section>
+<section id="environment-management-1" class="slide level2">
+<h2>Environment management</h2>
+<p>In your terminal (use Anaconda Prompt on Windows):</p>
+<p><br></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb152"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb152-1"><a href=""></a><span class="ex">conda</span> activate python-intro</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><br></p>
+<div class="fragment fade-in" style="font-size: 80%;">
+<ul>
+<li>Remember to activate the environment before using it!</li>
+</ul>
+</div>
+</section>
+<section id="environment-management-2" class="slide level2">
+<h2>Environment management</h2>
+<p>In your terminal (use Anaconda Prompt on Windows):</p>
+<p><br></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb153"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb153-1"><a href=""></a><span class="ex">conda</span> deactivate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><br></p>
+<div class="fragment fade-in" style="font-size: 80%;">
+<ul>
+<li>Deactivates the current environment</li>
+</ul>
+</div>
+</section>
+<section id="environment-management-3" class="slide level2">
+<h2>Environment management</h2>
+<p>In your terminal (use Anaconda Prompt on Windows):</p>
+<p><br></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb154"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb154-1"><a href=""></a><span class="ex">conda</span> env list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><br></p>
+<div class="fragment fade-in" style="font-size: 80%;">
+<ul>
+<li>Lists all conda environments on your system</li>
+</ul>
+</div>
+</section>
+<section id="environment-management-4" class="slide level2">
+<h2>Environment management</h2>
+<p>In your terminal (use Anaconda Prompt on Windows):</p>
+<p><br></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb155"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb155-1"><a href=""></a><span class="ex">conda</span> remove <span class="at">--name</span> python-intro <span class="at">--all</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><br></p>
+<div class="fragment fade-in" style="font-size: 80%;">
+<ul>
+<li>Deletes the <code>python-intro</code> environment and all its packages</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html">Conda cheat sheet</a></p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="modules-and-packages" class="title-slide slide level1 center">
+<h1>Modules and packages</h1>
+
+</section>
+<section id="standard-library" class="slide level2 smaller">
+<h2>Standard library</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment">A module is a file containing Python code</li>
+<li class="fragment">A package is a collection of modules</li>
+<li class="fragment">The standard library is a set of modules that come with Python</li>
+<li class="fragment">It provides a wide range of functionality
+<ul>
+<li class="fragment">File I/O</li>
+<li class="fragment">Time and date handling</li>
+<li class="fragment">Math and statistics</li>
+</ul></li>
+<li class="fragment">Accessed using the <code>import</code> and <code>from</code> keywords</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div id="9cd149c1" class="cell" data-execution_count="88">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb156"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb156-1"><a href=""></a><span class="im">import</span> os</span>
+<span id="cb156-2"><a href=""></a></span>
+<span id="cb156-3"><a href=""></a><span class="bu">print</span>(os.getcwd())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="88">
+<div class="cell-output cell-output-stdout">
+<pre><code>/home/runner/work/course-intro-python/course-intro-python</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<div id="2eecbc98" class="cell" data-execution_count="89">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb158"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb158-1"><a href=""></a><span class="im">import</span> math</span>
+<span id="cb158-2"><a href=""></a></span>
+<span id="cb158-3"><a href=""></a><span class="bu">print</span>(math.sqrt(<span class="dv">16</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="89">
+<div class="cell-output cell-output-stdout">
+<pre><code>4.0</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<div id="b6da5333" class="cell" data-execution_count="90">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb160"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb160-1"><a href=""></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb160-2"><a href=""></a><span class="bu">print</span>(Path.home())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="90">
+<div class="cell-output cell-output-stdout">
+<pre><code>/home/runner</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="installing-a-third-party-package" class="slide level2">
+<h2>Installing a third-party package</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>In the terminal, not in the Python console!</li>
+<li>Remember to activate the conda environment first</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb162"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb162-1"><a href=""></a><span class="ex">conda</span> activate python-intro</span>
+<span id="cb162-2"><a href=""></a><span class="ex">pip</span> install pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="using-packages" class="slide level2 smaller">
+<h2>Using packages</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment"><code>pandas</code> is a popular package for data science</li>
+<li class="fragment">Based on <code>DataFrames</code> (tables) and <code>Series</code> (columns)</li>
+<li class="fragment">You can access it using the <code>import</code> keyword</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div id="43118220" class="cell" data-execution_count="91">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb163"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb163-1"><a href=""></a><span class="im">import</span> pandas</span>
+<span id="cb163-2"><a href=""></a></span>
+<span id="cb163-3"><a href=""></a>data_frame <span class="op">=</span> pandas.read_csv(<span class="st">"out.csv"</span>)</span>
+<span id="cb163-4"><a href=""></a></span>
+<span id="cb163-5"><a href=""></a><span class="bu">print</span>(data_frame)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="91">
+<div class="cell-output cell-output-stdout">
+<pre><code>   sample_id  speed  distance
+0         12     53       NaN
+1          7     23       NaN
+2         15     30       NaN</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="importing-packages" class="slide level2 smaller">
+<h2>Importing packages</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="fragment fade-in" data-fragment-index="1">
+<ul>
+<li>You can import all available functions in a package</li>
+</ul>
+</div>
+<div class="fragment fade-in" data-fragment-index="3">
+<ul>
+<li>You can import a specific function from a package
+<ul>
+<li>Use <code>from ... import ...</code></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment fade-in" data-fragment-index="5">
+<ul>
+<li>You can also rename the package or function using <code>as</code>
+<ul>
+<li>Common convention for <code>pandas</code> is <code>pd</code></li>
+</ul></li>
+</ul>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in" data-fragment-index="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb165"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb165-1"><a href=""></a><span class="im">import</span> pandas</span>
+<span id="cb165-2"><a href=""></a></span>
+<span id="cb165-3"><a href=""></a>df <span class="op">=</span> pandas.read_csv(<span class="st">"out.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+<div class="fragment fade-in" data-fragment-index="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb166"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb166-1"><a href=""></a><span class="im">from</span> pandas <span class="im">import</span> read_csv</span>
+<span id="cb166-2"><a href=""></a></span>
+<span id="cb166-3"><a href=""></a>df <span class="op">=</span> read_csv(<span class="st">"out.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+<div class="fragment fade-in" data-fragment-index="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb167"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb167-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb167-2"><a href=""></a></span>
+<span id="cb167-3"><a href=""></a>df <span class="op">=</span> pd.read_csv(<span class="st">"out.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+</section>
+<section id="installing-packages" class="slide level2 smaller">
+<h2>Installing packages</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p>Two main ways to install packages:</p>
+<div class="fragment smaller fade-in" data-fragment-index="1">
+<p><span style="color:#1f77b4; font-size:1.5em">pip</span></p>
+<ul>
+<li>Python’s built-in package manager</li>
+<li>Uses the Python Package Index (PyPI)</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb168"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb168-1"><a href=""></a><span class="ex">pip</span> install package_name</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment smaller fade-in" data-fragment-index="3">
+<p><span style="color:#3eb049; font-size:1.5em">conda</span></p>
+<ul>
+<li>Uses multiple channels (<code>conda-forge</code> is best, avoid <code>defaults</code>)</li>
+<li>Can install non-Python dependencies</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb169"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb169-1"><a href=""></a><span class="ex">conda</span> install package_name</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="fragment fade-in" data-fragment-index="2">
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/6/64/PyPI_logo.svg" style="width:100.0%" alt="PyPI logo"></p>
+</div>
+<p><br> <br></p>
+<div class="fragment fade-in" data-fragment-index="4">
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Conda_logo.svg" style="width:100.0%" alt="Conda logo"></p>
+</div>
+</div></div>
+</section>
+<section id="exercise-8" class="slide level2">
+<h2>Exercise</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p>In your conda environment, using <code>pip</code>:</p>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment">Install <code>numpy</code></li>
+<li class="fragment">Uninstall <code>numpy</code></li>
+<li class="fragment">Install <code>numpy</code> version <code>1.26.4</code></li>
+<li class="fragment">Update the installation of <code>numpy</code></li>
+<li class="fragment">Install <code>matplotlib</code> and <code>scikit-image</code> in one command</li>
+<li class="fragment">List all installed packages with <code>pip list</code></li>
+</ul>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb170"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb170-1"><a href=""></a><span class="ex">pip</span> install numpy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb171"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb171-1"><a href=""></a><span class="ex">pip</span> uninstall numpy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb172"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb172-1"><a href=""></a><span class="ex">pip</span> install numpy==1.26.4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb173"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb173-1"><a href=""></a><span class="ex">pip</span> install numpy <span class="at">-U</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb174"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb174-1"><a href=""></a><span class="ex">pip</span> install matplotlib scikit-image</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+</section>
+<section id="exercise-9" class="slide level2">
+<h2>Exercise</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p>In your conda environment, using <code>conda</code>:</p>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment">Install <code>scipy</code></li>
+<li class="fragment">Install <code>scipy</code> version <code>1.11.1</code></li>
+<li class="fragment">Update the installation of <code>scipy</code></li>
+<li class="fragment">List all installed packages with <code>conda list</code></li>
+</ul>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb175"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb175-1"><a href=""></a><span class="ex">conda</span> install scipy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb176"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb176-1"><a href=""></a><span class="ex">conda</span> install scipy=1.11.1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb177"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb177-1"><a href=""></a><span class="ex">conda</span> update scipy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+</section>
+<section id="exercise-10" class="slide level2 smaller">
+<h2>Exercise</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li>Find and install a package for opening Word documents in Python</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb178"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb178-1"><a href=""></a><span class="ex">pip</span> install python-docx</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="organising-your-code" class="title-slide slide level1 center">
+<h1>Organising your code</h1>
+
+</section>
+<section id="structuring-your-code" class="slide level2 smaller">
+<h2>Structuring your code</h2>
+<ul>
+<li class="fragment">As your code gets more complex, you will want to organise it into multiple files and folders</li>
+<li class="fragment">This makes it easier to find and reuse code</li>
+<li class="fragment">Python modules and packages help you do this</li>
+<li class="fragment">You can also use version control (e.g.&nbsp;Git) to manage changes to your code (covered in the good practices lecture)</li>
+</ul>
+</section>
+<section id="exercise-11" class="slide level2 smaller">
+<h2>Exercise</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment">Create a file <code>my_funcs.py</code> with the functions <code>square_add_10</code> and <code>print_twice</code></li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div id="1a93d8a3" class="cell" data-execution_count="92">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb179"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb179-1"><a href=""></a><span class="kw">def</span> square_add_10(x):</span>
+<span id="cb179-2"><a href=""></a>    y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb179-3"><a href=""></a>    y <span class="op">=</span> y <span class="op">+</span> <span class="dv">10</span></span>
+<span id="cb179-4"><a href=""></a>    <span class="cf">return</span> y</span>
+<span id="cb179-5"><a href=""></a></span>
+<span id="cb179-6"><a href=""></a><span class="kw">def</span> print_twice(a_string):</span>
+<span id="cb179-7"><a href=""></a>    <span class="bu">print</span>(a_string)</span>
+<span id="cb179-8"><a href=""></a>    <span class="bu">print</span>(a_string)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="exercise-12" class="slide level2 smaller">
+<h2>Exercise</h2>
+<ul>
+<li class="fragment">In a new file <code>analysis.py</code>, import the functions from <code>my_funcs.py</code> and use them</li>
+<li class="fragment"><strong>Modularity promotes reuse!</strong></li>
+</ul>
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb180"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb180-1"><a href=""></a><span class="im">from</span> .my_funcs <span class="im">import</span> square_add_10, print_twice</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment fade-in">
+<div id="97c52c6e" class="cell" data-execution_count="93">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb181"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb181-1"><a href=""></a>result <span class="op">=</span> square_add_10(<span class="dv">5</span>)</span>
+<span id="cb181-2"><a href=""></a><span class="bu">print</span>(<span class="st">"Result:"</span>, result)</span>
+<span id="cb181-3"><a href=""></a></span>
+<span id="cb181-4"><a href=""></a>print_twice(<span class="st">"Hello, world!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="93">
+<div class="cell-output cell-output-stdout">
+<pre><code>Result: 35
+Hello, world!
+Hello, world!</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="structuring-your-code-1" class="slide level2 smaller">
+<h2>Structuring your code</h2>
+<ul>
+<li class="fragment">As your codebase grows, consider organizing files into directories</li>
+</ul>
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb183"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb183-1"><a href=""></a><span class="im">from</span> .utils.my_funcs <span class="im">import</span> square_add_10, print_twice</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment fade-in">
+<div id="c2e214e9" class="cell" data-execution_count="94">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb184"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb184-1"><a href=""></a>result <span class="op">=</span> square_add_10(<span class="dv">5</span>)</span>
+<span id="cb184-2"><a href=""></a><span class="bu">print</span>(<span class="st">"Result:"</span>, result)</span>
+<span id="cb184-3"><a href=""></a>print_twice(<span class="st">"Hello, world!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="94">
+<div class="cell-output cell-output-stdout">
+<pre><code>Result: 35
+Hello, world!
+Hello, world!</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="organisation" class="slide level2 smaller">
+<h2>Organisation</h2>
+<ul>
+<li class="fragment">Organise your code like you would any other project</li>
+<li class="fragment">Use meaningful names for files and directories</li>
+<li class="fragment">Group related functionality together</li>
+</ul>
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb186"><pre class="sourceCode numberSource plaintext number-lines code-with-copy"><code class="sourceCode"><span id="cb186-1"><a href=""></a>.</span>
+<span id="cb186-2"><a href=""></a>├── python_project/</span>
+<span id="cb186-3"><a href=""></a>│   ├── analysis/</span>
+<span id="cb186-4"><a href=""></a>│   │   ├── align.py</span>
+<span id="cb186-5"><a href=""></a>│   │   ├── fft.py</span>
+<span id="cb186-6"><a href=""></a>│   │   ├── preprocessing.py</span>
+<span id="cb186-7"><a href=""></a>│   │   └── register.py</span>
+<span id="cb186-8"><a href=""></a>│   ├── IO/</span>
+<span id="cb186-9"><a href=""></a>│   │   ├── load.py</span>
+<span id="cb186-10"><a href=""></a>│   │   ├── save.py</span>
+<span id="cb186-11"><a href=""></a>│   │   ├── tools</span>
+<span id="cb186-12"><a href=""></a>│   │   ├── settings.py</span>
+<span id="cb186-13"><a href=""></a>│   │   └── system.py</span>
+<span id="cb186-14"><a href=""></a>│   └── visualisation/</span>
+<span id="cb186-15"><a href=""></a>│       ├── preprocess.py</span>
+<span id="cb186-16"><a href=""></a>│       └── visualisation.py</span>
+<span id="cb186-17"><a href=""></a>└── README.md</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section></section>
+<section>
+<section id="documenting-your-code" class="title-slide slide level1 center">
+<h1>Documenting your code</h1>
+
+</section>
+<section id="documenting-your-code-1" class="slide level2 smaller">
+<h2>Documenting your code</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="fragment fade-in" data-fragment-index="1">
+<ul>
+<li>Aim to need as little documentation as possible</li>
+</ul>
+</div>
+<div class="fragment fade-in" data-fragment-index="4">
+<ul>
+<li>Which is easier to understand?
+<ul>
+<li>Use meaningful pronounceable names</li>
+</ul></li>
+</ul>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in" data-fragment-index="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb187"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb187-1"><a href=""></a>f <span class="op">=</span> <span class="dv">378</span></span>
+<span id="cb187-2"><a href=""></a>c <span class="op">=</span> <span class="dv">22</span></span>
+<span id="cb187-3"><a href=""></a>fpc <span class="op">=</span> f <span class="op">/</span> c</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+<div class="fragment fade-in" data-fragment-index="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb188"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb188-1"><a href=""></a>foci_number <span class="op">=</span> <span class="dv">378</span></span>
+<span id="cb188-2"><a href=""></a>cell_number <span class="op">=</span> <span class="dv">22</span></span>
+<span id="cb188-3"><a href=""></a>foci_per_cell <span class="op">=</span> foci_number <span class="op">/</span> cell_number</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+</section>
+<section id="documenting-your-code-2" class="slide level2 smaller">
+<h2>Documenting your code</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment">Each function should do one thing</li>
+<li class="fragment">Give functions descriptive names</li>
+<li class="fragment">This is a form of documentation too!</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb189"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb189-1"><a href=""></a><span class="kw">def</span> analyse_well(well_data):</span>
+<span id="cb189-2"><a href=""></a>    ...</span>
+<span id="cb189-3"><a href=""></a></span>
+<span id="cb189-4"><a href=""></a><span class="kw">def</span> save_analysed_well(well_data):</span>
+<span id="cb189-5"><a href=""></a>    ...</span>
+<span id="cb189-6"><a href=""></a></span>
+<span id="cb189-7"><a href=""></a><span class="kw">def</span> process_single_well(well_data):</span>
+<span id="cb189-8"><a href=""></a>    analysed <span class="op">=</span> analyse_well(well_data)</span>
+<span id="cb189-9"><a href=""></a>    save_analysed_well(analysed)</span>
+<span id="cb189-10"><a href=""></a></span>
+<span id="cb189-11"><a href=""></a><span class="kw">def</span> process_plate(plate_data):</span>
+<span id="cb189-12"><a href=""></a>    <span class="cf">for</span> well_data <span class="kw">in</span> plate_data:</span>
+<span id="cb189-13"><a href=""></a>        process_single_well(well_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+</section>
+<section id="comments" class="slide level2 smaller">
+<h2>Comments</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment">Sometimes the code isn’t self-explanatory</li>
+<li class="fragment">Use comments to explain why, not what</li>
+<li class="fragment">Use <code>#</code> for single-line comments</li>
+<li class="fragment">Use triple quotes <code>"""</code> for multi-line comments or docstrings</li>
+<li class="fragment">What’s wrong with this example?</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb190"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb190-1"><a href=""></a><span class="kw">def</span> analyse_image(image):</span>
+<span id="cb190-2"><a href=""></a>    <span class="co"># run gaussian blur</span></span>
+<span id="cb190-3"><a href=""></a>    image <span class="op">=</span> gaussian(image)</span>
+<span id="cb190-4"><a href=""></a>    <span class="co"># run otsu thresholding</span></span>
+<span id="cb190-5"><a href=""></a>    image <span class="op">=</span> otsu(image)</span>
+<span id="cb190-6"><a href=""></a>    <span class="co"># run watershed</span></span>
+<span id="cb190-7"><a href=""></a>    image <span class="op">=</span> watershed(image)</span>
+<span id="cb190-8"><a href=""></a>    <span class="cf">return</span> image</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+</section>
+<section id="comments-1" class="slide level2">
+<h2>Comments</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb191"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb191-1"><a href=""></a><span class="kw">def</span> analyse_image(image):</span>
+<span id="cb191-2"><a href=""></a>    <span class="co"># run gaussian blur</span></span>
+<span id="cb191-3"><a href=""></a>    image <span class="op">=</span> gaussian(image)</span>
+<span id="cb191-4"><a href=""></a>    <span class="co"># run otsu thresholding</span></span>
+<span id="cb191-5"><a href=""></a>    image <span class="op">=</span> otsu(image)</span>
+<span id="cb191-6"><a href=""></a>    <span class="co"># run watershed</span></span>
+<span id="cb191-7"><a href=""></a>    image <span class="op">=</span> watershed(image)</span>
+<span id="cb191-8"><a href=""></a>    <span class="cf">return</span> image</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb192"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb192-1"><a href=""></a><span class="kw">def</span> analyse_image(image):</span>
+<span id="cb192-2"><a href=""></a>    <span class="co"># remove noise</span></span>
+<span id="cb192-3"><a href=""></a>    image <span class="op">=</span> gaussian(image)</span>
+<span id="cb192-4"><a href=""></a>    <span class="co"># binarise cells</span></span>
+<span id="cb192-5"><a href=""></a>    image <span class="op">=</span> otsu(image)</span>
+<span id="cb192-6"><a href=""></a>    <span class="co"># split merged cells</span></span>
+<span id="cb192-7"><a href=""></a>    image <span class="op">=</span> watershed(image)</span>
+<span id="cb192-8"><a href=""></a>    <span class="cf">return</span> image</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+</section>
+<section id="docstrings" class="slide level2 smaller">
+<h2>Docstrings</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment">Use docstrings to describe what a function does and how to use it</li>
+<li class="fragment">Detail inputs and outputs</li>
+<li class="fragment">Use triple quotes <code>"""</code> for docstrings</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb193" data-code-line-numbers="|2-16|2|4-10|12-15|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb193-1"><a href=""></a><span class="kw">def</span> add_numbers(num_0, num_1):</span>
+<span id="cb193-2"><a href=""></a>    <span class="co">"""Adds two numbers together</span></span>
+<span id="cb193-3"><a href=""></a></span>
+<span id="cb193-4"><a href=""></a><span class="co">    Parameters</span></span>
+<span id="cb193-5"><a href=""></a><span class="co">    ----------</span></span>
+<span id="cb193-6"><a href=""></a><span class="co">    num_0 : float</span></span>
+<span id="cb193-7"><a href=""></a><span class="co">        First number to be added</span></span>
+<span id="cb193-8"><a href=""></a></span>
+<span id="cb193-9"><a href=""></a><span class="co">    num_1 : float</span></span>
+<span id="cb193-10"><a href=""></a><span class="co">        Second number to be added</span></span>
+<span id="cb193-11"><a href=""></a></span>
+<span id="cb193-12"><a href=""></a><span class="co">    Returns</span></span>
+<span id="cb193-13"><a href=""></a><span class="co">    -------</span></span>
+<span id="cb193-14"><a href=""></a><span class="co">    float</span></span>
+<span id="cb193-15"><a href=""></a><span class="co">        Sum of numbers</span></span>
+<span id="cb193-16"><a href=""></a><span class="co">    """</span></span>
+<span id="cb193-17"><a href=""></a>    <span class="cf">return</span> num_0 <span class="op">+</span> num_1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+</section>
+<section id="readme-files" class="slide level2 smaller">
+<h2>README files</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment">Single file, usually <code>README.md</code> or <code>README.txt</code></li>
+<li class="fragment">Outlines most important information
+<ul>
+<li class="fragment">What the project does</li>
+<li class="fragment">How to install</li>
+<li class="fragment">How to use</li>
+</ul></li>
+<li class="fragment">Very useful for others (and future you!)</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb194" data-code-line-numbers="|5|7-8|9-16|"><pre class="sourceCode numberSource plaintext number-lines code-with-copy"><code class="sourceCode"><span id="cb194-1"><a href=""></a>My awesome Python package</span>
+<span id="cb194-2"><a href=""></a>Adam Tyson 2025-01-01</span>
+<span id="cb194-3"><a href=""></a>code@adamltyson.com</span>
+<span id="cb194-4"><a href=""></a></span>
+<span id="cb194-5"><a href=""></a>Analyses data from X, Y, Z</span>
+<span id="cb194-6"><a href=""></a></span>
+<span id="cb194-7"><a href=""></a>To install:</span>
+<span id="cb194-8"><a href=""></a>...</span>
+<span id="cb194-9"><a href=""></a>Data requirements:</span>
+<span id="cb194-10"><a href=""></a>...</span>
+<span id="cb194-11"><a href=""></a>To run:</span>
+<span id="cb194-12"><a href=""></a>...</span>
+<span id="cb194-13"><a href=""></a>Output:</span>
+<span id="cb194-14"><a href=""></a>...</span>
+<span id="cb194-15"><a href=""></a>Troubleshooting:</span>
+<span id="cb194-16"><a href=""></a>...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="next-steps" class="title-slide slide level1 center">
+<h1>Next steps</h1>
+
+</section>
+<section id="next-steps-1" class="slide level2 smaller incremental">
+<h2>Next steps</h2>
+<ul>
+<li>We’ve covered some of the basics</li>
+<li>Next steps – Practice!:
+<ul>
+<li>Mess around with code</li>
+<li>Solve problems</li>
+<li>Google stuff</li>
+<li>Contact</li>
+<li>Additional courses :::</li>
+</ul></li>
+</ul>
+</section>
+<section id="further-resources" class="slide level2 smaller incremental">
+<h2>Further resources</h2>
+<ul>
+<li><a href="https://pll.harvard.edu/course/cs50-introduction-computer-science">CS50</a></li>
+<li>UCL ARC courses
+<ul>
+<li><a href="https://rits.github-pages.ucl.ac.uk/doctoral-programming-intro/">An introduction to programming for research using Python</a></li>
+<li><a href="https://github-pages.ucl.ac.uk/rsd-engineeringcourse/">Research software engineering with Python</a></li>
+<li><a href="https://software-carpentry.org/lessons/">Software carpentry courses</a></li>
+<li><a href="https://exercism.org/tracks/python">Exercism</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="troubleshooting-tips" class="slide level2 smaller incremental">
+<h2>Troubleshooting tips</h2>
+<ul>
+<li>Make sure the correct environment is activated
+<ul>
+<li><code>which python</code> or <code>which pip</code> to check</li>
+</ul></li>
+<li>Check the scope of your variable</li>
+<li>Pay attention to whether an operation is <code>in_place</code> or not
+<ul>
+<li>Especially with <code>pandas</code> and <code>numpy</code></li>
+</ul></li>
+<li>Structure your code as a package as soon as you can
+<ul>
+<li><code>pyproject.toml</code> → more on this in future sessions!</li>
+</ul></li>
+<li>Look out for deep vs shallow copies
+<ul>
+<li>Especially with collections (lists, dicts, sets)</li>
+</ul></li>
+</ul>
+</section>
+<section id="question-8" class="slide level2">
+<h2>Question</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment">What does this return?</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-in">
+<div id="7f555eee" class="cell" data-execution_count="95">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb195"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb195-1"><a href=""></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb195-2"><a href=""></a>b <span class="op">=</span> a</span>
+<span id="cb195-3"><a href=""></a>b[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb195-4"><a href=""></a></span>
+<span id="cb195-5"><a href=""></a><span class="bu">print</span>(a[<span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="95">
+<div class="cell-output cell-output-stdout">
+<pre><code>42</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="troubleshooting-tips-1" class="slide level2 smaller incremental">
+<h2>Troubleshooting tips</h2>
+<ul>
+<li>Read the error messages!
+<ul>
+<li>Google is your friend</li>
+<li>LLMs can help too</li>
+<li>Ask a colleague or contact us</li>
+</ul></li>
+<li>Use a debugger (e.g.&nbsp;<code>pdb</code>, or IDE built-in debuggers)</li>
+<li>Write tests for your code (e.g.&nbsp;using <code>pytest</code>)</li>
+</ul>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="img/logo_niu_light.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>Sainsbury Wellcome Centre | 2025-09-30</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"numbers":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: true,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 10,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 10,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
