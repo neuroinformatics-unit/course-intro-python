@@ -1,17 +1,3 @@
-## Ways of working with Python {.incremental}
-
-::: {.incremental}
-* `REPL` (Read-Eval-Print Loop), "interactive Python", "Python console"
-* `Jupyter notebooks` (.ipynb)
-* `Scripts` (.py)
-:::
-
-::: {.fragment .fade-in}
-Demo time! 🧑🏻‍💻👩🏻‍💻
-:::
-
-
-
 ## IDEs: Integrated Development Environments {.smaller}
 
 ::: {.incremental}

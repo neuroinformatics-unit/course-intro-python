@@ -6,18 +6,15 @@
 * `Scripts` (.py)
 :::
 
-::: {.fragment .fade-in}
-Demo time! 🧑🏻‍💻👩🏻‍💻
-:::
 
 
-
-## Writing your first Python script
+## Using interactive Python (REPL)
 
 ::: {.fragment .fade-in}
 Demo time! 🧑🏻‍💻👩🏻‍💻
 :::
 
 ::: {.fragment .fade-in}
-![](/img/your_first_script.png){width=70%}
+![](/img/interactive_python.png){width=80%}
 :::
+
