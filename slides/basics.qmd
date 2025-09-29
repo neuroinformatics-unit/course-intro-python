@@ -105,6 +105,7 @@ print(a + b)
 ```{python}
 #| echo: true
 #| output-location: fragment
+a = 42
 print(f"The value of a is: {a}")
 ```
 :::
@@ -117,7 +118,7 @@ You can also use f-strings to format numbers
 ```{python}
 #| echo: true
 #| output-location: fragment
-print(f"The value of a is: {8.333333333333333:.2f}")
+print(f"A rounded number: {8.333333333333333:.2f}")
 ```
 :::
 
@@ -126,7 +127,7 @@ And compute values in the string
 ```{python}
 #| echo: true
 #| output-location: fragment
-print(f"The value of a is: {7 / 3:.2f}")
+print(f"7 / 3 is: {7 / 3:.2f}")
 ``` 
 :::
 
