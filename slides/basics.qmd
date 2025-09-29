@@ -51,7 +51,7 @@ print(y)
 ```
 
 ## Data types
-::: {.fragment .incremental .smaller}
+::: {.incremental style="font-size: 80%;"}
 * Different kinds of data are stored in different ways in memory
 * You can use the `type()` function to find out what type of data a variable contains
 :::
