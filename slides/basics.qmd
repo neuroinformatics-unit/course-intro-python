@@ -494,6 +494,38 @@ for i in range(11):
 ```
 :::
 
+## Using `and` and `or` {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* `and` and `or` are logical operators
+* Used to combine conditions
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+print(True and False)
+print(True or False)
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+ammount_of_rain = 0 
+ammount_of_uv_rays = 10 
+
+if ammount_of_rain > 10 and ammount_of_uv_rays > 0:
+    print("Take umbrella and sunscreen!")
+else:
+    print("Enjoy the sun!")
+```
+::::
+:::
+:::::
 
 ## For loops {.smaller}
 ::::: {.columns}
