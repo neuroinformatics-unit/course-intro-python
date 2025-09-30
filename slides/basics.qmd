@@ -624,14 +624,6 @@ for i in range(10):
 ```{python}
 #| echo: true
 #| output-location: fragment
-
-```
-::::
-
-:::: {.fragment .fade-in}
-```{python}
-#| echo: true
-#| output-location: fragment
 for i in range(10):
     if i == 5:
         continue
