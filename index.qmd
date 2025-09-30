@@ -117,6 +117,9 @@ conda --version
 * [Sublime Text](https://www.sublimetext.com/) - lightweight text editor
 * Windows can use the built-in Notepad or [Notepad++](https://notepad-plus-plus.org/downloads/)
 
+## Install `git` {.smaller}
+* [Install Git](https://git-scm.com/downloads) - version control system
+
 # Why learn Python?
 
 ## Why learn Python? {.smaller}
