@@ -495,32 +495,6 @@ for i in range(11):
 :::
 
 
-## While loops {.smaller}
-::::: {.columns}
-::: {.column .incremental width="55%"}
-* What if you don't know when you should stop iterating?
-* Use `while`!
-* Does something while a condition is met
-:::
-
-::: {.column width="45%"}
-:::: {.fragment .fade-in}
-```{python}
-#| echo: true
-#| output-location: fragment
-expected_result = 10
-result = 0
-while not expected_result == result:
-    print("Not there yet...")
-    print(f"Result is {result}")
-    result += 1
-print("We got there!")
-```
-::::
-:::
-
-:::::
-
 ## For loops {.smaller}
 ::::: {.columns}
 ::: {.column .incremental width="55%"}
@@ -675,11 +649,38 @@ print(sum_of_squares)
 ```
 :::
 
+## While loops {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* What if you don't know when you should stop iterating?
+* Use `while`!
+* Does something while a condition is met
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+expected_result = 10
+result = 0
+while not expected_result == result:
+    print("Not there yet...")
+    print(f"Result is {result}")
+    result += 1
+print("We got there!")
+```
+::::
+:::
+
+:::::
+
+
 ## Question {.smaller}
 <!-- exercise with while loop and break statement -->
 ::: {.fragment .fade-in }
 * Write a loop that only prints numbers divisible by 3 until you get to 30
-* Skip printing if the number is divisible by 5
+* But skip printing if the number is divisible by 5
 * Use a while loop
 :::
 ::: {.fragment .fade-in}
@@ -688,7 +689,7 @@ print(sum_of_squares)
 #| output-location: fragment
 number = 0
 while number < 30:
-    if number % 3 == 0:
+    if number % 3 == 0 and number % 5 != 0:
         print(number)
     number += 1
 ```
