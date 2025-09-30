@@ -449,7 +449,78 @@ print(my_dict['a_number'])
 :::
 :::::
 
-## Loops {.smaller}
+## Conditional statements {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* Execute code only if a condition is met
+* Use `if`, `elif` (else if), and `else`
+:::
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|1|3|5|7,8|"
+
+porridge_temp = 45
+
+if porridge_temp < 40:
+    print("Too cold!")
+elif porridge_temp > 50:
+    print("Too hot!")
+else:
+    print("Just right!")
+```
+::::
+:::
+:::::
+
+## Question {.smaller}
+* Write a loop that goes through the numbers 0 to 10
+* For each number, print whether it is even or odd
+    + Hint: use the modulus operator `%` and `==` to check for evenness
+
+::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|1|2,3|4,5|"
+
+for i in range(11):
+    if i % 2 == 0:
+        print(f"{i} is Even")
+    else:
+        print(f"{i} is Odd")
+```
+:::
+
+
+## While loops {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* Do something while a condition is met
+* Use `while`
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+expected_result = 10
+result = 0
+while not expected_result == result:
+    print("Not there yet...")
+    print(f"Result is {result}")
+    result += 1
+print("We got there!")
+```
+::::
+:::
+
+:::::
+
+## For loops {.smaller}
 ::::: {.columns}
 ::: {.column .incremental width="55%"}
 * Do the same thing multiple times
@@ -484,7 +555,7 @@ for i in range(5):
 :::
 :::::
 
-## Loops {.smaller}
+## For loops {.smaller}
 ::::: {.columns}
 ::: {.column .incremental width="55%"}
 * You can loop over any iterable
@@ -530,6 +601,49 @@ for index, animal in enumerate(my_list):
 :::
 :::::
 
+## Break and continue statements {.smaller}
+::::: {.columns}
+::: {.column .incremental width="55%"}
+* Break out of a loop
+* Continue to the next iteration
+:::
+
+::: {.column width="45%"}
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+for i in range(10):
+    if i == 5:
+        break
+    print(i)
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+
+```
+::::
+
+:::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+for i in range(10):
+    if i == 5:
+        continue
+    print(i)
+```
+::::
+:::
+
+:::::
+
+
+
 ## Question {.smaller}
 ::: {.fragment .fade-in }
 * Create a list of integers from 0 to 5
@@ -568,48 +682,21 @@ print(sum_of_squares)
 ```
 :::
 
-## Conditional statements {.smaller}
-::::: {.columns}
-::: {.column .incremental width="55%"}
-* Execute code only if a condition is met
-* Use `if`, `elif` (else if), and `else`
-:::
-::: {.column width="45%"}
-:::: {.fragment .fade-in}
-```{python}
-#| echo: true
-#| output-location: fragment
-#| code-line-numbers: "|1|3|5|7,8|"
-
-porridge_temp = 45
-
-if porridge_temp < 40:
-    print("Too cold!")
-elif porridge_temp > 50:
-    print("Too hot!")
-else:
-    print("Just right!")
-```
-::::
-:::
-:::::
-
 ## Question {.smaller}
-* Write a loop that goes through the numbers 0 to 10
-* For each number, print whether it is even or odd
-    + Hint: use the modulus operator `%` and `==` to check for evenness
-
+<!-- exercise with while loop and break statement -->
+::: {.fragment .fade-in }
+* Write a loop that only prints numbers divisible by 3 until you get to 30
+* Use a while loop
+:::
 ::: {.fragment .fade-in}
 ```{python}
 #| echo: true
 #| output-location: fragment
-#| code-line-numbers: "|1|2,3|4,5|"
-
-for i in range(11):
-    if i % 2 == 0:
-        print(f"{i} is Even")
-    else:
-        print(f"{i} is Odd")
+number = 0
+while number < 30:
+    if number % 3 == 0:
+        print(number)
+    number += 1
 ```
 :::
 
