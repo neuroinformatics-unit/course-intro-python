@@ -498,8 +498,9 @@ for i in range(11):
 ## While loops {.smaller}
 ::::: {.columns}
 ::: {.column .incremental width="55%"}
-* Do something while a condition is met
-* Use `while`
+* What if you don't know when you should stop iterating?
+* Use `while`!
+* Does something while a condition is met
 :::
 
 ::: {.column width="45%"}
