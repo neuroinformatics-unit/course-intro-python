@@ -6,11 +6,6 @@
 * `Scripts` (.py)
 :::
 
-::: {.fragment .fade-in}
-Demo time! 🧑🏻‍💻👩🏻‍💻
-:::
-
-
 
 ## Writing your first Python script
 
@@ -19,5 +14,5 @@ Demo time! 🧑🏻‍💻👩🏻‍💻
 :::
 
 ::: {.fragment .fade-in}
-![](/img/your_first_script.png){width=70%}
+![](/img/your_first_script.png){width=70% fig-align="center"}
 :::

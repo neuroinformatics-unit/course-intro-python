@@ -94,10 +94,12 @@ a_list[5]
 ::::
 
 ## Tracebacks {.smaller}
+::: {.incremental}
 * Help you find the source of the error
 * Read from the bottom up
 * Look for the last line that is *your* code
 * [Debugging manifesto](https://wizardzines.com/images/debugging-manifesto.pdf) :bug:
+:::
 
 ## Tracebacks {.smaller}
 ```{python}
@@ -113,6 +115,22 @@ def call_func(x):
     y = divide_0(x)
 
 z = call_func(10)
+```
+
+## Tracebacks {.smaller}
+```{python}
+#| echo: true
+#| output-location: fragment
+#| error: true
+
+def none_function():
+    return None
+
+def get_file_name():
+    return none_function()
+
+file_name = none_function()
+open_file = open(file_name)
 ```
 
 ## Handling exceptions {.smaller}

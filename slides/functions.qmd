@@ -53,7 +53,7 @@ print(y)
 * Functions allow you to:
     + Reuse code
     + Break problems into smaller pieces
-    + Scope defined by indentation
+* Scope defined by indentation
 * Defined using the `def` keyword
 * Can take inputs (arguments) and return outputs
 :::
@@ -101,6 +101,7 @@ def is_valid_password(password):
 ```{python}
 #| echo: true
 #| output-location: fragment
+#| code-line-numbers: "|1|2,3|4,5|"
 def is_valid_password(password):
     if len(password) >= 8:
         return True
@@ -215,7 +216,7 @@ def longer_string(str1, str2=""):
 ```{python}
 #| echo: true
 #| output-location: fragment
-#| code-line-numbers: "|1|2,4|"
+#| code-line-numbers: "|1|2,3|4,5|7|"
 
 def longer_string(str1, str2=""):
     if len(str1) > len(str2):
@@ -225,8 +226,8 @@ def longer_string(str1, str2=""):
 
     print(long_str)
 
-print(longer_string("apple", "banana"))
-print(longer_string("apple"))
+longer_string("apple", "banana")
+longer_string("apple")
 ```
 
 ## Using `*` and `**` {.smaller}
@@ -241,18 +242,33 @@ print(longer_string("apple"))
 ```{python}
 #| echo: true
 #| output-location: fragment
+#| code-line-numbers: "|1|2,3|5,6|8,9|11,12|"
 def my_func(*args, **kwargs):
-    print(f"Unpacking list: {args}")
-    print(f"Unpacking dictionary: {kwargs}")
+    print(f"Unpacking positional arguments: {args}")
+    print(f"Unpacking keyword arguments: {kwargs}")
 
 my_list = [1, 2, 3, 4, 5]
 my_dict = {'a': 1, 'b': 2, 'c': 3}
 
-print("Unpacking list:")
 my_func(*my_list)
 
-print("Unpacking dictionary:")
 my_func(**my_dict)
+```
+:::
+
+## Using `*` and `**` {.smaller}
+
+::: {.fragment .fade-in}
+```{python}
+#| echo: true
+#| output-location: fragment
+def my_func(*args, **kwargs):
+    print(f"Unpacking positional arguments: {args}")
+    print(f"Unpacking keyword arguments: {kwargs}")
+
+my_func(1, 'a', 3.14)
+my_func(name="John", age=30)
+my_func(1, 2, 3, name="Jane", city="New York")
 ```
 :::
 
@@ -260,7 +276,8 @@ my_func(**my_dict)
 :::: {.columns}
 ::: {.column width="55%"}
 ::: {.incremental .smaller}
-* `*args` and `**kwargs` are useful when you don't know how many arguments will be passed to the function
+* `*args` and `**kwargs` are useful when you don't know which arguments will be passed to the function
+* Or when you wrap another function and want to pass all arguments to the wrapped function
 :::
 
 :::
