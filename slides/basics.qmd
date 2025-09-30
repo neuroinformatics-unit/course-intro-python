@@ -605,7 +605,7 @@ for index, animal in enumerate(my_list):
 ::::: {.columns}
 ::: {.column .incremental width="55%"}
 * `break` out of a loop
-* Continue to the next iteration
+* `continue` to the next iteration
 :::
 
 ::: {.column width="45%"}
