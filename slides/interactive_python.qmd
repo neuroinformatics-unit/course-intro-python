@@ -1,3 +1,28 @@
+## Terminal {.smaller}
+:::: {.incremental}
+* A text based interface to interact with your operating system
+* You can run programs, manage files and folders, install software, etc.
+* Many names:
+    + Command Prompt
+    + PowerShell
+    + Terminal
+    + Shell
+    + Git Bash
+    + Anaconda/minforge Prompt
+::::
+
+## Terminal {.smaller}
+:::: {.incremental}
+* Typically arguments are separated by spaces
+* Named arguments are preceded by `--` or `-` (double or single dash)
+* Help is usually available with `-h`, `--help` or `man <command>`
+* Cancel a running command with `Ctrl+C` or `Ctrl+Z`
+* `Tab` key to autocomplete commands and file names
+* `Up` and `Down` keys to cycle through command history
+* `q` (typically) to quit multi-page outputs
+* `python` is a program that can be run from the terminal
+::::
+
 ## Ways of working with Python {.incremental}
 
 ::: {.incremental}
@@ -5,8 +30,6 @@
 * `Jupyter notebooks` (.ipynb)
 * `Scripts` (.py)
 :::
-
-
 
 ## Using interactive Python (REPL)
 
